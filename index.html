@@ -62,16 +62,21 @@
 
         <section id="contacto" class="tarjeta contacto">
             <h2>📩 Contáctame</h2>
-            <form action="https://formspree.io/f/mjgrlewr" method="POST">
+            <form action="https://api.web3forms.com/submit" method="POST">
+                <input type="hidden" name="access_key" value="aa81adc2-c803-4b08-9370-90c90892edff">
+            
                 <div class="grupo-input">
-                    <input type="text" name="name" placeholder="Nombre" required>
+                    <input type="text" name="name" placeholder="Tu Nombre" required>
                 </div>
+            
                 <div class="grupo-input">
-                    <input type="email" name="email" placeholder="Correo" required>
+                    <input type="email" name="email" placeholder="Tu Correo" required>
                 </div>
+            
                 <div class="grupo-input">
                     <textarea name="message" rows="4" placeholder="Escribe tu mensaje..." required></textarea>
                 </div>
+            
                 <button type="submit" class="btn-enviar">Enviar Mensaje</button>
             </form>
         </section>
@@ -84,4 +89,5 @@
 </body>
 
 </html>
+
 
