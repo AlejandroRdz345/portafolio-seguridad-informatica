@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portafolio de Seguridad Informática</title>
+    <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">Portafolio</div>
+        <ul class="nav-links">
+            <li><a href="#" class="activo">Inicio</a></li>
+            <li><a href="#">Parcial 1</a></li>
+            <li><a href="#">Parcial 2</a></li>
+            <li><a href="#">Parcial 3</a></li>
+            <li><a href="#">Final</a></li>
+            <li><a href="#contacto" class="btn-contacto">Contacto</a></li>
+        </ul>
+    </nav>
+    <header class="hero">
+        <div class="hero-text">
+            <p class="subtitulo">CNO V – Seguridad Informática</p>
+            <h1>Hola, soy <span class="resaltado">Cristian Alejandro Rodriguez Moreno</span></h1>
+            <p class="descripcion">
+                Portafolio de evidencias de
+                mis avances.
+            </p>
+        </div>
+    </header>
+    <div class="contenedor">
+        <section class="tarjeta perfil">
+            <h2><span class="icono">👨‍💻</span> Perfil del Estudiante</h2>
+            <div class="contenido-perfil">
+                <p>
+                    <strong>Semblanza:</strong> Me apasiona entender cómo funcionan las cosas por dentro para poder protegerlas. 
+                    Busco especializarme en la seguridad de redes y la gestión de incidentes.
+                </p>
+                <div class="lista-intereses">
+                    <span class="chip">Ethical Hacking</span>
+                    <span class="chip">Redes Cisco</span>
+                    <span class="chip">Linux</span>
+                    <span class="chip">Investigación</span>
+                </div>
+            </div>
+        </section>
+        <section class="tarjeta tecnica">
+            <h2><span class="icono">⚙️</span> Ficha Técnica</h2>
+            <div class="grid-tecnico">
+                <div class="item">
+                    <strong>Lenguajes</strong>
+                    <p>HTML5, CSS3</p>
+                </div>
+                <div class="item">
+                    <strong>Plataforma</strong>
+                    <p>GitHub Pages</p>
+                </div>
+                <div class="item">
+                    <strong>Control</strong>
+                    <p>Git Versioning</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contacto" class="tarjeta contacto">
+            <h2>📩 Contáctame</h2>
+            <form action="https://formspree.io/f/" method="POST">
+                <div class="grupo-input">
+                    <input type="text" name="name" placeholder="Tu Nombre" required>
+                </div>
+                <div class="grupo-input">
+                    <input type="email" name="email" placeholder="Tu Correo" required>
+                </div>
+                <div class="grupo-input">
+                    <textarea name="message" rows="4" placeholder="Escribe tu mensaje..." required></textarea>
+                </div>
+                <button type="submit" class="btn-enviar">Enviar Mensaje</button>
+            </form>
+        </section>
+    </div>
+    <footer>
+        <p>&copy; 2026 [Tu Nombre] | Seguridad Informática</p>
+        <p class="ssl"><small>🔒 Sitio Seguro con SSL (HTTPS)</small></p>
+    </footer>
+
+</body>
+</html>
