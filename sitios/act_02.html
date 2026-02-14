@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad 2 - Seguridad Informática</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        body {
+            background-color: #0f172a;
+            color: #e2e8f0;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            background-color: #1e293b;
+            border-bottom: 1px solid #334155;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .logo {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: #38bdf8;
+        }
+        .nav-buttons {
+            display: flex;
+            gap: 15px;
+        }
+        .btn {
+            text-decoration: none;
+            padding: 8px 18px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: 0.3s;
+        }
+        .btn-back {
+            color: #cbd5e1;
+            border: 1px solid #334155;
+        }
+        .btn-back:hover {
+            background-color: #334155;
+        }
+        .btn-download {
+            background-color: #38bdf8;
+            color: #0f172a;
+        }
+        .btn-download:hover {
+            background-color: #7dd3fc;
+        }
+        header.hero {
+            text-align: center;
+            padding: 80px 20px;
+            background: linear-gradient(to bottom, #1e293b, #0f172a);
+        }
+        .hero h1 {
+            font-size: 2.2rem;
+            margin: 15px 0;
+            color: #38bdf8;
+        }
+        .hero p {
+            color: #94a3b8;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .hero-details {
+            margin-top: 20px;
+            font-size: 1rem;
+            color: #e2e8f0;
+        }
+
+        .contenedor {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+
+        .tarjeta {
+            background-color: #1e293b;
+            padding: 40px;
+            border-radius: 15px;
+            margin-bottom: 40px;
+            border: 1px solid #334155;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
+        }
+        .tarjeta h2 {
+            margin-bottom: 25px;
+            font-size: 1.6rem;
+            color: #38bdf8;
+            border-bottom: 2px solid #334155;
+            padding-bottom: 15px;
+        }
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 0.85rem;
+            background-color: #0f172a;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        th, td {
+            border: 1px solid #334155;
+            padding: 15px;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background-color: #334155;
+            color: #38bdf8;
+            font-weight: 600;
+        }
+        tr:nth-child(even) {
+            background-color: rgba(30, 41, 59, 0.5);
+        }
+
+        .referencia-item {
+            margin-bottom: 10px;
+            font-size: 0.85rem;
+            color: #94a3b8;
+            padding-left: 10px;
+            border-left: 2px solid #334155;
+        }
+
+        footer {
+            text-align: center;
+            padding: 50px;
+            color: #64748b;
+            font-size: 0.9rem;
+            border-top: 1px solid #1e293b;
+            background-color: #0f172a;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">Actividad 2</div>
+        <div class="nav-buttons">
+            <a href="../index.html" class="btn btn-back">← Regresar</a>
+            <a href="archivos/181641-act02.pdf" download class="btn btn-download">Descargar PDF</a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <p>UNIVERSIDAD POLITÉCNICA DE SAN LUIS POTOSÍ</p>
+        <h1>Actividad 2</h1>
+        <div class="hero-details">
+            <p><strong>Carrera:</strong> Ingeniería en Tecnologías de la Información</p>
+            <p><strong>Materia:</strong> Seguridad informática | <strong>Parcial:</strong> 1</p>
+            <p style="color: #38bdf8; font-weight: bold; margin-top: 15px;">Rodriguez Moreno Cristian Alejandro | Matrícula: 181641</p>
+            <p style="font-size: 0.9rem; color: #94a3b8;">Profesor: Servando López Contreras | Fecha: 27 de enero de 2026</p>
+        </div>
+    </header>
+
+    <div class="contenedor">
+
+        <section class="tarjeta">
+            <h2>Introducción</h2>
+            <p>El presente trabajo nos habla sobre dos estándares que son fundamentales para entender la seguridad informática hoy en día, pues nos ayudan a comprender qué es lo que pasa realmente cuando ocurre un incidente. Por una parte, tenemos el modelo X.800, el cual nos indica los servicios de seguridad que debemos proteger, como la confidencialidad o la integridad; y por otra parte, utilizamos el RFC 4949, que funciona como un diccionario técnico para ponerle el nombre exacto a cada amenaza.</p>
+            <p>Esto es muy importante, pues al analizar los incidentes me di cuenta de que muchas veces confundimos los términos o no sabemos explicar el impacto real. Entonces, el objetivo de esta actividad es aprender a identificar bien qué servicio falló y usar la terminología correcta del RFC, para así poder documentar vulneraciones en contextos reales de forma profesional.</p>
+            <p>Una vez explicado el contexto de los estándares, a continuación se muestra la tabla con el análisis detallado de cada escenario.</p>
+        </section>
+
+        <section class="tarjeta">
+            <h2>Análisis de Escenarios (X.800 y RFC 4949)</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 5%;">#</th>
+                        <th style="width: 20%;">Servicios de X.800 comprometidos / Definición RFC 4949</th>
+                        <th style="width: 15%;">Tipo de amenaza</th>
+                        <th style="width: 20%;">Vector de ataque</th>
+                        <th style="width: 20%;">Impacto Técnico/Operativo</th>
+                        <th style="width: 20%;">Medida de control recomendada</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td><strong>Confidencialidad, Integridad y Disponibilidad.</strong><br><br>Nos habla sobre un Ransomware que causó un Data Breach y también un Availability attack.</td>
+                        <td>Externa (Maliciosa)</td>
+                        <td>Pues todo comenzó con la explotación de una vulnerabilidad y luego ejecutaron el malware para cifrarlo todo.</td>
+                        <td>El impacto fue que se pararon las operaciones y se filtraron datos, entonces la reputación de la empresa quedó muy mal.</td>
+                        <td>Se recomienda tener respaldos inmutables y segmentar la red para que no pase a mayores.</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td><strong>Confidencialidad y Control de Acceso.</strong><br><br>Aquí se trata de una Misconfiguration que provocó una Exposure de los datos.</td>
+                        <td>Interna (Error humano)</td>
+                        <td>Fue un error al configurar los permisos en la nube, pues cualquiera podía entrar a ver los archivos.</td>
+                        <td>Se perdió la privacidad de los datos masivamente y pues eso trae problemas legales fuertes aunque no hackearan nada.</td>
+                        <td>Hay que auditar las configuraciones seguido y cifrar los datos para evitar que se vean.</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td><strong>Integridad y Autenticación de origen.</strong><br><br>El RFC nos define esto como un Supply Chain Attack y uso de Malicious Logic.</td>
+                        <td>Externa (Indirecta)</td>
+                        <td>Los atacantes infectaron el software original del proveedor antes de que le llegara al cliente.</td>
+                        <td>Afectó a muchas empresas que confiaban en el proveedor, entonces el daño fue crítico porque nadie sospechaba.</td>
+                        <td>Se debe verificar el hash de los archivos y vigilar a los proveedores siempre.</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td><strong>Autenticación y Control de Acceso.</strong><br><br>Es un Credential Compromise mediante Phishing, que causó un Unauthorized Access.</td>
+                        <td>Externa (Ingeniería Social)</td>
+                        <td>Comenzó con correos falsos para robar las contraseñas, pues los usuarios pensaron que eran reales.</td>
+                        <td>Los atacantes estuvieron dentro sin que nadie se diera cuenta, robando información poco a poco.</td>
+                        <td>Activar el doble factor (MFA) para que aunque tengan la clave, no puedan entrar.</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td><strong>Disponibilidad e Integridad.</strong><br><br>Aquí nos habla de Data Destruction y un Availability Attack intencional.</td>
+                        <td>Externa (Destructiva)</td>
+                        <td>Se metieron hasta los servidores de respaldo para borrarlos antes de soltar el ataque principal.</td>
+                        <td>Pues la empresa no se pudo recuperar y perdió toda su información, fue algo catastrófico para el negocio.</td>
+                        <td>Tener respaldos fuera de línea (offline) para que nadie los pueda tocar remotamente.</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td><strong>Confidencialidad y Control de Acceso.</strong><br><br>Se define como Insider Threat y hubo un Misuse of Privilege.</td>
+                        <td>Interna (Intencional)</td>
+                        <td>El empleado aprovechó que tenía permisos legítimos para sacar la información y venderla.</td>
+                        <td>Se fugaron datos sensibles y nadie sospechó nada porque el acceso parecía normal en el sistema.</td>
+                        <td>Monitorear lo que hacen los usuarios y dar solo los permisos necesarios (Mínimo Privilegio).</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td><strong>No Repudio e Integridad.</strong><br><br>Se trata de una falla en la Evidentiary Integrity y modificación del Audit Trail.</td>
+                        <td>Interna o Externa</td>
+                        <td>Borraron los registros (logs) después de entrar para que no supieran quién fue ni qué hizo.</td>
+                        <td>No se puede saber qué pasó ni culpar a nadie, entonces falla el análisis forense legal.</td>
+                        <td>Mandar los logs a un servidor aparte en tiempo real para que no los puedan borrar.</td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td><strong>Disponibilidad.</strong><br><br>El RFC lo marca como Operational Failure y System Crash.</td>
+                        <td>Interna (Error de proceso)</td>
+                        <td>Una actualización salió mal y tumbó los servidores, pues no la probaron bien antes de lanzarla.</td>
+                        <td>Se cayeron los servicios en todo el mundo y se perdió mucho dinero por estar tanto tiempo parados.</td>
+                        <td>Probar bien las actualizaciones antes de lanzarlas a todos los equipos.</td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td><strong>Autenticación y Confidencialidad.</strong><br><br>Nos habla de Masquerade y Spoofing para engañar a la gente.</td>
+                        <td>Externa (Engaño)</td>
+                        <td>Crearon sitios web idénticos a los originales para que la gente se confiara y pusiera sus datos.</td>
+                        <td>Los usuarios dieron sus datos pensando que era real, entonces les robaron su identidad y dinero.</td>
+                        <td>Usar certificados válidos y enseñar a la gente a revisar bien las direcciones web.</td>
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td><strong>Disponibilidad, Integridad y Confidencialidad.</strong><br><br>Es un Destructive Attack usando herramientas tipo Wiper.</td>
+                        <td>Externa (Ciberguerra)</td>
+                        <td>Usaron un malware diseñado solo para borrar todo lo que encontraba a su paso en los discos duros.</td>
+                        <td>Se destruyó todo el sistema y hubo que empezar desde cero, pues el daño fue total e irreversible.</td>
+                        <td>Tener planes de recuperación ante desastres (DRP) bien ensayados para levantar el servicio.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="tarjeta">
+            <h2>Conclusión</h2>
+            <p>Al terminar de analizar estos escenarios me puse a pensar en que muchas empresas se confían y cuando les llega un ataque no saben qué hacer. El problema es claro también aquí, pues los riesgos cambian todo el tiempo y hay que adaptarnos. El uso del RFC 4949 y el X.800 nos sirve para no solo decir "me hackearon", sino para entender técnicamente qué pasó, si fue la integridad o la disponibilidad lo que falló. En mi opinión, si aprendemos a usar bien estos términos, podremos defendernos mejor y aplicar controles reales, alejándonos del miedo a lo desconocido y actuando con más seguridad en el entorno laboral.</p>
+        </section>
+
+        <section class="tarjeta">
+            <h2>Bibliografía</h2>
+            <div class="referencia-item">
+                International Telecommunication Union. (1991). Security Architecture for Open Systems Interconnection for CCITT Applications (X.800).
+            </div>
+            <div class="referencia-item">
+                Shirey, R. (2007). Internet Security Glossary, Version 2 (RFC 4949). The Internet Society.
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Cristian Alejandro Rodriguez Moreno | Seguridad Informática</p>
+        <p>Universidad Politécnica de San Luis Potosí</p>
+    </footer>
+
+</body>
+</html>
