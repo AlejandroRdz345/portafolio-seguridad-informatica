@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Actividad 5 - Investigación</title>
+    <title>Actividad 5 - Cartografiando el pentesting: análisis
+comparativo de metodologías de seguridad
+informática</title>
     <style>
         * {
             margin: 0;
@@ -88,6 +90,7 @@
             margin: 0 auto;
             padding: 30px 20px;
         }
+
         .tarjeta {
             background-color: #1e293b;
             padding: 40px;
@@ -109,6 +112,7 @@
             margin-bottom: 15px;
             text-align: justify;
         }
+
         table {
             width: 100%;
             border-collapse: collapse;
@@ -117,7 +121,7 @@
             background-color: #0f172a;
             border-radius: 8px;
             overflow: hidden;
-            min-width: 1000px;
+            min-width: 1200px;
         }
         th, td {
             border: 1px solid #334155;
@@ -143,6 +147,7 @@
         a.table-link:hover {
             text-decoration: underline;
         }
+
         footer {
             text-align: center;
             padding: 50px;
@@ -158,14 +163,16 @@
     <nav class="navbar">
         <div class="logo">Actividad 5</div>
         <div class="nav-buttons">
-            <a href="../index.html" class="btn btn-back">← Regresar</a>
-            <a href="archivos/181641-act05.pdf" download class="btn btn-download">Descargar DOCX</a>
+            <a href="index.html" class="btn btn-back">← Regresar</a>
+            <a href="181641-act05.docx" download class="btn btn-download">Descargar DOCX</a>
         </div>
     </nav>
 
     <header class="hero">
         <p>UNIVERSIDAD POLITÉCNICA DE SAN LUIS POTOSÍ</p>
-        <h1>Investigación</h1>
+        <h1>Cartografiando el pentesting: análisis
+comparativo de metodologías de seguridad
+informática</h1>
         <div class="hero-details">
             <p><strong>Carrera:</strong> Ingeniería en Tecnologías de la Información</p>
             <p><strong>Materia:</strong> Seguridad Informática | <strong>Parcial:</strong> 1</p>
@@ -181,90 +188,90 @@
             <table>
                 <thead>
                     <tr>
-                        <th>Metodología / Marco</th>
+                        <th>Metodología</th>
                         <th>A. Descripción breve</th>
                         <th>B. Fases de implementación</th>
                         <th>C. Objetivo principal</th>
-                        <th>D. Escenarios en los que se utiliza</th>
+                        <th>D. Escenarios de uso</th>
                         <th>E. Orientación</th>
-                        <th>F. Autores u organismos</th>
-                        <th>G. URL Oficial</th>
+                        <th>F. Autores / Organismo</th>
+                        <th>G. URL del material oficial</th>
                         <th>H. Certificaciones</th>
-                        <th>I. Versión Vigente</th>
+                        <th>I. Versión vigente</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td><strong>1. MITRE ATT&CK</strong></td>
-                        <td>Base de conocimiento global de tácticas y técnicas de adversarios basada en observaciones reales.</td>
-                        <td>Matriz de tácticas (Recon, Initial Access, Execution, Persistence, etc.). No es lineal.</td>
-                        <td>Detección y descripción de comportamientos y técnicas de ataque.</td>
-                        <td>SOC, Emulación de adversarios, Threat Intelligence (CTI).</td>
-                        <td>Defensa / Emulación de Ataque</td>
+                        <td><strong>MITRE ATT&CK</strong></td>
+                        <td>Es una lista de tácticas y métodos que usan los ciberdelincuentes basándose en incidentes reales.</td>
+                        <td>No es secuencial. Se basa en matrices de tácticas (por qué) y técnicas (cómo).</td>
+                        <td>Establecer un vocabulario estándar para describir acciones de adversarios y fortalecer la detección.</td>
+                        <td>Diseño de operaciones (ofensivo) e identificación de puntos débiles (defensivo).</td>
+                        <td>Ataque y Defensa</td>
                         <td>MITRE Corporation</td>
-                        <td><a href="https://attack.mitre.org" class="table-link" target="_blank">https://attack.mitre.org</a></td>
-                        <td>MITRE ATT&CK Defender (MAD)</td>
-                        <td>v16 (Octubre 2024)</td>
+                        <td><a href="https://attack.mitre.org/" class="table-link" target="_blank">https://attack.mitre.org/</a></td>
+                        <td>No cuenta con certificación</td>
+                        <td>Renovación continua (consultar portal oficial).</td>
                     </tr>
                     <tr>
-                        <td><strong>2. OWASP WSTG</strong></td>
-                        <td>Guía integral para probar la seguridad de aplicaciones web y servicios web.</td>
-                        <td>12 categorías (Recopilación de info, Configuración, Identidad, Autenticación, etc.).</td>
-                        <td>Evaluación técnica de controles de seguridad en aplicaciones web.</td>
-                        <td>Aplicaciones Web, APIs, Servicios en la nube.</td>
-                        <td>Ataque / Evaluación Técnica</td>
+                        <td><strong>OWASP WSTG</strong></td>
+                        <td>Guía de referencia completa para evaluar la seguridad de aplicaciones web mediante pruebas.</td>
+                        <td>12 áreas de evaluación (autenticación, gestión de sesiones, lógica de negocio, etc.).</td>
+                        <td>Ofrecer un estándar reconocido para realizar pruebas metódicas y exhaustivas en aplicaciones web.</td>
+                        <td>Auditorías web, revisiones de código y ciclos de desarrollo seguro.</td>
+                        <td>Evaluación</td>
                         <td>OWASP Foundation</td>
                         <td><a href="https://owasp.org/www-project-web-security-testing-guide/" class="table-link" target="_blank">https://owasp.org/...</a></td>
-                        <td>Relacionadas: OSWA, OSWE (OffSec)</td>
-                        <td>v4.2 (v5 en desarrollo)</td>
+                        <td>Base fundamental de acreditaciones en seguridad web (eWPT, OSWE).</td>
+                        <td>Edición 4.2 (estable).</td>
                     </tr>
                     <tr>
-                        <td><strong>3. NIST SP 800-115</strong></td>
-                        <td>Guía técnica para realizar evaluaciones y pruebas de seguridad de la información.</td>
-                        <td>1. Planificación, 2. Ejecución, 3. Post-ejecución (Análisis de resultados).</td>
-                        <td>Estandarización de pruebas técnicas y revisión de seguridad.</td>
-                        <td>Gubernamentales, Cumplimiento (Compliance) y Auditoría.</td>
-                        <td>Evaluación / Auditoría</td>
-                        <td>NIST (EE. UU.)</td>
-                        <td><a href="https://csrc.nist.gov/publications/detail/sp/800-115/final" class="table-link" target="_blank">https://csrc.nist.gov/...</a></td>
-                        <td>Alineada con CISA, Security+</td>
-                        <td>Final (Vigente como referencia)</td>
+                        <td><strong>NIST SP 800-115</strong></td>
+                        <td>Documento del gobierno con recomendaciones para pruebas de seguridad en sistemas.</td>
+                        <td>Tres etapas: Preparación, Desarrollo (ataque) y Cierre (informes).</td>
+                        <td>Asistir en la planificación y ejecución de evaluaciones técnicas para detectar vulnerabilidades.</td>
+                        <td>Entidades gubernamentales y corporaciones con requisitos normativos federales.</td>
+                        <td>Evaluación</td>
+                        <td>NIST</td>
+                        <td><a href="https://csrc.nist.gov/pubs/sp/800/115/final" class="table-link" target="_blank">https://csrc.nist.gov/...</a></td>
+                        <td>No posee certificaciones</td>
+                        <td>Publicado en el año 2008.</td>
                     </tr>
                     <tr>
-                        <td><strong>4. OSSTMM</strong></td>
-                        <td>Estándar científico para la evaluación de la seguridad operativa y métricas.</td>
-                        <td>1. Alcance, 2. Canal (Físico, Espectral, etc.), 3. Índice de seguridad (RAVs).</td>
-                        <td>Medición técnica de la seguridad operativa a través de métricas.</td>
-                        <td>Infraestructura crítica, seguridad física y de redes.</td>
-                        <td>Evaluación (Científica)</td>
-                        <td>ISECOM (Pete Herzog)</td>
-                        <td><a href="https://www.isecom.org/research.html" class="table-link" target="_blank">https://www.isecom.org/...</a></td>
-                        <td>OPST, OPSA</td>
-                        <td>v3.0</td>
+                        <td><strong>OSSTMM</strong></td>
+                        <td>Manual con enfoque riguroso y verificable para cuantificar la seguridad operacional (humana, física y digital).</td>
+                        <td>Examen de canales: humano, entorno físico, redes inalámbricas y comunicaciones.</td>
+                        <td>Brindar un procedimiento para obtener resultados cuantificables y contrastables (métricas RAVs).</td>
+                        <td>Evaluaciones integrales que contemplan instalaciones, procedimientos e interacción humana.</td>
+                        <td>Evaluación y Defensa</td>
+                        <td>ISECOM</td>
+                        <td><a href="https://www.isecom.org/OSSTMM.3.pdf" class="table-link" target="_blank">https://www.isecom.org/...</a></td>
+                        <td>Certificaciones oficiales OPST y OPSA.</td>
+                        <td>Edición 3 (2010).</td>
                     </tr>
                     <tr>
-                        <td><strong>5. PTES</strong></td>
-                        <td>Estándar que define los procesos necesarios para realizar un pentesting de alta calidad.</td>
-                        <td>Pre-engagement, Intelligence Gathering, Threat Modeling, Vulnerability Analysis, Exploitation, Post-exploitation, Reporting.</td>
-                        <td>Definir un lenguaje común y expectativas para empresas y pentesters.</td>
-                        <td>Pentesting corporativo de infraestructura y redes complejas.</td>
-                        <td>Ataque (Procesos de negocio)</td>
-                        <td>Comunidad de expertos (Nick Percoco)</td>
+                        <td><strong>PTES</strong></td>
+                        <td>Estándar desarrollado por expertos para unificar criterios y definir el proceso completo de un pentesting.</td>
+                        <td>7 fases: Acuerdo, Inteligencia, Amenazas, Vulnerabilidades, Explotación, Post-explotación e Informes.</td>
+                        <td>Crear un estándar universal para que contratantes y profesionales compartan el mismo entendimiento.</td>
+                        <td>Consultores de seguridad y compañías que definen servicios de pentesting contratados.</td>
+                        <td>Ataque y Evaluación</td>
+                        <td>Comunidad de especialistas</td>
                         <td><a href="http://www.pentest-standard.org/" class="table-link" target="_blank">http://www.pentest-standard.org/</a></td>
-                        <td>Base para certificaciones como OSCP</td>
-                        <td>v1.1</td>
+                        <td>Reconocido en el sector como estándar de referencia</td>
+                        <td>Versión completa de 2010.</td>
                     </tr>
                     <tr>
-                        <td><strong>6. ISSAF</strong></td>
-                        <td>Marco estructurado que organiza las pruebas de seguridad en dominios técnicos.</td>
-                        <td>1. Planificación, 2. Evaluación (Recon, Enumeración, Explotación), 3. Informe.</td>
-                        <td>Evaluación profunda de controles de seguridad por capas.</td>
-                        <td>Centros de datos, redes corporativas tradicionales.</td>
-                        <td>Evaluación / Ataque</td>
+                        <td><strong>ISSAF</strong></td>
+                        <td>Marco de evaluación exhaustivo sobre facetas técnicas, organizativas y legales (actualmente de uso residual).</td>
+                        <td>Áreas de conocimiento (redes, sistemas, apps) con etapas desde preparación hasta reporte.</td>
+                        <td>Ofrecer un marco integral con técnicas, metodologías y ejemplos de herramientas de intrusión.</td>
+                        <td>Referencia histórica o extracción de ideas para dominios particulares.</td>
+                        <td>Ataque y Evaluación</td>
                         <td>OISSG</td>
-                        <td><a href="https://sourceforge.net/projects/issaf/" class="table-link" target="_blank">https://sourceforge.net/...</a></td>
-                        <td>Ninguna activa actualmente</td>
-                        <td>v0.2.1</td>
+                        <td><a href="https://pymesec.org/issaf/" class="table-link" target="_blank">https://pymesec.org/issaf/</a></td>
+                        <td>No generó certificaciones</td>
+                        <td>Borrador 0.2 (2006).</td>
                     </tr>
                 </tbody>
             </table>
@@ -278,6 +285,4 @@
     </footer>
 
 </body>
-
 </html>
-
