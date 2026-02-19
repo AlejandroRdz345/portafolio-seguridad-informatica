@@ -157,7 +157,7 @@
         <div class="logo">Actividad 3</div>
         <div class="nav-buttons">
             <a href="../index.html" class="btn btn-back">← Regresar</a>
-            <a href="#" class="btn btn-download">Descargar PDF</a>
+            <a href="#" class="btn btn-download">Descargar PDF(EN esta actvidad no hubo pdf)</a>
         </div>
     </nav>
 
@@ -170,6 +170,10 @@
     </header>
 
     <div class="contenedor">
+        <section class="tarjeta"> 
+            <h2>Introducción Contextual</h2> 
+            <p> En esta actividad se elaboro se llevo a cabo un pequeño cuestionario para llevar entender el funcionamiento de un comando IPTABLES para entender como funciona un paquete dentro de un firewall y entender más sobre su estructura.</p> 
+        </section>
 
         <section class="tarjeta">
             <h2>1. Completa los espacios conforme se explica el flujo del paquete</h2>
@@ -275,6 +279,9 @@
 
             <p class="pregunta">11. Permitir tráfico tcp entrante por eth0 a 22, 80 y 443, registrar intentos y permitir solo NEW y ESTABLISHED</p>
             <div class="respuesta">Iptables -A INPUT -p tcp -i eth0 -–dports 22,80,443 \ -m state –state NEW,ESTABLISHED -j log –log-ports "conexion nueva" .j ACCEPT</div>
+        </section>
+        <section class="tarjeta"> <h2>Reflexión</h2> 
+            <p> Creo que entendí un poco el comando de  iptables esta algo dificil al principio pero cuando se conoce el flujo del paquete y la función de cada tabla todo empieza a tener más sentido. </p> 
         </section>
 
     </div>
