@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad 6 - VPN Site-to-Site</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        body {
+            background-color: #0f172a;
+            color: #e2e8f0;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            background-color: #1e293b;
+            border-bottom: 1px solid #334155;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .logo {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: #38bdf8;
+        }
+        .nav-buttons {
+            display: flex;
+            gap: 15px;
+        }
+        .btn {
+            text-decoration: none;
+            padding: 8px 18px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: 0.3s;
+        }
+        .btn-back {
+            color: #cbd5e1;
+            border: 1px solid #334155;
+        }
+        .btn-back:hover {
+            background-color: #334155;
+        }
+        .btn-download {
+            background-color: #38bdf8;
+            color: #0f172a;
+        }
+        .btn-download:hover {
+            background-color: #7dd3fc;
+        }
+        header.hero {
+            text-align: center;
+            padding: 80px 20px;
+            background: linear-gradient(to bottom, #1e293b, #0f172a);
+        }
+        .hero h1 {
+            font-size: 2.2rem;
+            margin: 15px 0;
+            color: #38bdf8;
+        }
+        .hero p {
+            color: #94a3b8;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .hero-details {
+            margin-top: 20px;
+            font-size: 1rem;
+            color: #e2e8f0;
+        }
+        .contenedor {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+        .tarjeta {
+            background-color: #1e293b;
+            padding: 40px;
+            border-radius: 15px;
+            margin-bottom: 40px;
+            border: 1px solid #334155;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
+        }
+        .tarjeta h2 {
+            margin-bottom: 25px;
+            font-size: 1.5rem;
+            color: #38bdf8;
+            border-bottom: 2px solid #334155;
+            padding-bottom: 15px;
+        }
+        .tarjeta h3 {
+            color: #7dd3fc;
+            margin: 25px 0 10px;
+            font-size: 1.1rem;
+            border-left: 4px solid #38bdf8;
+            padding-left: 10px;
+        }
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        .comando-bloque {
+            background-color: #0f172a;
+            color: #a5f3fc;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9rem;
+            overflow-x: auto;
+            border: 1px solid #334155;
+            margin-bottom: 20px;
+        }
+        .comando-bloque span {
+            color: #cbd5e1;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 0.9rem;
+            background-color: #0f172a;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        th, td {
+            border: 1px solid #334155;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #334155;
+            color: #38bdf8;
+        }
+        footer {
+            text-align: center;
+            padding: 50px;
+            color: #64748b;
+            font-size: 0.9rem;
+            border-top: 1px solid #1e293b;
+            background-color: #0f172a;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">Actividad 6</div>
+        <div class="nav-buttons">
+            <a href="../index.html" class="btn btn-back">← Regresar</a>
+            <a href="archivos/181641-act06.pdf" download class="btn btn-download">Descargar PDF</a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <p>UNIVERSIDAD POLITÉCNICA DE SAN LUIS POTOSÍ</p>
+        <h1>Actividad 6</h1>
+        <div class="hero-details">
+            <p><strong>Carrera:</strong> Ingeniería en Tecnologías de la Información</p>
+            <p><strong>Materia:</strong> Desarrollo del Pensamiento Crítico</p>
+            <p><strong>Parcial:</strong> 1</p>
+            <p style="color: #38bdf8; font-weight: bold; margin-top: 15px;">Rodriguez Moreno Cristian Alejandro | Matrícula: 181641</p>
+            <p style="font-size: 0.9rem; color: #94a3b8;">Profesor: Servando López Contreras</p>
+        </div>
+    </header>
+
+    <div class="contenedor">
+<section class="tarjeta"> 
+            <h2>Introducción contextual</h2> 
+            <p> En esta actividad configuramos una VPN Site‑to‑Site utilizando IPSec para conectar dos redes de manera segura. A través de la topología y los comandos aplicados, pude comprender mejor cómo se establecen los túneles, cómo se define el tráfico que será cifrado y cómo se integran las fases de negociación para asegurar la comunicación entre los sitios. </p> 
+        </section>
+        <section class="tarjeta">
+            <h2>Topología de Red</h2>
+            <img src="archivos/topo.png">
+            <p>La topología utilizada para la actividad consta de los siguientes dispositivos interconectados:</p>
+            <ul>
+                <li><strong>Router ISP:</strong> Modelo 1941 (Intermediario)</li>
+                <li><strong>Router R1:</strong> Modelo 1941 (Sitio A)</li>
+                <li><strong>Router R3:</strong> Modelo 1941 (Sitio B)</li>
+                <li><strong>Switches:</strong> 2960-24TT (Switch0 y Switch1)</li>
+                <li><strong>Dispositivos finales:</strong> PC-A y PC-B</li>
+            </ul>
+        </section>
+        
+
+        <section class="tarjeta">
+            <h2>Configuración Inicial de Dispositivos</h2>
+
+            <h3>Configuración del Router 1 (R1)</h3>
+            <img src="archivos/r1.png">
+            <div class="comando-bloque">
+Router> enable
+Router# configure terminal
+Router(config)# hostname R1
+R1(config)# interface g0/0
+R1(config-if)# ip address 209.165.100.1 255.255.255.0
+R1(config-if)# no shutdown
+R1(config-if)# exit
+R1(config)# interface g0/1
+R1(config-if)# ip address 192.168.1.1 255.255.255.0
+R1(config-if)# no shutdown
+R1(config)# ip route 0.0.0.0 0.0.0.0 209.165.100.2
+            </div>
+
+            <h3>Configuración del Router 3 (R3)</h3>
+            <img src="archivos/r2.png">
+            <div class="comando-bloque">
+Router> enable
+Router# configure terminal
+Router(config)# hostname R3
+R3(config)# interface g0/0
+R3(config-if)# ip address 209.165.200.1 255.255.255.0
+R3(config-if)# no shutdown
+R3(config-if)# exit
+R3(config)# interface g0/1
+R3(config-if)# ip address 192.168.3.1 255.255.255.0
+R3(config-if)# no shutdown
+R3(config-if)# exit
+R3(config)# ip route 0.0.0.0 0.0.0.0 209.165.200.2
+            </div>
+
+            <h3>Configuración de ISP</h3>
+            <img src="archivos/isp.png">
+            <div class="comando-bloque">
+ISP> enable
+ISP# configure terminal
+ISP(config)# hostname ISP
+ISP(config)# interface g0/0
+ISP(config-if)# ip address 209.165.100.2 255.255.255.0
+ISP(config-if)# no shutdown
+ISP(config-if)# exit
+ISP(config)# interface g0/1
+ISP(config-if)# ip address 209.165.200.2 255.255.255.0
+ISP(config-if)# no shutdown
+ISP(config-if)# exit
+            </div>
+        </section>
+
+        <section class="tarjeta">
+            <h2>Configuración de Dispositivos Finales (PCs)</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Dispositivo</th>
+                        <th>Interfaz</th>
+                        <th>Dirección IP</th>
+                        <th>Máscara de Subred</th>
+                        <th>Gateway</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>PC-A</strong></td>
+                        <td>FastEthernet0</td>
+                        <td>192.168.1.10</td>
+                        <td>255.255.255.0</td>
+                        <td>192.168.1.1</td>
+                    </tr>
+                    <tr>
+                        <td><strong>PC-B</strong></td>
+                        <td>FastEthernet0</td>
+                        <td>192.168.3.10</td>
+                        <td>255.255.255.0</td>
+                        <td>192.168.3.1</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="tarjeta">
+            <h2>Configuración de Seguridad (VPN IPSec Site-to-Site)</h2>
+            
+            <h3>3. Implementación de ACLs</h3>
+            <p>Se define el tráfico interesante que pasará por la VPN.</p>
+            <div class="comando-bloque">
+access-list 100 permit ip 192.168.3.0 0.0.0.255 192.168.1.0 0.0.0.255
+            </div>
+
+            <h3>4. Phase 01: ISAKMP Policy</h3>
+            <p>Establecimiento de las políticas de negociación para la fase 1.</p>
+            <div class="comando-bloque">
+crypto isakmp policy 10
+ encryption aes 256
+ authentication pre-share
+ group 5
+ exit
+crypto isakmp key secretkey address 209.165.100.1
+            </div>
+
+            <h3>5. Phase 02: IPSec Transform-Set</h3>
+            <p>Definición de los algoritmos de cifrado y autenticación para los datos.</p>
+            <div class="comando-bloque">
+crypto ipsec transform-set R3-R1 esp-aes 256 esp-sha-hmac
+            </div>
+
+            <h3>6. Crear el Mapa Criptográfico</h3>
+            <p>Vinculación de la política, el peer y la lista de acceso.</p>
+            <div class="comando-bloque">
+crypto map IPSEC-MAP 10 ipsec-isakmp
+ set peer 209.165.100.1
+ set transform-set R3-R1
+ set pfs group5
+ set security-association lifetime seconds 86400
+ match address 100
+ exit
+            </div>
+
+            <h3>7. Aplicar el Mapa Criptográfico</h3>
+            <p>Aplicación del mapa en la interfaz de salida.</p>
+            <div class="comando-bloque">
+int g0/0
+ crypto map IPSEC-MAP
+ exit
+            </div>
+        </section>
+
+        <section class="tarjeta">
+            <h2>Conclusión</h2>
+            <p>Para asegurar la conexión, primero habilité la licencia de seguridad y configuré la ACL 100 para identificar el tráfico que debe protegerse. Luego, establecí las políticas de negociación en la Fase 1 y definí el método de cifrado de datos en la Fase 2 mediante el Transform-Set. Finalmente, integré todo en un Mapa Criptográfico que vincula al router destino con la lista de acceso, aplicándolo directamente en la interfaz de salida.</p>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Cristian Alejandro Rodriguez Moreno | Seguridad Informática</p>
+        <p>Universidad Politécnica de San Luis Potosí</p>
+    </footer>
+
+</body>
+</html>
