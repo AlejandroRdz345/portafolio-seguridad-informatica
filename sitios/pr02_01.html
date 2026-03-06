@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Análisis de Metodologías - Seguridad Informática</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        body { background-color: #0f172a; color: #e2e8f0; line-height: 1.6; font-size: 0.95rem; }
+
+        .navbar { display: flex; justify-content: space-between; align-items: center; padding: 15px 5%; background-color: #1e293b; border-bottom: 1px solid #334155; position: sticky; top: 0; z-index: 1000; }
+        .logo { font-weight: 700; font-size: 1.2rem; color: #38bdf8; }
+        .nav-buttons { display: flex; gap: 15px; }
+        .btn { text-decoration: none; padding: 8px 18px; border-radius: 20px; font-weight: 600; font-size: 0.85rem; transition: 0.3s; }
+        .btn-back { color: #cbd5e1; border: 1px solid #334155; }
+        .btn-back:hover { background-color: #334155; }
+        .btn-download { background-color: #38bdf8; color: #0f172a; }
+        .btn-download:hover { background-color: #7dd3fc; }
+        header.hero { text-align: center; padding: 80px 20px; background: linear-gradient(to bottom, #1e293b, #0f172a); }
+        .hero h1 { font-size: 2.2rem; margin: 15px 0; color: #38bdf8; }
+        .hero p { color: #94a3b8; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; }
+        .contenedor { max-width: 1100px; margin: 0 auto; padding: 30px 20px; }
+        .tarjeta { background-color: #1e293b; padding: 40px; border-radius: 15px; margin-bottom: 40px; border: 1px solid #334155; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2); }
+        .tarjeta h2 { margin-bottom: 25px; font-size: 1.6rem; color: #38bdf8; border-bottom: 2px solid #334155; padding-bottom: 15px; }
+        .tarjeta h3 { color: #7dd3fc; margin: 30px 0 15px; font-size: 1.2rem; border-left: 4px solid #38bdf8; padding-left: 15px; }
+        .tarjeta h4 { color: #cbd5e1; margin: 20px 0 10px; font-size: 1.1rem; font-weight: 600; }
+
+        p { margin-bottom: 15px; text-align: justify; }
+        ul, ol { margin-bottom: 20px; padding-left: 25px; }
+        li { margin-bottom: 8px; }
+        table { width: 100%; border-collapse: collapse; margin: 25px 0; font-size: 0.85rem; background-color: #0f172a; border-radius: 8px; overflow: hidden; }
+        th, td { border: 1px solid #334155; padding: 15px; text-align: left; vertical-align: top; }
+        th { background-color: #334155; color: #38bdf8; font-weight: 600; }
+        tr:nth-child(even) { background-color: rgba(30, 41, 59, 0.5); }
+        .tabla-costos td:nth-child(2), .tabla-costos td:nth-child(3) { text-align: right; font-family: monospace; color: #a5f3fc; font-weight: 500; }
+        .equipo-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 10px; margin-top: 20px; text-align: center; font-size: 1rem; color: #cbd5e1; background: rgba(15, 23, 42, 0.6); padding: 20px; border-radius: 10px; border: 1px solid #334155; }
+
+        .indice-item { display: flex; justify-content: space-between; border-bottom: 1px dashed #334155; padding: 8px 0; color: #cbd5e1; transition: 0.2s; }
+        .indice-item:hover { color: #38bdf8; padding-left: 5px; }
+        .indice-item span:last-child { color: #38bdf8; font-weight: bold; }
+        .indice-link { text-decoration: none; color: inherit; display: block; width: 100%; }
+
+        .total-box { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); padding: 30px; border-radius: 12px; text-align: center; border: 2px solid #38bdf8; margin-top: 30px; }
+        .total-box h4 { color: #38bdf8; font-size: 2rem; margin: 15px 0; font-weight: 800; }
+
+        .referencia-item { margin-bottom: 10px; font-size: 0.85rem; color: #94a3b8; padding-left: 10px; border-left: 2px solid #334155; }
+
+        footer { text-align: center; padding: 50px; color: #64748b; font-size: 0.9rem; border-top: 1px solid #1e293b; background-color: #0f172a; }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">Actividad de Investigación</div>
+        <div class="nav-buttons">
+            <a href="../index.html" class="btn btn-back">← Regresar</a>
+            <a href="archivos/181641_pr02_01.pdf" class="btn btn-download">Descargar PDF</a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <p>CNO V: Seguridad Informática</p>
+        <h1>Análisis comparativo de metodologías de seguridad informática</h1>
+        <p style="font-size: 1.2rem; color: #e2e8f0; margin-top: 10px;">Gestión del Riesgo Humano y Phishing</p>
+        
+        <div class="contenedor">
+        </div>
+    </header>
+
+    <div class="contenedor">
+
+        <section class="tarjeta">
+            <h2>Contenido</h2>
+            <a href="#investigacion" class="indice-link"><div class="indice-item"><span>1. Investigación comparativa de plataformas</span><span></span></div></a>
+            <a href="#enfoque" class="indice-link"><div class="indice-item"><span>2. El Enfoque Ético y Fundamentos</span><span></span></div></a>
+            <a href="#plataformas" class="indice-link"><div class="indice-item"><span>3. Plataformas de Simulación</span><span></span></div></a>
+            <a href="#comparativa" class="indice-link"><div class="indice-item"><span>4. Tabla Comparativa General</span><span></span></div></a>
+            <a href="#conclusion" class="indice-link"><div class="indice-item"><span>5. Conclusión</span><span></span></div></a>
+            <a href="#referencias" class="indice-link"><div class="indice-item"><span>6. Referencias</span><span></span></div></a>
+        </section>
+
+        <section id="investigacion" class="tarjeta">
+            <h2>1. Investigación comparativa de plataformas</h2>
+            <p>En la parte de la investigación nos damos cuenta de que manejar el riesgo de las personas ha cambiado, pues ya no es solo cumplir reglas, sino aprender a defendernos. Para ver si una plataforma de verdad funciona bien, se toman en cuenta métricas muy importantes.</p>
+            
+            <h3>Métricas Principales</h3>
+            <ul>
+                <li><strong>Click Rate (Tasa de Apertura):</strong> Mide cuántos usuarios caen en la trampa de la simulación. Aunque es la métrica que más se usa siempre, por sí sola no alcanza para saber si de verdad hay una buena cultura de seguridad en la empresa.</li>
+                <li><strong>Reporting Rate (Tasa de Reporte):</strong> Es la parte más crítica para tener éxito. Mide cuántos usuarios usaron el botón de alerta para reportar cuando vieron una amenaza sospechosa. Si esta tasa es alta, significa que la gente de verdad se está defendiendo activamente.</li>
+            </ul>
+        </section>
+
+        <section id="enfoque" class="tarjeta">
+            <h2>2. El Enfoque Ético y Fundamentos</h2>
+            
+            <h3>El Enfoque Ético</h3>
+            <p>Todo el diseño de estas plataformas tiene que hacerse pensando en darle a la gente un refuerzo positivo y avisarles bien de qué trata. El chiste no es “atrapar” al empleado para regañarlo o castigarlo, sino que cuando se equivoquen, se use ese mismo momento para enseñarles sin hacerlos sentir mal o que desconfíen del departamento de TI.</p>
+            
+            <h3>Fundamentos de la simulación de phishing</h3>
+            <p>Hacer simulaciones de phishing es una técnica que se usa mucho dentro de los entrenamientos de seguridad para ver cómo se portan los usuarios cuando les llegan correos malos falsos. Después de hacer estas campañas, se puede medir qué tanto reconoce la gente las amenazas de ingeniería social, viendo cómo reaccionan a mensajes que parecen ataques reales, como correos de estafa, links malos o cuando les piden sus contraseñas.</p>
+        </section>
+
+        <section id="plataformas" class="tarjeta">
+            <h2>3. Plataformas de Simulación</h2>
+            
+            <h3>Hoxhunt</h3>
+            <p>Se basa en Inteligencia Artificial que se adapta y hace el entrenamiento personal dependiendo de cómo se porte cada quien. Es todo automático para cada persona, logran que muchos reporten y usan juegos para enseñar. Su enfoque es darte un refuerzo positivo, o sea, te premia si reportas bien dándote puntos y poniéndote en un ranking.</p>
+
+            <h3>Proofpoint</h3>
+            <p>Usa información de amenazas que sí son reales para armar los engaños y los señuelos. Identifica a la gente que más atacan en la empresa (los VAP) y se integra muy bien con la parte técnica. Su protección es más proactiva, pues se enfocan en cuidar y blindar a los usuarios que están más vulnerables.</p>
+
+            <h3>KnowBe4</h3>
+            <p>Tienen una biblioteca enorme de contenido, con más de 1000 plantillas y módulos diferentes. Te da una puntuación de riesgo y hasta te compara para ver cómo estás frente a otras empresas de la industria. Su enfoque es muy transparente, porque deja que el usuario vea y entienda qué tan vulnerable es en realidad.</p>
+
+            <h3>Cofense</h3>
+            <p>Se enfoca mucho en acostumbrar a la gente a responder y reportar rápido los correos. Se conecta directo con el equipo de seguridad (SOC) y con herramientas para analizar todo rápido. La plataforma empodera a la gente, pues ven al usuario como si fuera un sensor para defender, no como una víctima.</p>
+
+            <h3>Phished</h3>
+            <p>Es una plataforma que se maneja solita al 100% con inteligencia artificial, sin que alguien tenga que moverle manualmente. Analiza el riesgo antes de que pase y te da aprendizajes muy cortitos al instante. Es muy eficiente y no te molesta tanto, porque evita que te canses de la seguridad mandando simulacros muy rápidos.</p>
+
+            <h3>NINJIO</h3>
+            <p>Te educan contando historias con capítulos animados que duran como 3 minutos. Hace que se te queden muy bien grabadas las cosas y se puede conectar con plataformas de escuelas o cursos (LMS). Usa mucho la empatía social, porque te cuentan historias de humanos para que de verdad hagas conciencia emocional.</p>
+
+            <h3>Mimecast</h3>
+            <p>Te entrena para que siempre estés consciente usando el humor y videos que son muy cortos. Se integra de forma nativa con la seguridad del correo y de la red de la empresa. Crea una cultura donde no te castigan, pues usan la comedia para que la gente no tenga problemas o fricción con los de TI.</p>
+
+            <h3>Infosec IQ</h3>
+            <p>Te hace un caminito de aprendizaje personalizado dependiendo de tu puesto y de las reglas que hay que cumplir. Tiene más de 2000 recursos para educar y se alinea con reglas importantes como el NIST. Es muy profesional, porque todo el contenido que te dan tiene que ver exactamente con lo que haces en tu trabajo.</p>
+        </section>
+
+        <section id="comparativa" class="tarjeta">
+            <h2>4. Tabla Comparativa General</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Plataforma</th>
+                        <th>Tipo de simulación</th>
+                        <th>Métricas principales</th>
+                        <th>Analítica</th>
+                        <th>Enfoque de entrenamiento</th>
+                        <th>Enfoque ético</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Hoxhunt</strong></td>
+                        <td>IA adaptativa</td>
+                        <td>Click / Report / Risk Score</td>
+                        <td>Alta</td>
+                        <td>Gamificación</td>
+                        <td>Recompensa</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Proofpoint</strong></td>
+                        <td>Amenazas reales</td>
+                        <td>VAP Risk</td>
+                        <td>Muy alta</td>
+                        <td>Inteligencia de amenazas</td>
+                        <td>Protección VAP</td>
+                    </tr>
+                    <tr>
+                        <td><strong>KnowBe4</strong></td>
+                        <td>Plantillas masivas</td>
+                        <td>Phish-Prone % / Risk Score</td>
+                        <td>Alta</td>
+                        <td>Contenido educativo</td>
+                        <td>Transparencia</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Cofense</strong></td>
+                        <td>Reporte SOC</td>
+                        <td>Report Rate</td>
+                        <td>Media</td>
+                        <td>Respuesta a incidentes</td>
+                        <td>Empoderamiento</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Phished</strong></td>
+                        <td>Automatizada IA</td>
+                        <td>Behavior Score</td>
+                        <td>Media</td>
+                        <td>Automatización IA</td>
+                        <td>No intrusivo</td>
+                    </tr>
+                    <tr>
+                        <td><strong>NINJIO</strong></td>
+                        <td>Educativa</td>
+                        <td>Engagement</td>
+                        <td>Baja</td>
+                        <td>Storytelling</td>
+                        <td>Empatía</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Mimecast</strong></td>
+                        <td>Integrada correo</td>
+                        <td>Awareness Score</td>
+                        <td>Media</td>
+                        <td>Humor educativo</td>
+                        <td>No punitivo</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Infosec IQ</strong></td>
+                        <td>Personalizada</td>
+                        <td>Predictive Risk</td>
+                        <td>Alta</td>
+                        <td>Rutas personalizadas</td>
+                        <td>Relevancia por rol</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="conclusion" class="tarjeta">
+            <h2>5. Conclusión</h2>
+            <p>Al terminar de analizar todas estas plataformas y me puse a pensar en que no existe una sola que sea la mejor o la perfecta para todos, sino que todo depende de lo que ocupe cada empresa. Por ejemplo, si es un lugar que ya tiene un equipo de seguridad muy grande, a lo mejor les sirve más usar Proofpoint o Cofense, pero si quieren algo que se maneje solo con inteligencia artificial para no cansarse tanto, pueden usar Hoxhunt o Phished.</p>
+            <p>También me di cuenta de que la seguridad en las empresas se parece mucho a lo que viven los empleados todos los días, pues a causa de sus miedos a veces no reportan los correos raros por temor a que los regañen o los castiguen los de TI. La enseñanza de esta investigación es clara, debemos adaptarnos al cambio y usar plataformas que enseñen de forma ética y con refuerzos positivos. Los ataques de ingeniería social no van a ser siempre iguales y hay que estar preparados para ello, y sobre todo, hay que alejarnos del miedo a equivocarnos, porque a veces ese mismo miedo nos limita de aprender a defendernos y de proteger mejor a la empresa.</p>
+        </section>
+
+        <section id="referencias" class="tarjeta">
+            <h2>6. Referencias</h2>
+            <div class="referencias">
+                <p class="referencia-item">Dawkins, S., & Jacobs, J. (2023). NIST Phish Scale user guide (NIST Technical Note 2276). National Institute of Standards and Technology.</p>
+                <p class="referencia-item">KnowBe4. (2025). 2025 phishing by industry benchmarking report.</p>
+                <p class="referencia-item">Hoxhunt. (2026, 27 de febrero). Best phishing simulation tools for enterprises (2026 edition).</p>
+                <p class="referencia-item">Phished. (2026). Top 10 security awareness training platforms in 2026.</p>
+                <p class="referencia-item">Gartner Peer Insights. (2026). Best security awareness computer-based training reviews 2026.</p>
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Cristian Alejandro Rodriguez Moreno | CNO V – Seguridad Informática</p>
+        <p>Universidad Politécnica de San Luis Potosí</p>
+    </footer>
+
+</body>
+</html>
