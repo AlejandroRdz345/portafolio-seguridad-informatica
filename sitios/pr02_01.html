@@ -230,10 +230,10 @@
         </section>
         <section id="quiz-container" class="tarjeta">
             <h2>7. Phishing Quiz: Desafío de Ingeniería Social</h2>
-            <p>Pon a prueba tu capacidad de detección. Se seleccionarán 10 escenarios aleatorios de nuestra base de datos de amenazas.</p>
+            <p>Pon a prueba tu capacidad de detección. Tendras 10 escenarios.</p>
             
             <div id="setup-quiz" style="text-align: center; padding: 20px;">
-                <input type="text" id="user-alias" placeholder="Introduce tu Alias (ej. CyberGuard)" 
+                <input type="text" id="user-alias" placeholder="Introduce tu Alias" 
                     style="padding: 12px; border-radius: 8px; border: 1px solid #334155; background: #0f172a; color: white; width: 100%; max-width: 400px; margin-bottom: 20px; outline: none;">
                 <br>
                 <button onclick="startQuiz()" class="btn btn-download" style="border: none; cursor: pointer; padding: 12px 40px;">Comenzar Simulación</button>
@@ -310,21 +310,144 @@
     let quizScenarios = [];
 
     const allScenarios = [
-        { title: "Alerta de Seguridad Crítica", desc: "<b>DE:</b> seguridad@mircosoft-support.com<br><b>ASUNTO:</b> Actividad sospechosa... <br>Confirme su identidad aquí: <a href='#'>http://login.mircosoft.com/verify-identity</a>", isPhishing: true, fix: "Typosquatting: 'mircosoft' (r antes de la c). Microsoft no usa enlaces http inseguros." },
-        { title: "Notificación de Paquetería (SMS)", desc: "<b>SITUACIÓN:</b> SMS: '[CORREOS-MX] Su paquete tiene un adeudo de $1.20 MXN. Pague en: https://bit.ly/pagos-correos-mex'", isPhishing: true, fix: "Ingeniería Social: Urgencia y monto mínimo para evitar el análisis racional." },
-        { title: "Solicitud de 'El Jefe' (BEC)", desc: "<b>DE:</b> Direccion General (director.upslp@gmail.com)<br><b>ASUNTO:</b> Tarea urgente... Pago de $45,000 MXN.", isPhishing: true, fix: "BEC: Uso de cuenta gratuita (@gmail.com) suplantando autoridad." },
-        { title: "Actualización de Windows", desc: "<b>SITUACIÓN:</b> Pop-up: 'Actualizaciones de seguridad pendientes. Su equipo se reiniciará en 10 minutos'.", isPhishing: false, fix: "Proceso Seguro: Las notificaciones de Windows Update son legítimas." },
-        { title: "Ataque de Fatiga de MFA", desc: "<b>SITUACIÓN:</b> Recibe 20 notificaciones seguidas: '¿Aprobar inicio de sesión? Ubicación: Brasil'.", isPhishing: true, fix: "MFA Fatigue: El atacante busca que apruebes por error o para silenciar el ruido." },
-        { title: "QR en la Cafetería", desc: "<b>SITUACIÓN:</b> Póster: 'Escanea el QR y gana $500'. El sitio pide login de Office 365.", isPhishing: true, fix: "Quishing: Los QR maliciosos llevan a portales de robo de credenciales." },
-        { title: "Factura de Proveedor", desc: "<b>DE:</b> Facturación<br><b>Archivo:</b> Factura_Insumos_UPSLP.pdf.exe", isPhishing: true, fix: "Doble Extensión: El archivo termina en .exe, es un ejecutable malicioso." },
-        { title: "Alerta de LinkedIn", desc: "<b>DE:</b> LinkedIn<br><b>ASUNTO:</b> Mensaje de 'Google': Vacante remota de $8,000 USD al mes.", isPhishing: true, fix: "Scam: Sueldos irreales usados para capturar datos personales." },
-        { title: "Portal de Nómina", desc: "<b>LINK:</b> http://upslp.edu.mx.portal-empleados.net/login", isPhishing: true, fix: "Subdominio: El dominio real es 'portal-empleados.net', no el de la institución." },
-        { title: "Soporte Técnico en Teams", desc: "<b>SITUACIÓN:</b> Usuario 'Soporte IT' pide código de 6 dígitos por chat.", isPhishing: true, fix: "Robo de Sesión: Nunca entregue códigos MFA por chat." },
-        { title: "Documento en SharePoint", desc: "<b>NOTIFICACIÓN:</b> maria.lopez@upslp.edu.mx compartió un archivo. URL: https://upslp-my.sharepoint.com/", isPhishing: false, fix: "Contexto Seguro: Remitente interno y URL oficial cifrada." },
-        { title: "Multa Federal", desc: "<b>SITUACIÓN:</b> Correo de la Guardia Nacional sobre infracción. URL: .gob.mx", isPhishing: false, fix: "Enlace Gubernamental: Los dominios .gob.mx son portales oficiales seguros." },
-        { title: "Llamada de Vishing", desc: "<b>SITUACIÓN:</b> Grabación de banco por cargo de $8,500. Pide presionar 1.", isPhishing: true, fix: "Vishing: Los bancos no usan grabaciones para solicitar datos sensibles." },
-        { title: "Sesión de Zoom Expirada", desc: "<b>LINK:</b> https://zoom-us.meeting-online.tv/login", isPhishing: true, fix: "Dominio Falso: Zoom solo usa zoom.us. El otro es una web maliciosa." }
-    ];
+
+    {
+
+        title: "Alerta de Seguridad Crítica",
+
+        desc: "<b>DE:</b> seguridad@mircosoft-support.com<br><b>ASUNTO:</b> Actividad sospechosa en su cuenta corporativa<br><br>Estimado usuario, se ha detectado un inicio de sesión desde una ubicación no reconocida (Kiev, Ucrania). Por su seguridad, hemos bloqueado temporalmente el acceso a sus archivos de OneDrive. <br><br>Para recuperar el acceso de inmediato, confirme su identidad aquí: <a href='#'>http://login.mircosoft.com/verify-identity</a>",
+
+        isPhishing: true,
+
+        fix: "Análisis técnico: El dominio 'mircosoft.com' es un caso de Typosquatting (la 'r' antes de la 'c'). Microsoft nunca usa enlaces no cifrados (http) para validación de identidad."
+
+    },
+
+    {
+
+        title: "Notificación de Paquetería (SMS)",
+
+        desc: "<b>SITUACIÓN:</b> Usted recibe un mensaje de texto (SMS) en su celular personal que dice:<br><br>'[CORREOS-MX] Su paquete con número de guía #72190-BZ tiene un adeudo de aduana de $1.20 MXN. Si no se liquida hoy, el paquete será incinerado. Realice el pago para liberar la entrega en: https://bit.ly/pagos-correos-mex'",
+
+        isPhishing: true,
+
+        fix: "Ingeniería Social: Se utiliza una pérdida financiera mínima para que la víctima no lo piense mucho, combinado con una amenaza de destrucción del paquete (Urgencia)."
+
+    },
+
+    {
+
+        title: "Solicitud de 'El Jefe' (BEC)",
+
+        desc: "<b>DE:</b> Direccion General (director.upslp.edu.mx@gmail.com)<br><b>ASUNTO:</b> Tarea urgente y confidencial<br><br>Hola, estoy en una junta privada en la CDMX y no puedo contestar llamadas. Necesito que hagas un pago urgente a un proveedor externo por $45,000 MXN para liberar un equipo que ocupamos mañana. Te paso los datos de la cuenta por aquí. Confío en tu discreción, te lo reembolso al volver.",
+
+        isPhishing: true,
+
+        fix: "Business Email Compromise (BEC): Los atacantes usan el nombre de un directivo pero desde una cuenta gratuita (@gmail.com). El sentido de jerarquía busca que te saltes los protocolos financieros."
+
+    },
+
+    {
+
+        title: "Actualización de Windows",
+
+        desc: "<b>SITUACIÓN:</b> Mientras trabaja, aparece una ventana emergente del sistema (pop-up) con el logotipo de Windows que dice:<br><br>'Actualizaciones de seguridad pendientes de instalar. Su equipo se reiniciará en 10 minutos para aplicar parches críticos contra el ransomware. Guarde sus archivos ahora'.",
+
+        isPhishing: false,
+
+        fix: "Procedimiento Seguro: Las notificaciones del centro de actualizaciones de Windows (Windows Update) son procesos legítimos necesarios para mantener la integridad del sistema."
+
+    },
+
+    {
+
+        title: "Ataque de Fatiga de MFA",
+
+        desc: "<b>SITUACIÓN:</b> Son las 11:00 PM y usted está a punto de dormir. De repente, su aplicación Microsoft Authenticator empieza a vibrar sin parar enviándole 20 notificaciones seguidas de:<br><br>'¿Aprobar inicio de sesión? Ubicación: Brasil. IP: 187.12.33.1. <br>[Botón Aprobar] [Botón Denegar]'",
+
+        isPhishing: true,
+
+        fix: "MFA Fatigue: El atacante ya tiene su contraseña. Su objetivo es 'bombardear' su teléfono hasta que usted, por error o por querer silenciar el ruido, presione 'Aprobar'."
+
+    },
+
+    {
+
+        title: "QR en la Cafetería",
+
+        desc: "<b>SITUACIÓN:</b> Usted entra a la cafetería de la empresa y ve un póster que dice:<br><br>'¡Encuesta de satisfacción de empleados! Escanea este código QR y participa por una tarjeta de regalo de Amazon de $500 MXN'. <br><br>Al escanearlo, el sitio le pide 'Iniciar sesión con su cuenta de Office 365' para validar que trabaja ahí.",
+
+        isPhishing: true,
+
+        fix: "Quishing (QR Phishing): Los códigos QR son usados para llevar a los usuarios a portales de login falsos fuera del radar de los filtros de spam del correo electrónico."
+
+    },
+
+    {
+
+        title: "Factura de Proveedor Externo",
+
+        desc: "<b>DE:</b> Facturación - Papelería del Centro<br><b>ASUNTO:</b> Factura de compra - Marzo 2026<br><br>Buen día, adjunto la factura correspondiente a la compra de insumos de oficina realizada esta semana. Quedamos a la espera de su confirmación de pago. <br><br><b>Archivo adjunto:</b> Factura_Insumos_UPSLP.pdf.exe",
+        isPhishing: true,
+        fix: "Análisis de Archivo: El archivo parece un PDF, pero termina en '.exe'. Es un troyano diseñado para ejecutarse en su computadora al intentar abrir el supuesto documento."
+
+    },
+
+    {
+
+        title: "Alerta de LinkedIn",
+        desc: "<b>DE:</b> LinkedIn (notificaciones@linkedin.com)<br><b>ASUNTO:</b> Tienes un nuevo mensaje de Recursos Humanos de 'Google'<br><br>'Hola, hemos visto tu perfil y nos interesa mucho para una vacante remota de $8,000 USD al mes. Revisa los detalles del contrato en este enlace externo'.",
+        isPhishing: true,
+        fix: "Scam de Reclutamiento: Aunque el correo de LinkedIn sea real, el enlace lleva a un sitio de terceros que roba datos personales bajo la promesa de un sueldo irreal."
+
+    },
+
+    {
+
+        title: "Portal de Nómina Corporativo",
+        desc: "<b>DE:</b> Recursos Humanos - Avisos<br><b>ASUNTO:</b> Ya están disponibles sus recibos de nómina<br><br>Se les informa que ya pueden descargar sus recibos fiscales del mes de marzo ingresando al nuevo portal de autoservicio: <br><br><b>Link:</b> http://upslp.edu.mx.portal-empleados.net/login",
+        isPhishing: true,
+        fix: "Subdominio Engañoso: El dominio real es 'portal-empleados.net'. Los atacantes agregan el nombre de la institución al principio para confundir al ojo humano."
+
+    },
+
+    {
+
+        title: "Soporte Técnico en Teams",
+        desc: "<b>SITUACIÓN:</b> Un usuario llamado 'Soporte IT - Juan' le escribe por Microsoft Teams:<br><br>'Hola, estamos haciendo una auditoría de seguridad. ¿Me podrías proporcionar el código de 6 dígitos que te acaba de llegar por SMS a tu celular? Es para validar que tu cuenta esté bien sincronizada'.",
+        isPhishing: true,
+        fix: "Robo de Sesión: Nunca entregue códigos de verificación por chat. Este código es para que el atacante pueda saltarse su MFA o cambiar su contraseña."
+    },
+    {
+        title: "Documento en SharePoint",
+        desc: "<b>NOTIFICACIÓN DE SISTEMA:</b><br>'El usuario maria.lopez@upslp.edu.mx ha compartido el archivo 'Plan_de_Estudios_2026.docx' con usted a través de SharePoint'.<br><br>Usted conoce a María y el enlace apunta a: https://upslp-my.sharepoint.com/",
+        isPhishing: false,
+        fix: "Verificación de Contexto: El remitente es interno, conocido y el enlace utiliza la infraestructura oficial cifrada de la organización."
+    },
+
+    {
+        title: "Multa Federal de Tránsito",
+        desc: "<b>SITUACIÓN:</b> Usted recibe un correo oficial con el logotipo de la Guardia Nacional que dice:<br><br>'Se ha detectado una infracción por exceso de velocidad de su vehículo con placa [ABC-123-D]. Puede consultar el acta y las fotos de la evidencia en el portal oficial de trámites .gob.mx'.",
+        isPhishing: false,
+        fix: "Enlace Gubernamental: Los dominios que terminan estrictamente en '.gob.mx' son portales oficiales del gobierno mexicano protegidos por certificados de seguridad."
+
+    },
+    {
+        title: "Llamada de Vishing",
+        desc: "<b>SITUACIÓN:</b> Usted recibe una llamada de un número local. Una grabación con voz profesional dice:<br><br>'Le hablamos de Bancomer. Se ha detectado un cargo por $8,500 en Amazon. Si usted no reconoce este cargo, presione 1 para hablar con un ejecutivo de fraudes'.",
+        isPhishing: true,
+        fix: "Vishing (Voice Phishing): Los bancos nunca piden acciones inmediatas mediante grabaciones ni solicitan datos sensibles a través del teclado del teléfono."
+    },
+
+    {
+        title: "Sesión de Zoom Expirada",
+        desc: "<b>ASUNTO:</b> Su reunión de Zoom ha sido interrumpida.<br><br>'Estimado anfitrión, su sesión ha expirado debido a una actualización en nuestras políticas de privacidad. Para reanudar su conferencia inmediatamente, inicie sesión de nuevo en: https://zoom-us.meeting-online.tv/login'.",
+        isPhishing: true,
+        fix: "Dominio Falso: Zoom utiliza únicamente 'zoom.us'. El dominio 'meeting-online.tv' es una web maliciosa creada para capturar credenciales corporativas."
+
+    }
+
+];
     window.startQuiz = function() {
         userAlias = document.getElementById('user-alias').value;
         if(!userAlias) return alert("Por favor, ingresa un alias.");
