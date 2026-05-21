@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portafolio Digital PD05 - Mis Certificaciones</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        body { background-color: #0f172a; color: #e2e8f0; line-height: 1.6; font-size: 0.95rem; }
+
+        .navbar { display: flex; justify-content: space-between; align-items: center; padding: 15px 5%; background-color: #1e293b; border-bottom: 1px solid #334155; position: sticky; top: 0; z-index: 1000; }
+        .logo { font-weight: 700; font-size: 1.2rem; color: #38bdf8; }
+        .nav-buttons { display: flex; gap: 15px; }
+        .btn { text-decoration: none; padding: 8px 18px; border-radius: 20px; font-weight: 600; font-size: 0.85rem; transition: 0.3s; }
+        .btn-back { color: #cbd5e1; border: 1px solid #334155; }
+        .btn-back:hover { background-color: #334155; }
+        .btn-download { background-color: #38bdf8; color: #0f172a; }
+        .btn-download:hover { background-color: #7dd3fc; }
+        
+        header.hero { text-align: center; padding: 80px 20px; background: linear-gradient(to bottom, #1e293b, #0f172a); }
+        .hero h1 { font-size: 2.2rem; margin: 15px 0; color: #38bdf8; }
+        .hero p { color: #94a3b8; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; }
+        
+        .contenedor { max-width: 1100px; margin: 0 auto; padding: 30px 20px; }
+        .tarjeta { background-color: #1e293b; padding: 40px; border-radius: 15px; margin-bottom: 40px; border: 1px solid #334155; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2); }
+        .tarjeta h2 { margin-bottom: 25px; font-size: 1.6rem; color: #38bdf8; border-bottom: 2px solid #334155; padding-bottom: 15px; }
+        .tarjeta h3 { color: #7dd3fc; margin: 30px 0 15px; font-size: 1.2rem; border-left: 4px solid #38bdf8; padding-left: 15px; }
+        
+        p { margin-bottom: 15px; text-align: justify; }
+        ul { margin-bottom: 20px; padding-left: 25px; }
+        li { margin-bottom: 8px; }
+        
+        table { width: 100%; border-collapse: collapse; margin: 25px 0; font-size: 0.85rem; background-color: #0f172a; border-radius: 8px; overflow: hidden; }
+        th, td { border: 1px solid #334155; padding: 15px; text-align: left; vertical-align: top; }
+        th { background-color: #334155; color: #38bdf8; font-weight: 600; }
+        tr:nth-child(even) { background-color: rgba(30, 41, 59, 0.5); }
+        
+        .indice-link { text-decoration: none; color: inherit; display: block; width: 100%; }
+        .indice-item { display: flex; justify-content: space-between; border-bottom: 1px dashed #334155; padding: 8px 0; color: #cbd5e1; transition: 0.2s; }
+        .indice-item:hover { color: #38bdf8; padding-left: 5px; }
+
+        .insignia-sm { 
+                width: 120px; 
+                height: 120px; 
+                background-color: #0f172a; 
+                border-radius: 50%; 
+                display: flex; 
+                align-items: center; 
+                justify-content: center; 
+                color: #64748b; 
+                font-size: 0.75rem; 
+                text-align: center;
+            }
+
+            .insignia-sm img { 
+                width: 100%; 
+                height: 100%; 
+                object-fit: cover; 
+            }
+        .insignia-contenedor { text-align: center; margin-top: 30px; padding: 20px; border: 2px dashed #334155; border-radius: 10px; }
+        .insignia-placeholder { width: 150px; height: 150px; background-color: #0f172a; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto; color: #64748b; font-style: italic; border: 2px solid #38bdf8; box-shadow: 0 0 15px rgba(56, 189, 248, 0.3); }
+
+        footer { text-align: center; padding: 50px; color: #64748b; font-size: 0.9rem; border-top: 1px solid #1e293b; background-color: #0f172a; }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">Portafolio Digital</div>
+        <div class="nav-buttons">
+            <a href="#" class="btn btn-back">← Inicio</a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <p>Actividad PD05</p>
+        <h1>Reflexión Profesional de Ciberseguridad</h1>
+        <p style="font-size: 1.2rem; color: #e2e8f0; margin-top: 10px;">Trayectoria de Certificaciones</p>
+    </header>
+
+    <div class="contenedor">
+
+        <section class="tarjeta">
+            <h2>Índice de Certificaciones</h2>
+            <a href="#intro" class="indice-link"><div class="indice-item"><span>1. Introducción a la Ciberseguridad</span><span></span></div></a>
+            <a href="#networking" class="indice-link"><div class="indice-item"><span>2. Conceptos Básicos de Redes</span><span></span></div></a>
+            <a href="#devices" class="indice-link"><div class="indice-item"><span>3. Dispositivos de Red y Configuración Inicial</span><span></span></div></a>
+            <a href="#endpoint" class="indice-link"><div class="indice-item"><span>4. Seguridad en Terminales</span><span></span></div></a>
+            <a href="#threat" class="indice-link"><div class="indice-item"><span>5. Administración de Amenazas Cibernéticas</span><span></span></div></a>
+            <a href="#ethical" class="indice-link"><div class="indice-item"><span>6. Hacker Etico</span><span></span></div></a>
+            <a href="#pathway" class="indice-link"><div class="indice-item"><span>7. Analista Junior en Ciberseguridad</span><span></span></div></a>
+        </section>
+
+     
+        <section id="intro" class="tarjeta">
+            <h2>1. Introducción a la Ciberseguridad</h2>
+            <p>El curso de <strong>Introducción a la Ciberseguridad</strong> representa el pilar fundamental sobre el cual se construye toda la disciplina de la seguridad de la información. Durante esta exhaustiva formación, desarrollé una comprensión analítica profunda sobre el complejo panorama global de las ciberamenazas actuales, trascendiendo la visión técnica superficial para entender el impacto real, económico y reputacional que tienen los ciberataques en las organizaciones, la economía global y la sociedad en general. La relevancia primordial de este módulo radica en su enfoque sistémico e integral: no solo se estudian las vulnerabilidades aisladas de software o hardware, sino que se analiza meticulosamente el ciclo de vida de los datos y cómo la información se ha convertido, indiscutiblemente, en el activo corporativo más crítico a proteger en la era digital.</p>
+            <p>A lo largo de esta semblanza académica, interioricé principios inmutables como la tríada de seguridad CIA (Confidencialidad, Integridad y Disponibilidad), los cuales actúan como brújula rectora indispensable para cualquier política, auditoría o diseño de arquitectura de seguridad. Asimismo, se profundizó en la psicología del atacante, perfilando distintos actores de amenazas (desde atacantes novatos hasta amenazas persistentes avanzadas o APTs), y en las sofisticadas técnicas de ingeniería social, demostrando empíricamente que el factor humano continúa siendo el eslabón más vulnerable de cualquier infraestructura. Esta certificación me proporcionó una perspectiva ética rigurosa y fundamentada, la cual es absolutamente indispensable para cualquier profesional de la industria, estableciendo de manera inequívoca que la tecnología defensiva y ofensiva debe ser operada bajo estrictos marcos de responsabilidad, privacidad y cumplimiento legal corporativo internacional.</p>
+            
+            <div class="curso-evidencia">
+                <div class="insignia-sm">
+                    <img src="./archivos/introduction-to-cybersecurity.png">
+                </div><br>
+                <div class="acciones-evidencia">
+                    <a href="archivos/Introduction_to_Cybersecurity_certificate_181641-upslp-edu-mx_4befcb99-5882-420c-8fd7-4cdf94a9a92f.pdf" class="btn btn-download" style="text-align: center;">Descargar Certificado PDF</a>
+                    <a href="https://www.credly.com/badges/afae8b34-f554-42a5-b1c3-f0d148021fd3/public_url" class="btn btn-back" style="text-align: center;">Link del Badge</a>
+                </div>
+            </div>
+        </section>
+
+     
+        <section id="networking" class="tarjeta">
+            <h2>2. Conceptos Básicos de Redes</h2>
+            <p>En el transcurso del exigente programa <strong>Conceptos Básicos de Redes</strong>, la atención académica se centró en desentrañar la intrincada arquitectura subyacente de las comunicaciones digitales contemporáneas. Entender de manera holística el funcionamiento de las redes es un prerrequisito innegociable y fundamental para cualquier profesional de la ciberseguridad, partiendo de la premisa lógica de que es operativamente imposible proteger una infraestructura cuyo comportamiento interno, flujo de datos e interconexión se desconoce. Este módulo me permitió dominar los fundamentos estructurales del internet moderno y de las topologías corporativas complejas, abordando con alto rigor técnico modelos de referencia cruciales como el modelo OSI y la suite de protocolos TCP/IP, analizando cada capa desde los medios físicos hasta la interacción con las aplicaciones del usuario final.</p>
+            <p>A través de este estudio riguroso, adquirí competencias sólidas, analíticas y prácticas en esquemas de direccionamiento lógico IPv4 e IPv6, así como en el comportamiento algorítmico de los protocolos de enrutamiento y conmutación. Comprendí a profundidad las diferencias operativas, arquitectónicas y de seguridad entre redes de área local (LAN) y redes de área amplia (WAN), logrando trazar analíticamente cómo el tráfico de red fluye y es encapsulado de un nodo a otro. Esta base técnica resulta de vital importancia y de aplicación inmediata para mi desarrollo profesional, ya que fundamenta directamente la capacidad de identificar anomalías en el tráfico de la red, realizar análisis exhaustivos de paquetes en tiempo real y establecer perímetros de seguridad altamente efectivos mediante estrategias de segmentación de red, VLANs y políticas de control de acceso.</p>
+            
+            <div class="curso-evidencia">
+                <div class="insignia-sm">
+                    <img src="./archivos/networking-basics.png">
+                </div><br>
+                <div class="acciones-evidencia">
+                    <a href="archivos/Networking_Basics_certificate_181641-upslp-edu-mx_843644ac-84ee-4a06-a5a5-0bc95d9b11da.pdf" class="btn btn-download" style="text-align: center;">Descargar Certificado PDF</a>
+                    <a href="https://www.credly.com/badges/1338507b-5669-4b43-b34c-8167043b80c8/public_url" class="btn btn-back" style="text-align: center;">Link del Badge</a>
+                </div>
+            </div>
+        </section>
+
+   
+        <section id="devices" class="tarjeta">
+            <h2>3. Dispositivos de Red y Configuración Inicial</h2>
+            <p>El módulo de <strong>Dispositivos de Red y Configuración Inicial</strong> proporcionó la transición esencial y práctica de la teoría abstracta de redes a la aplicación técnica directa y la gestión de infraestructura física de telecomunicaciones. Durante esta etapa formativa intensiva, desarrollé habilidades avanzadas y resolutivas en el manejo de la Interfaz de Línea de Comandos (CLI) del sistema operativo Cisco IOS (Internetwork Operating System), lo cual representa una competencia técnica altamente demandada y valorada en los entornos empresariales globales. La capacidad de interactuar directamente con el hardware de red crítico permite un control granular y preciso sobre las políticas de flujo de tráfico y establece la postura de seguridad inicial del perímetro organizacional frente a posibles vectores de ataque externos e internos.</p>
+            <p>El aprendizaje más significativo y de mayor impacto de esta certificación radicó en la implementación sistemática de técnicas de "Hardening" o endurecimiento de dispositivos de red. Comprendí y apliqué procedimientos formales y estandarizados para asegurar el acceso administrativo a routers y switches, configurando protocolos seguros y cifrados como SSH en detrimento total de alternativas obsoletas, en texto plano y vulnerables como Telnet. Se profundizó exhaustivamente en la configuración de contraseñas fuertemente encriptadas, la gestión de privilegios de usuario, la desactivación meticulosa de puertos e interfaces no utilizadas para reducir significativamente la superficie de ataque, y la implementación de banners legales de advertencia para disuasión. Estas prácticas no son meros pasos operativos opcionales, sino políticas de configuración estándar y obligatorias que dictan la diferencia absoluta entre una red resiliente y una infraestructura susceptible a compromisos tempranos.</p>
+            
+            <div class="curso-evidencia">
+                <div class="insignia-sm">
+                    <img src="./archivos/networking-devices-and-initial-configuration.png">
+                </div><br>
+                <div class="acciones-evidencia">
+                    <a href="archivos/Networking_Devices_and_Initial_Configuration_certificate_181641-upslp-edu-mx_90b9ef60-aa2e-4706-a675-8304cbfd0638.pdf" class="btn btn-download" style="text-align: center;">Descargar Certificado PDF</a>
+                    <a href="https://www.credly.com/badges/7cf9b509-03cc-4ec9-9ade-6199a34229dc/public_url" class="btn btn-back" style="text-align: center;">Link del Badge</a>
+                </div>
+            </div>
+        </section>
+
+   
+        <section id="endpoint" class="tarjeta">
+            <h2>4. Seguridad en Terminales</h2>
+            <p>El curso avanzado de <strong>Seguridad en Terminales</strong> abordó de frente uno de los desafíos contemporáneos más críticos y complejos en el ámbito de la ciberseguridad: la masiva proliferación y la inherente vulnerabilidad de los dispositivos finales. En las arquitecturas corporativas modernas, el perímetro tradicional de la red, delimitado por un firewall perimetral, prácticamente ha desaparecido; hoy en día, cada computadora portátil, servidor, estación de trabajo y dispositivo móvil actúa como la puerta principal y directa hacia los activos corporativos más sensibles. Esta rigurosa certificación profundizó exhaustivamente en los mecanismos, políticas y tecnologías necesarias para fortificar estaciones de trabajo que operan bajo sistemas Windows y Linux, analizando a detalle cómo el malware polimórfico, el ransomware destructivo y las amenazas persistentes avanzadas (APT) aprovechan las vulnerabilidades y configuraciones deficientes a nivel de host.</p>
+            <p>Mi formación incluyó el análisis detallado y la aplicación de estrategias de defensa en profundidad operando a nivel local bajo un enfoque de confianza cero (Zero Trust). Esto abarcó desde el control estricto de privilegios de usuario (implementando el principio de menor privilegio) y la gestión disciplinada de parches del sistema operativo, hasta la implementación, configuración y auditoría de Firewalls basados en host. Asimismo, se estudió a fondo el funcionamiento analítico de los sistemas de detección y respuesta de endpoints (EDR) y la monitorización del comportamiento anómalo de procesos en memoria. El conocimiento adquirido en este módulo resulta absolutamente indispensable, ya que me capacita integralmente para diseñar entornos de trabajo seguros donde el equipo del usuario final deje de ser el eslabón más débil, convirtiéndose en un nodo proactivo de telemetría y detección de amenazas.</p>
+            
+            <div class="curso-evidencia">
+                <div class="insignia-sm">
+                    <img src="./archivos/endpoint-security.png">
+                </div><br>
+                <div class="acciones-evidencia">
+                    <a href="archivos/Endpoint_Security_certificate_181641-upslp-edu-mx_1c410844-c77e-4c22-a2df-ba2126d14d20.pdf" class="btn btn-download" style="text-align: center;">Descargar Certificado PDF</a>
+                    <a href="https://www.credly.com/badges/7ae08a24-a5d2-4614-8f19-bf4364236a76/public_url" class="btn btn-back" style="text-align: center;">Link del Badge</a>
+                </div>
+            </div>
+        </section>
+
+  
+        <section id="threat" class="tarjeta">
+            <h2>5. Administración de Amenazas Cibernéticas</h2>
+            <p>La certificación especializada en <strong>Administración de Amenazas Cibernéticas</strong> elevó significativamente el enfoque operativo hacia una visión gerencial, estratégica y de respuesta coordinada frente a incidentes cibernéticos de alta criticidad. Este curso fue determinante y revelador para comprender a cabalidad las metodologías estructuradas que rigen el día a día operativo de un Centro de Operaciones de Seguridad (SOC) moderno. A diferencia de los módulos anteriores, mayormente enfocados en la configuración proactiva y la arquitectura preventiva, esta etapa avanzada de la formación se centró en la analítica de seguridad reactiva y de inteligencia: cómo monitorear constantemente, detectar anomalías sutiles, correlacionar eventos dispersos y, sobre todo, cómo gestionar metódicamente los incidentes una vez que las defensas iniciales han emitido una alerta o han sido comprometidas por un actor de amenazas.</p>
+            <p>Durante la cursada, adquirí competencias sólidas en el uso de herramientas de correlación de eventos e información de seguridad (sistemas SIEM), así como metodologías formales para el análisis forense digital preliminar, la cadena de custodia y la captura profunda de tráfico (packet sniffing con herramientas como Wireshark). Además de las habilidades puramente técnicas, el curso impartió conocimientos cruciales y de nivel gerencial sobre gobernanza corporativa, cumplimiento normativo internacional (Compliance) y gestión cuantitativa de riesgos, estructurando planes formales de continuidad del negocio (BCP) y recuperación ante desastres (DRP). Entender el ciclo de vida completo de la respuesta a incidentes, alineado con estándares internacionales, me preparó para actuar bajo extrema presión con metodologías estandarizadas, priorizando siempre la contención efectiva del daño operacional y la preservación intacta de la evidencia digital.</p>
+            
+            <div class="curso-evidencia">
+                <div class="insignia-sm">
+                    <img src="./archivos//cyber-threat-management.png">
+                </div><br>
+                <div class="acciones-evidencia">
+                    <a href="archivos/Cyber_Threat_Management_certificate_181641-upslp-edu-mx_68bcb65c-0dcb-43fc-92aa-07c7f6b130c0.pdf" class="btn btn-download" style="text-align: center;">Descargar Certificado PDF</a>
+                    <a href="https://www.credly.com/badges/70d79284-e6c7-45c1-8d15-9652dc9ec3cd/public_url" class="btn btn-back" style="text-align: center;">Link del Badge</a>
+                </div>
+            </div>
+        </section>
+
+   
+        <section id="ethical" class="tarjeta">
+            <h2>6. Hacker Etico</h2>
+            <p>La obtención de la prestigiosa certificación <strong>Hacker Etico</strong> representó un cambio de paradigma total y definitivo en mi metodología de aprendizaje, exigiendo la adopción imperativa de una mentalidad netamente ofensiva para lograr fortalecer y validar las capacidades defensivas de cualquier organización. Este entrenamiento técnico avanzado se enfoca intensamente en comprender, desde la perspectiva táctica y estratégica del adversario, las metodologías exactas, las herramientas especializadas y las fases sistemáticas que los cibercriminales avanzados emplean diariamente para comprometer redes, aplicaciones y sistemas corporativos. La premisa operativa es clara, directa y fundamental: para auditar, blindar y proteger eficazmente una infraestructura tecnológica, el profesional de seguridad debe poseer, indiscutiblemente, la capacidad técnica real de vulnerarla de manera simulada, sigilosa y controlada.</p>
+            <p>El exigente currículo abarcó de manera minuciosamente estructurada el ciclo de vida completo de las pruebas de penetración (Pentesting). Desarrollé habilidades formales y prácticas en las fases críticas de reconocimiento pasivo y activo (OSINT), escaneo avanzado de puertos y enumeración exhaustiva de servicios, identificación y validación de vulnerabilidades (Common Vulnerabilities and Exposures), explotación de fallos sistémicos (tanto en infraestructura de red central como en aplicaciones web complejas) y técnicas sofisticadas de post-explotación para mantener un acceso persistente. Todo este vasto conocimiento técnico profundo estuvo estrictamente alineado con los marcos éticos, regulatorios y legales que rigen invariablemente a los auditores de seguridad profesional, enfatizando la importancia absolutamente crítica de documentar formalmente los hallazgos a través de reportes técnicos ejecutivos detallados que permitan a las organizaciones priorizar y mitigar sus riesgos estructurales antes de que sean catastróficamente explotados por actores maliciosos reales.</p>
+            
+            <div class="curso-evidencia">
+                <div class="insignia-sm">
+                    <img src="./archivos/ethical-hacker.png">
+                </div><br>
+                <div class="acciones-evidencia">
+                    <a href="archivos/Ethical_Hacker_certificate_181641-upslp-edu-mx_655ec48e-99c1-4aec-a8ef-f7041ccb67a4.pdf" class="btn btn-download" style="text-align: center;">Descargar Certificado PDF</a>
+                    <a href="https://www.credly.com/badges/6945f101-dd6f-4d85-9df9-2dc02ac6a96c/public_url" class="btn btn-back" style="text-align: center;">Link del Badge</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="pathway" class="tarjeta">
+            <h2>7. Analista Junior en Ciberseguridad</h2>
+            <p>El riguroso programa final <strong>Analista Junior en Ciberseguridad</strong> no se cataloga simplemente como un curso aislado dentro de la currícula, sino que se instituye como la consolidación absoluta y la culminación estratégica de toda la extensa ruta de aprendizaje descrita a lo largo de este portafolio. Este "Career Pathway" integral está diseñado específicamente y con máxima precisión para amalgamar y correlacionar los conocimientos multidisciplinarios adquiridos sobre redes, terminales, criptografía aplicada, inteligencia de amenazas, cumplimiento normativo y hacking ético. Su objetivo primordial es perfilar al estudiante para integrarse de manera inmediata, solvente y altamente funcional en las operaciones diarias y críticas de la industria tecnológica global. Representa, sin lugar a dudas, el puente definitivo y práctico entre el sólido ámbito académico teórico y las apremiantes exigencias reales del entorno laboral corporativo actual en materia de ciberdefensa.</p>
+            <p>A través de la exitosa compleción de esta ruta integradora, logré refinar exponencialmente mi capacidad de análisis crítico, pensamiento lateral y resolución metódica de problemas complejos bajo presión. Se me capacitó formalmente y con escenarios simulados del mundo real en el triaje de alertas de seguridad, la evaluación analítica de falsos positivos frente a amenazas verdaderas, y la recomendación e implementación de controles de seguridad compensatorios efectivos. Esta acreditación profesional avala fehacientemente que no solo poseo la destreza técnica necesaria para operar complejas plataformas de seguridad (SIEM, EDR, Firewalls), sino que cuento con el criterio analítico y profesional indispensable para salvaguardar la integridad operativa de una empresa, evaluar políticas de seguridad de manera objetiva, reportar hallazgos a niveles directivos y contribuir de forma proactiva y sustancial al continuo fortalecimiento de la postura de ciberdefensa de cualquier organización de clase mundial.</p>
+            
+            <div class="curso-evidencia">
+                <div class="insignia-sm">
+                    <img src="./archivos/junior-cybersecurity-analyst-career-path.1.png">
+                </div><br>
+                <div class="acciones-evidencia">
+                    <a href="archivos/Junior_Cybersecurity_Analyst_Career_Path_certificate_181641-upslp-edu-mx_b5845a9d-0b52-4bf9-ab0c-743accfaabf8.pdf" class="btn btn-download" style="text-align: center;">Descargar Certificado PDF</a>
+                    <a href="https://www.credly.com/badges/18901244-3858-43aa-96e0-902c9f506be7/public_url" class="btn btn-back" style="text-align: center;">Link del Badge</a>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 | Portafolio Digital PD05</p>
+        <p>Ruta de Certificaciones en Ciberseguridad</p>
+    </footer>
+
+</body>
+</html>
