@@ -1,0 +1,1593 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PR03 - SGSI Viakon</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        body { background-color: #0f172a; color: #e2e8f0; line-height: 1.6; font-size: 0.95rem; }
+
+        .navbar { display: flex; justify-content: space-between; align-items: center; padding: 15px 5%; background-color: #1e293b; border-bottom: 1px solid #334155; position: sticky; top: 0; z-index: 1000; }
+        .logo { font-weight: 700; font-size: 1.2rem; color: #38bdf8; }
+        .nav-buttons { display: flex; gap: 15px; }
+        .btn { text-decoration: none; padding: 8px 18px; border-radius: 20px; font-weight: 600; font-size: 0.85rem; transition: 0.3s; }
+        .btn-back { color: #cbd5e1; border: 1px solid #334155; }
+        .btn-back:hover { background-color: #334155; }
+        .btn-download { background-color: #38bdf8; color: #0f172a; }
+        .btn-download:hover { background-color: #7dd3fc; }
+
+        header.hero { text-align: center; padding: 80px 20px; background: linear-gradient(to bottom, #1e293b, #0f172a); }
+        .hero h1 { font-size: 2.2rem; margin: 15px 0; color: #38bdf8; text-transform: uppercase; }
+        .hero p { color: #94a3b8; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; }
+        .hero-details { margin-top: 20px; font-size: 1rem; color: #e2e8f0; }
+
+        .contenedor { max-width: 1300px; margin: 0 auto; padding: 30px 20px; }
+
+        .tarjeta { background-color: #1e293b; padding: 40px; border-radius: 15px; margin-bottom: 40px; border: 1px solid #334155; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2); overflow-x: auto; }
+        .tarjeta h2 { margin-bottom: 25px; font-size: 1.6rem; color: #38bdf8; border-bottom: 2px solid #334155; padding-bottom: 15px; }
+        .tarjeta h3 { color: #7dd3fc; font-size: 1.3rem; margin-top: 30px; margin-bottom: 15px; border-left: 3px solid #38bdf8; padding-left: 10px; }
+        .tarjeta h4 { color: #e2e8f0; font-size: 1.1rem; margin-top: 20px; margin-bottom: 10px; font-weight: 600; }
+
+        p { margin-bottom: 15px; text-align: justify; }
+        ul, ol { margin-bottom: 20px; padding-left: 25px; }
+        li { margin-bottom: 8px; }
+
+        table { width: 100%; border-collapse: collapse; margin: 25px 0; font-size: 0.85rem; background-color: #0f172a; border-radius: 8px; overflow: hidden; }
+        th, td { border: 1px solid #334155; padding: 12px; text-align: left; vertical-align: top; }
+        th { background-color: #334155; color: #38bdf8; font-weight: 600; }
+        tr:nth-child(even) { background-color: rgba(30, 41, 59, 0.5); }
+
+        .alerta-verde { background: rgba(34, 197, 94, 0.1); border-left: 4px solid #22c55e; padding: 15px; border-radius: 4px; margin: 15px 0; }
+        .alerta-roja { background: rgba(239, 68, 68, 0.1); border-left: 4px solid #ef4444; padding: 15px; border-radius: 4px; margin: 15px 0; }
+        .alerta-amarilla { background: rgba(245, 158, 11, 0.1); border-left: 4px solid #f59e0b; padding: 15px; border-radius: 4px; margin: 15px 0; }
+        .escenario-box { background: rgba(15, 23, 42, 0.6); border: 1px dashed #334155; padding: 20px; border-radius: 8px; margin: 20px 0; }
+
+        .img-container { text-align: center; margin: 30px 0; }
+        .img-container img { max-width: 100%; height: auto; border-radius: 10px; border: 1px solid #38bdf8; box-shadow: 0 4px 15px rgba(56, 189, 248, 0.2); }
+        .img-caption { color: #94a3b8; font-size: 0.85rem; margin-top: 10px; font-style: italic; }
+
+        .equipo-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 15px; margin-top: 20px; }
+        .equipo-item { background: rgba(15, 23, 42, 0.5); padding: 10px 15px; border-radius: 6px; border-left: 3px solid #38bdf8; font-size: 0.9rem; }
+
+        footer { text-align: center; padding: 50px; color: #64748b; font-size: 0.9rem; border-top: 1px solid #1e293b; background-color: #0f172a; }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">Actividad Final PR03</div>
+        <div class="nav-buttons">
+            <a href="../index.html" class="btn btn-back">← Regresar</a>
+            <a href="archivos/PR03-Equipo3.pdf" download class="btn btn-download">Descargar PDF Original</a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <p>UNIVERSIDAD POLITÉCNICA DE SAN LUIS POTOSÍ</p>
+        <h1>Implementación SGSI ISO/IEC 27001</h1>
+        <p style="color: #e2e8f0; font-size: 1.2rem; margin-top: 10px;">Empresa: VIAKON | Innovamos con energía</p>
+        <div class="hero-details">
+            <p><strong>Curso:</strong> Núcleo Optativo V: Seguridad Informática</p>
+            <p style="color: #38bdf8; font-weight: bold; margin-top: 15px;">Rodríguez Moreno Cristian Alejandro | Matrícula: 181641</p>
+        </div>
+    </header>
+
+    <div class="contenedor">
+        
+        <!-- Tarjeta de Equipo -->
+        <section class="tarjeta"> 
+            <h2>Equipo de Trabajo 3</h2> 
+            <div class="equipo-grid">
+                <div class="equipo-item">Benites Rangel Cesar Yahir - 179091</div>
+                <div class="equipo-item">Cortes Beltrán Carol Elizabeth - 177203</div>
+                <div class="equipo-item">Guerra Ramírez América Fabiola - 179888</div>
+                <div class="equipo-item">Larios Guerra Gustavo Michael - 178318</div>
+                <div class="equipo-item">Montelongo Martínez Laura Ivon - 177291</div>
+                <div class="equipo-item">Puente Luna Bruno Axel - 177876</div>
+                <div class="equipo-item" style="border-left-color: #22c55e;">Rodríguez Moreno Cristian Alejandro - 181641</div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 1 -->
+        <section class="tarjeta">
+            <h2>SECCIÓN 1 - Alcance</h2>
+            <h3>Objetivo del alcance</h3>
+            <p>El propósito de este Sistema de Gestión de Seguridad de la Información (SGSI) es establecer los requisitos críticos para la protección de los activos de información gestionados por las direcciones del área de administración y TI.</p>
+            <p>Este alcance garantiza que el tratamiento de la información de los "Energizadores" cumpla con los pilares de Confidencialidad, Integridad y Disponibilidad, mitigando riesgos asociados al manejo de datos personales sensibles, registros financieros y bases de datos de los activos.</p>
+            
+            <h3>Ámbito de Aplicación (Administración y TI)</h3>
+            <p>La aplicación de los requisitos de esta área se extiende a los siguientes procesos operativos y estratégicos:</p>
+            <ul>
+                <li><strong>Gestión de Datos Maestros de Activos:</strong> Protección de información digital y física, y registros de cumplimiento legal (STPS).</li>
+                <li><strong>Gestión Financiera y Contable:</strong> Seguridad en el procesamiento de presupuestos, determinación de impuestos, dispersiones bancarias y emisión de CFDI (Timbrado), asegurando que la información financiera sea inalterable y privada.</li>
+                <li><strong>Control Documental y Normativo:</strong> Resguardo de los manuales de procedimientos, auditorías operativas y certificaciones de industria vinculadas a la calidad (ISO-9001/14001).</li>
+                <li><strong>Seguridad Física y Control de Accesos:</strong> Protección de los datos derivados de los sistemas de videovigilancia, bitácoras de proveedores y registros biométricos de acceso en las plantas de manufactura.</li>
+            </ul>
+
+            <h3>Acerca de la Empresa</h3>
+            <h4>¿Quiénes somos?</h4>
+            <p>Viakon es una marca Viakable, empresa del Grupo Xignux, dedicada a la fabricación y comercialización de conductores eléctricos. Somos una compañía de clase mundial que cuenta con la más avanzada tecnología para la fabricación y pruebas de nuestros productos. Ofrecemos al mercado conductores eléctricos confiables, seguros, eficientes y con una larga vida en servicio.</p>
+            <p>Viakon es una empresa con más de 70 años de experiencia, más de 5000 productos, 25 sucursales y más de 2000 empleados alrededor del mundo.</p>
+            <p>Filiales: QUIALITA ALIMENTOS, S de R.L de C.V, Protect Energy, Don Ferm MAgnekon S.A. de C.V.</p>
+            <p>Contamos con certificaciones ISO-9001 e ISO-14001 en todas las operaciones, lo que avala nuestra calidad de clase mundial.</p>
+
+            <h4>Un poco de nuestra historia</h4>
+            <div class="img-container">
+                <!-- ESPACIO PARA IMAGEN: LÍNEA DE TIEMPO -->
+                <img src="./archivos/img_pr03_linea.png" alt="Historia de la Empresa">
+                <div class="img-caption">ILUSTRACIÓN 1 HISTORIA DE LA EMPRESA</div>
+            </div>
+
+            <h4>Sitio web</h4>
+            <p><a href="https://viakon.com" target="_blank" style="color: #38bdf8;">https://viakon.com</a></p>
+
+            <h4>Misión</h4>
+            <p>"Transmitir energía que activa tu vida".</p>
+
+            <h4>Visión</h4>
+            <p>Ser la empresa preferida del mercado de transmisión de energía, duplicando nuestro valor y ofreciendo la mejor experiencia para nuestros clientes.</p>
+            <ul>
+                <li>Tener el mejor equipo de energizadores con enfoque humano y congruente con nuestros valores.</li>
+                <li>Ser reconocidos por innovaciones relevantes.</li>
+                <li>Asegurar la excelencia en la cadena.</li>
+                <li>Ser modelo en el desarrollo de iniciativas sostenibles que contribuyan a la construcción de un mejor futuro.</li>
+            </ul>
+
+            <h3>Objetivos Organizacionales</h3>
+            <h4>Ética y Valores</h4>
+            <p>Viakable se distingue por ser una empresa íntegra con estrictos principios éticos. Sus relaciones, negocios y operaciones están basados en su código de ética y valores, esto ha logrado que los colaboradores, clientes, socios proveedores y la comunidad a su alrededor continúen depositando su total confianza en nosotros. Siempre comprometidos a actuar con apego a las leyes y los principios éticos y morales con absoluta transparencia y hablando con la verdad.</p>
+            
+            <h4>Planeta</h4>
+            <p>Una parte esencial de nuestra operación es la adecuada gestión de los recursos que utilizamos para producir de forma eficiente, por lo que continuamente estamos analizando e integrando iniciativas de mejora en nuestros procesos críticos y relevantes con la finalidad de mitigar el impacto ambiental de nuestras operaciones y reducir costos. Dentro de los insumos más relevantes se encuentran: consumos de agua, energía y materiales, al igual que las emisiones y residuos Un aspecto fundamental para reforzar el aprovechamiento eficiente de los recursos en Viakable es trabajar durante todo el año en la cultura de responsabilidad ambiental con nuestros colaboradores a través de campañas de concientización, talleres, eventos y actividades.</p>
+
+            <h4>Nuestra gente</h4>
+            <p>El activo más importante para el éxito de cada uno de nuestros negocios es nuestro capital humano, por esta razón mantenemos espacios de trabajo dignos, respetuosos, colaborativos y de comunicación constante en todos los lugares donde tenemos operaciones. Tenemos el compromiso de fomentar un ambiente abierto e incluyente, en el que cada colaborador se sienta altamente motivado, productivo y comprometido para impulsar su éxito personal y de la empresa, por medio de una ejecución superior, buscando siempre la mejora continua y la innovación.</p>
+
+            <h4>Comunidad</h4>
+            <p>Somos una empresa que busca transformar las comunidades en las que operamos, generando relaciones de ganar-ganar mediante Iniciativas Sociales, en las que participamos voluntariamente en conjunto con organizaciones de la sociedad civil. Hemos asumido también el compromiso de invertir tiempo, experiencia, conocimiento y recursos en diversas iniciativas que inciden en el mejoramiento de las condiciones de vida y desarrollo de las comunidades en las que operamos, siendo dichas iniciativas relevantes tanto para la sustentabilidad de quienes nos rodean como para nuestra organización.</p>
+
+            <h4>Reconocimientos y Certificaciones</h4>
+            <p>Nuestro Círculo de Calidad, así como la perseverancia y constancia de nuestras participaciones como empresa, ha sido distinguida por la AMTE (Asociación Mexicana de Trabajo en Equipo A.C.), promotora de la cultura de calidad y trabajo en equipo para la Mejora Continua en México.</p>
+            <p>Además, Viakon ha sido reconocido en cuestión de investigación y desarrollo tecnológico de nuevos productos, materiales o procesos por el CONACYT.</p>
+            <p>El reconocimiento Cultura Tecnológica Empresarial se ha otorgado a tan solo 69 empresas desde 2001 por sus actividades de investigación y desarrollo.</p>
+            <p>La cultura de trabajo en Viakon también es reconocida. Clientes como Montoi y Soriana nos han distinguido en más de una ocasión como Proveedor Confiable.</p>
+
+            <h4>Premio Dr. Mitsunori Nakano a la Perseverancia en el 2004</h4>
+            <p>Viakon fue reconocido por haber logrado en 10 ocasiones la participación de sus equipos como finalistas de los Concursos Nacionales de Equipo de Trabajo. El premio lleva el nombre del Dr. Mitsunori Nakano, un experto y entusiasta promotor, patrocinador e impulsor de estos Concursos.</p>
+
+            <h4>Certificados</h4>
+            <p>Desde sus inicios, Viakon ha sostenido invariablemente su voluntad de mantenerse como pionero y líder de la industria.</p>
+            <p>Como compañía de clase mundial, Viakon cuenta con la más avanzada tecnología para la fabricación y pruebas de sus productos, lo cual le permite ofrecer al mercado conductores eléctricos confiables, seguros, eficientes y con una larga vida en servicio. A nivel nacional e internacional, los productos de viakon cuentan con la certificación de los organismos más prestigiados del mundo ya que son capaces de satisfacer las especificaciones más exigentes.</p>
+            <p>Entre estos certificados se encuentra:</p>
+            <ul><li>ABS</li><li>ANCE</li><li>cesmec</li><li>CFE</li><li>PEMEX</li><li>PROFEPA</li></ul>
+
+            <h4>Política de Calidad Viakon</h4>
+            <p>Mejora continua para satisfacer y exceder los requerimientos de los clientes externos e internos.</p>
+
+            <h4>Políticas Xignux</h4>
+            <ul>
+                <li>Entendimiento profundo de sus conceptos, métodos y prácticas.</li>
+                <li>Mejorar nuestras operaciones orientados a satisfacer a nuestros clientes y ser la mejor opción reconocida por ellos.</li>
+                <li>Acrecentar sustentablemente el crecimiento y la rentabilidad en nuestras empresas.</li>
+            </ul>
+
+            <h4>Política de Calidad, Ambiental, Salud y Seguridad</h4>
+            <p>En Viakon, empresa dedicada a la manufactura de conductores eléctricos, estamos comprometidos en proporcionar productos y servicios que satisfagan los requerimientos de nuestros clientes y de nuestras partes interesadas, generando acciones para eficientizar nuestros recursos, proteger el medio ambiente, prevenir y reducir la contaminación, los riesgos laborales, la eliminación de peligros y la prevención de enfermedades laborales, estableciendo condiciones de trabajo seguras, saludables y libre de lesiones que deterioren la salud de nuestros Energizadores, tomando en cuenta la consulta y participación de trabajadores y representantes, cumpliendo con la normatividad aplicable, respetando los valores establecidos por la organización, a través de la mejora continua de nuestros Sistemas de Gestión, de nuestros procesos y de nuestro Sistema Operativo CTX.</p>
+
+            <div class="img-container">
+                <!-- ESPACIO PARA IMAGEN: ORGANIGRAMA -->
+                <img src="./archivos/img_pr03_organigrama.png" alt="Organigrama">
+                <div class="img-caption">ILUSTRACIÓN 2 ORGANIGRAMA D</div>
+            </div>
+
+            <h3>Estructura General del Organigrama.</h3>
+            <p>El organigrama corresponde a la estructura organizacional de una planta en San Luis Potosí (SLP), encabezada por Bernardo de la Rosa (Gerente de Planta SLP).</p>
+            <p>La organización se divide en 7 líneas de reporte directo (gerencias y jefaturas), las cuales se subdividen en 10 áreas funcionales según la nomenclatura de colores:</p>
+            <ul>
+                <li>Producción, Programación de Producción y Taller de Dados: Dirigido por Ana Karen Hernández (jefe de Producción).</li>
+                <li>Calidad, Innovación y Proyectos: Dirigido por Francisco Monsiváis (Gerente Aseg. Calidad, Innovación y Proyectos).</li>
+                <li>Mantenimiento y Servicios: Dirigido por Mario Mancilla (jefe Mantenimiento y Servicios).</li>
+                <li>Compras: Dirigido por Igor Ontiveros (jefe Compras).</li>
+                <li>Recursos Humanos: Dirigido por María Guadalupe García (Gerente RH).</li>
+                <li>Administración / TI: Dirigido por Luis Enrique Guerrero (Gerente Administración).</li>
+                <li>CEDIS y Logística: Dirigido por Carlos Alfredo Flores (jefe CEDIS SLP).</li>
+                <li>Mejora Continua: Línea a cargo de Norma Elizabeth Martínez, la cual muestra una conexión matricial o de soporte que se desprende de la estructura de sistemas de gestión.</li>
+            </ul>
+
+            <h3>Área de Administración / TI</h3>
+            <p>Esta área está bajo la dirección de Luis Enrique Guerrero (Gerente Administración). El departamento unifica dos funciones críticas para la planta: el soporte tecnológico (Sistemas) y la gestión financiera interna (Contabilidad).</p>
+            <p>Su estructura es plana y cuenta con cuatro reportes directos, organizados en dos parejas de analista/ingeniero y practicante:</p>
+            <h4>1. Subárea de Tecnologías de la Información (TI)</h4>
+            <p>Encargada del soporte técnico y el mantenimiento de los sistemas de la planta.</p>
+            <ul>
+                <li>Carlos Arredondo: Ingeniero soporte.</li>
+                <li>América Guerra: Practicante sistemas.</li>
+            </ul>
+            <h4>2. Subárea de Contabilidad</h4>
+            <p>Encargada del control financiero y contable local.</p>
+            <ul>
+                <li>Claudia Denny Zaragoza: Analista contabilidad.</li>
+                <li>América Salas: Practicante contabilidad.</li>
+            </ul>
+        </section>
+
+        <!-- SECCIÓN 2 -->
+        <section class="tarjeta">
+            <h2>SECCIÓN 2 - Referencias Normativas</h2>
+            <p>En esta sección se establece el marco normativo internacional aplicable al Sistema de Gestión de Seguridad de la Información (SGSI) implementado para la Dirección de Administración y Tecnologías de la Información (TI) de Viakon. Las referencias aquí citadas constituyen la columna vertebral metodológica para proteger los procesos transaccionales del ERP Corporativo (SAP/Oracle), la infraestructura de red, y las bases de datos que albergan la propiedad intelectual y los datos personales de los "Energizadores".</p>
+            <p>Para las referencias fechadas, únicamente es aplicable la edición citada. Para referencias no fechadas, se aplicará la última edición vigente, incluyendo enmiendas y actualizaciones emitidas por la Organización Internacional de Normalización (ISO) y la Comisión Electrotécnica Internacional (IEC).</p>
+
+            <h3>2.1 Norma Base del SGSI</h3>
+            <p><strong>ISO/IEC 27001:2022 - Sistemas de Gestión de Seguridad de la Información - Requisitos.</strong></p>
+            <p>Constituye el estándar base y certificable del presente proyecto. En lugar de ofrecer metodologías rígidas, esta norma dicta los requisitos indispensables para establecer, implementar, mantener y mejorar continuamente el SGSI.</p>
+            <div class="escenario-box">
+                <p><strong>Aplicación en Viakon:</strong> Se utiliza como la hoja de ruta directiva para estructurar las políticas de TI, definir el alcance (Cláusula 4), comprometer a la Alta Dirección (Cláusula 5) y establecer las métricas de evaluación de desempeño que protegen el flujo de las operaciones de manufactura y administración financiera.</p>
+            </div>
+
+            <h3>2.2 Familia ISO/IEC 27000: Controles y Gestión de Riesgos</h3>
+            <p>Para dar cumplimiento a los requisitos exigidos por la norma base, el SGSI de Viakon se apoya metodológicamente en las siguientes normas para la mitigación de vulnerabilidades y el tratamiento del riesgo:</p>
+            
+            <h4>ISO/IEC 27002:2022 - Controles de seguridad de la información.</h4>
+            <p>Esta norma funciona como el catálogo de buenas prácticas y directrices para implementar las medidas de seguridad exigidas en el Anexo A de ISO 27001.</p>
+            <div class="escenario-box">
+                <p><strong>Aplicación en Viakon:</strong> Guía la configuración técnica de nuestros activos. Por ejemplo, se utiliza para dictaminar las reglas de complejidad de contraseñas, la habilitación de Autenticación Multifactorial (MFA) en el Directorio Activo, y la segmentación de nuestras VLANs corporativas para evitar accesos no autorizados al ERP.</p>
+            </div>
+
+            <h4>ISO/IEC 27005:2022 - Gestión del riesgo de seguridad de la información.</h4>
+            <p>Establece las directrices para la identificación, análisis, evaluación y tratamiento de los riesgos cibernéticos, traduciendo amenazas técnicas en impacto de negocio.</p>
+            <div class="escenario-box">
+                <p><strong>Aplicación en Viakon:</strong> Es la metodología utilizada por el Comité de Seguridad para calcular el impacto financiero y operativo ante la posibilidad de un ataque de Ransomware o el secuestro de sesión, determinando qué riesgos son aceptables y cuáles exigen presupuesto inmediato para remediación.</p>
+            </div>
+
+            <h3>2.3 Normas Complementarias</h3>
+            <p>Dado el entorno híbrido de TI y la naturaleza de los datos procesados en la organización, el SGSI integra lineamientos de las siguientes normas especializadas de la familia ISO/IEC 27000:</p>
+            
+            <h4>ISO/IEC 27000:2018 - Visión general y vocabulario.</h4>
+            <div class="escenario-box">
+                <p><strong>Aplicación en Viakon:</strong> Estandariza la terminología corporativa. Asegura que tanto la Alta Dirección (Grupo Xignux) como los operarios entiendan bajo el mismo rigor técnico conceptos como "Disponibilidad", "Confidencialidad", "Amenaza" o "Vulnerabilidad".</p>
+            </div>
+
+            <h4>ISO/IEC 27017:2015 - Controles de seguridad para servicios en la nube.</h4>
+            <div class="escenario-box">
+                <p><strong>Aplicación en Viakon:</strong> Ante la integración de nuestros repositorios y sistemas SaaS/PaaS, esta norma nos dicta las responsabilidades compartidas con nuestros proveedores de nube, asegurando que la información financiera y operativa fuera del Data Center (DCN Tower) esté cifrada y protegida.</p>
+            </div>
+
+            <h4>ISO/IEC 27701:2019 - Extensión para la gestión de la privacidad de la información.</h4>
+            <div class="escenario-box">
+                <p><strong>Aplicación en Viakon:</strong> Esencial para el cumplimiento legal. TI administra bases de datos con Identidad Personal (PII) de más de 2,000 Energizadores. Esta norma nos permite establecer controles para prevenir brechas de privacidad y cumplir con la Ley Federal de Protección de Datos Personales en Posesión de los Particulares (LFPDPPP), mitigando el riesgo de multas ante el INAI.</p>
+            </div>
+
+            <h4>ISO/IEC 27035-1:2023 - Gestión de incidentes de seguridad de la información.</h4>
+            <div class="escenario-box">
+                <p><strong>Aplicación en Viakon:</strong> Define las fases de preparación, detección, respuesta y aprendizaje post-incidente. Fue la base normativa utilizada por nuestro Equipo de Respuesta a Incidentes (CSIRT) para contener recientes amenazas de intrusión e implementar acciones de mejora continua.</p>
+            </div>
+
+            <h3>2.4 Referencias Bibliográficas</h3>
+            <ul>
+                <li>Organización Internacional de Normalización. (2018). Tecnología de la información - Técnicas de seguridad - Sistemas de gestión de seguridad de la información - Visión general y vocabulario (ISO/IEC 27000:2018). https://www.iso.org/standard/73906.html</li>
+                <li>Organización Internacional de Normalización. (2022). Seguridad de la información, ciberseguridad y protección de la privacidad - Sistemas de gestión de la seguridad de la información - Requisitos (ISO/IEC 27001:2022). https://www.iso.org/standard/82875.html</li>
+                <li>Organización Internacional de Normalización. (2022). Seguridad de la información, ciberseguridad y protección de la privacidad - Controles de seguridad de la información (ISO/IEC 27002:2022). https://www.iso.org/standard/75652.html</li>
+                <li>Organización Internacional de Normalización. (2022). Seguridad de la información, ciberseguridad y protección de la privacidad - Gestión de riesgos de seguridad de la información (ISO/IEC 27005:2022). https://www.iso.org/standard/80585.html</li>
+            </ul>
+        </section>
+
+        <!-- SECCIÓN 3 -->
+        <section class="tarjeta">
+            <h2>SECCIÓN 3 - Términos y Condiciones</h2>
+            <p>Para fines de la presente implementación en Viakon, los siguientes términos fundamentales se agrupan por su función dentro del ciclo de vida del Sistema de Gestión de Seguridad de la Información (SGSI).</p>
+            
+            <ol>
+                <li><strong>Aceptación del riesgo (Risk acceptance):</strong> Decisión informada de asumir un riesgo concreto [Fuente: Guía ISO 73: 2009].</li>
+                <li><strong>Activo (Asset):</strong> Cualquier información o elemento relacionado con el tratamiento de la misma (sistemas, soportes, edificios, personas) que tenga valor para la organización y requiera protección.</li>
+                <li><strong>Alta dirección (Top management):</strong> Persona o grupo de personas que dirige y controla una organización al más alto nivel, con autoridad para proporcionar recursos y delegar responsabilidades (ej. CEO, CFO, CIO).</li>
+                <li><strong>Amenaza (Threat):</strong> Causa potencial de un incidente no deseado, que puede provocar daños a un sistema o a la organización.</li>
+                <li><strong>Análisis de riesgos (Risk analysis):</strong> Proceso sistemático para comprender la naturaleza del riesgo y determinar su nivel [Fuente: Guía ISO 73: 2009].</li>
+                <li><strong>Análisis de riesgos cualitativo (Qualitative risk analysis):</strong> Análisis basado en escalas de valoración para determinar la gravedad del impacto y la probabilidad.</li>
+                <li><strong>Análisis de riesgos cuantitativo (Quantitative risk analysis):</strong> Análisis basado en la estimación de pérdidas financieras causadas por el impacto.</li>
+                <li><strong>Ataque (Attack):</strong> Intento de destruir, exponer, alterar, deshabilitar, robar u obtener acceso no autorizado a un activo.</li>
+                <li><strong>Auditoría (Audit):</strong> Proceso de verificación independiente sobre el cumplimiento de requisitos determinados.</li>
+                <li><strong>Auditor (Auditor):</strong> Persona encargada de realizar la auditoría.</li>
+                <li><strong>CID (CIA):</strong> Acrónimo de Confidencialidad, Integridad y Disponibilidad; dimensiones básicas de la seguridad de la información.</li>
+                <li><strong>Comunicación y consulta de riesgos (Risk communication and consultation):</strong> Procesos iterativos para compartir información y entablar un diálogo con las partes interesadas sobre la gestión del riesgo.</li>
+                <li><strong>Confidencialidad (Confidentiality):</strong> Propiedad de la información de no ponerse a disposición o ser revelada a individuos, entidades o procesos no autorizados.</li>
+                <li><strong>Control (Control):</strong> Medida o conjunto de medidas que modifican el riesgo. Los controles incluyen procesos, políticas, dispositivos, prácticas u otras acciones que aseguran el cumplimiento de los objetivos de seguridad.</li>
+                <li><strong>Control de acceso (Access control):</strong> Garantizar que el acceso a los activos esté autorizado y restringido según los requisitos comerciales y de seguridad.</li>
+                <li><strong>Disponibilidad (Availability):</strong> Propiedad de la información de estar accesible y utilizable cuando lo requiera una entidad autorizada.</li>
+                <li><strong>Estimación de riesgos (Risk evaluation):</strong> Proceso de comparar los resultados del análisis de riesgos con los criterios de riesgo para determinar si son aceptables [Fuente: ISO Guide 73:2009].</li>
+                <li><strong>Evaluación de riesgos (Risk assessment):</strong> Proceso global de identificación, análisis y estimación de riesgos.</li>
+                <li><strong>Evento (Event):</strong> Ocurrencia o cambio de un conjunto particular de circunstancias.</li>
+                <li><strong>Evento de seguridad de la información (Information security event):</strong> Ocurrencia identificada que indica una posible violación de la política de seguridad o falla de controles.</li>
+                <li><strong>Gestión de incidentes de seguridad de la información (Information security incident management):</strong> Procesos para detectar, reportar, evaluar, responder, tratar y aprender de los incidentes de seguridad.</li>
+                <li><strong>Gestión de riesgos (Risk management):</strong> Actividades coordinadas para dirigir y controlar una organización con respecto al riesgo [Fuente: ISO Guide 73:2009].</li>
+                <li><strong>Identificación de riesgos (Risk identification):</strong> Proceso de encontrar, reconocer y describir riesgos [Fuente: Guía ISO 73:2009].</li>
+                <li><strong>Impacto (Impact):</strong> Coste para la empresa de un incidente, que puede ser financiero, reputacional o legal.</li>
+                <li><strong>Incidente (Incident):</strong> Evento único o serie de eventos de seguridad de la información que tienen una probabilidad significativa de comprometer las operaciones del negocio y amenazar la seguridad de la información.</li>
+                <li><strong>Incidente de seguridad de la información (Information security incident):</strong> Evento único o serie de eventos inesperados que poseen una probabilidad significativa de comprometer las operaciones del negocio y amenazar la seguridad de la información.</li>
+                <li><strong>Indicador (Indicator):</strong> Medida que proporciona una estimación o evaluación.</li>
+                <li><strong>Información documentada (Documented information):</strong> Información requerida para ser controlada y mantenida por la organización, en cualquier formato, medio o fuente.</li>
+                <li><strong>Integridad (Integrity):</strong> Propiedad de la información relativa a su exactitud y completitud.</li>
+                <li><strong>Inventario de activos (Assets inventory):</strong> Lista de recursos dentro del alcance del SGSI que tienen valor para la organización y requieren protección.</li>
+                <li><strong>ISO/IEC 27001:</strong> Norma internacional que establece los requisitos para un Sistema de Gestión de Seguridad de la Información (SGSI).</li>
+                <li><strong>Nivel de riesgo (Level of risk):</strong> Magnitud de un riesgo expresada como combinación de consecuencias y probabilidad [Fuente: ISO Guide 73:2009].</li>
+                <li><strong>Objetivo (Objective):</strong> Resultado a alcanzar, ya sea estratégico, táctico u operativo.</li>
+                <li><strong>Organización (Organization):</strong> Persona o grupo de personas con funciones, responsabilidades y autoridades propias para lograr sus objetivos.</li>
+                <li><strong>Plan de continuidad del negocio (Business Continuity Plan):</strong> Estrategia orientada a permitir la continuación de las funciones críticas ante eventos imprevistos.</li>
+                <li><strong>Plan de tratamiento de riesgos (Risk treatment plan):</strong> Documento que define las acciones para gestionar riesgos inaceptables e implantar controles de protección.</li>
+                <li><strong>Rendimiento (Performance):</strong> Resultado medible, que puede relacionarse con actividades, procesos o sistemas.</li>
+                <li><strong>Riesgo (Risk):</strong> Efecto de la incertidumbre sobre los objetivos, manifestado como una desviación positiva o negativa de lo esperado.</li>
+                <li><strong>Sarbanes-Oxley (SOX):</strong> Ley estadounidense que establece normas para auditores y obliga a empresas públicas a garantizar la seguridad de la información financiera.</li>
+                <li><strong>Seguridad de la información (Information security):</strong> Preservación de la confidencialidad, integridad y disponibilidad de la información.</li>
+                <li><strong>Sistema de Información (Information system):</strong> Conjunto de aplicaciones, servicios, activos de TI u otros componentes que manejan información.</li>
+                <li><strong>Sistema de Gestión de Seguridad de la Información (SGSI / ISMS):</strong> Sistema de gestión para establecer, implementar, mantener y mejorar la seguridad de la información.</li>
+                <li><strong>Tratamiento de riesgos (Risk treatment):</strong> Proceso para modificar el riesgo, ya sea evitándolo, compartiéndolo, reteniéndolo o eliminando su fuente [Fuente: Guía ISO 73:2009].</li>
+                <li><strong>Tratamiento del riesgo:</strong> Proceso para seleccionar e implementar medidas destinadas a modificar el riesgo, tales como evitarlo, transferirlo, mitigarlo o aceptarlo.</li>
+                <li><strong>Vulnerabilidad (Vulnerability):</strong> Debilidad de un activo o control que puede ser explotada por una o varias amenazas, comprometiendo la seguridad de la información de los departamentos de Administración y TI.</li>
+            </ol>
+
+            <h3>Condiciones de la Intervención (Acuerdo Operativo y Alcance)</h3>
+            <p>Para garantizar la transparencia, legalidad y el nulo impacto a las operaciones críticas de Viakon durante la implementación y auditoría del SGSI, se establecen las siguientes condiciones de intervención:</p>
+            
+            <h4>Confidencialidad y Manejo de Evidencias</h4>
+            <p>Toda la información recabada durante la auditoría (logs de red, configuraciones del ERP SAP/Oracle, arquitecturas de Active Directory y datos personales de los Energizadores) está sujeta a un estricto Acuerdo de Confidencialidad (NDA).</p>
+            <ul>
+                <li><strong>Manejo de Evidencias:</strong> Las capturas de pantalla, bases de datos exportadas y hallazgos técnicos se almacenarán exclusivamente en discos duros cifrados (AES-256) propiedad del equipo auditor.</li>
+                <li><strong>Destrucción de Datos:</strong> Una vez emitido el dictamen final del SGSI, las evidencias técnicas y datos sensibles serán sanitizados y destruidos mediante borrado seguro, reteniendo únicamente los reportes ejecutivos.</li>
+            </ul>
+
+            <h4>Límites de Actuación y Exclusiones Técnicas</h4>
+            <ul>
+                <li><strong>Límites Operativos:</strong> Las pruebas de evaluación de vulnerabilidades, escaneos de red o pruebas de penetración (Pentesting) se ejecutarán únicamente en ventanas de mantenimiento autorizadas (fines de semana o madrugadas) para evitar interrupciones en el sistema financiero o de manufactura.</li>
+                <li><strong>Exclusiones:</strong> Queda estrictamente prohibida la interacción directa, alteración o escaneo de las redes de Tecnología Operativa (OT/SCADA) de Nivel 0 y 1 en las plantas de extrusión, al encontrarse fuera del alcance definido de TI corporativa y representar un riesgo para la seguridad física industrial.</li>
+            </ul>
+
+            <h4>Supuestos y Restricciones</h4>
+            <ul>
+                <li><strong>Supuestos:</strong> La intervención se basa en el supuesto de que la Alta Dirección de Viakon proveerá acceso irrestricto a la Información Documentada (políticas previas, inventarios de activos y diagramas de red) en los tiempos acordados.</li>
+                <li><strong>Restricciones:</strong> El equipo auditor no realizará modificaciones en los sistemas de producción (ERP) ni alterará los permisos de la Subdirección de Finanzas y RRHH sin la presencia y autorización de los dueños de dichos procesos.</li>
+            </ul>
+
+            <h4>Matriz de Responsabilidades</h4>
+            <ul>
+                <li><strong>Responsabilidad del Equipo Implementador/Auditor (Líder SGSI):</strong> Identificar brechas normativas, diseñar controles bajo el estándar ISO/IEC 27001:2022, elaborar los reportes de No Conformidad y proponer los Planes de Acción Correctiva (CAP).</li>
+                <li><strong>Responsabilidad de Viakon (Subdirección de TI y Alta Dirección):</strong> Suministrar información verídica, disponer del personal para entrevistas y asignar los presupuestos técnicos para la remediación de los hallazgos reportados.</li>
+            </ul>
+        </section>
+
+        <!-- SECCIÓN 4 -->
+        <section class="tarjeta">
+            <h2>SECCIÓN 4 - Contexto de la organización</h2>
+            
+            <h3>Activos Internos</h3>
+            <table>
+                <tr>
+                    <th>Código</th>
+                    <th>Activo de Información (Nombre Original)</th>
+                    <th>Propietario / Ubicación</th>
+                    <th>Proceso Asociado</th>
+                    <th>Responsable Operativo</th>
+                    <th>Dependencia Tecnológica</th>
+                    <th>Clasificación CID</th>
+                </tr>
+                <tr><td>ACT-INT-01</td><td>Bases de datos</td><td>Gerente de TI/CPD principal</td><td>Gestión de datos críticos</td><td>Administrador de BD</td><td>Servidores, SAN (ej. SQL Server)</td><td>C: Alta | I: Alta | D: Alta</td></tr>
+                <tr><td>ACT-INT-02</td><td>Programa de capacitación (herramientas y rutas)</td><td>Gerente de RRHH/LMS interno</td><td>Capacitación continua</td><td>Coordinador de capacitación</td><td>Plataforma e-learning, Intranet</td><td>C: Media | I: Media | D: Media</td></tr>
+                <tr><td>ACT-INT-03</td><td>Software de monitoreo de red y servidores</td><td>Gerente de Seguridad TI / Consola central NOC</td><td>Monitoreo de infraestructura</td><td>Analista de monitoreo</td><td>Servidores, switches, firewalls</td><td>C: Media | I: Alta | D: Alta</td></tr>
+                <tr><td>ACT-INT-04</td><td>Registros de usuarios y credenciales</td><td>Gerente de Seguridad TI / Directorio activo / SIAM</td><td>Control de acceso</td><td>Administrador de identidades</td><td>Servidores de dominio, MFA</td><td>C: Alta | I: Alta | D: Alta</td></tr>
+                <tr><td>ACT-INT-05</td><td>Impresoras empresariales</td><td>Gerente de Operaciones / Oficinas y planta</td><td>Impresión de documentos</td><td>Soporte TI</td><td>Red LAN, suministro eléctrico</td><td>C: Media | I: Media | D: Media</td></tr>
+                <tr><td>ACT-INT-06</td><td>Equipos de cómputo</td><td>Gerente de TI / Estaciones de trabajo</td><td>Operaciones diarias</td><td>Usuario final / Soporte TI</td><td>Red, servidores, antivirus</td><td>C: Media | I: Media | D: Media</td></tr>
+                <tr><td>ACT-INT-07</td><td>Herramientas de administración remota</td><td>Gerente de Seguridad TI / Servidor de gestión</td><td>Soporte remoto</td><td>Administrador de sistemas</td><td>VPN, firewalls, autenticación</td><td>C: Alta | I: Alta | D: Alta</td></tr>
+                <tr><td>ACT-INT-08</td><td>Servidores físicos y virtuales</td><td>Gerente de TI/CPD/Hipervisor</td><td>Procesamiento central</td><td>Arquitecto de sistemas</td><td>SAN, switches, UPS, HVAC</td><td>C: Alta | I: Alta | D: Alta</td></tr>
+                <tr><td>ACT-INT-09</td><td>Intranet</td><td>Gerente de Comunicaciones / Portal interno</td><td>Comunicación interna</td><td>Webmaster</td><td>Servidores web, DNS interno</td><td>C: Media | I: Media | D: Media</td></tr>
+                <tr><td>ACT-INT-10</td><td>ERPs corporativos</td><td>Gerente de TI/CPD/ Nube</td><td>Gestión integral del negocio</td><td>Líder funcional ERP</td><td>Servidores, BD, red, backup</td><td>C: Alta | I: Alta | D: Alta</td></tr>
+                <tr><td>ACT-INT-11</td><td>Documentación y procesos</td><td>Gerente de Calidad / Repositorio documental</td><td>Gestión de la calidad</td><td>Documentador</td><td>Intranet, control de versiones</td><td>C: Media | I: Alta | D: Media</td></tr>
+                <tr><td>ACT-INT-12</td><td>Firewalls y dispositivos de seguridad perimetral</td><td>Gerente de Seguridad TI / Perímetro de red</td><td>Seguridad perimetral</td><td>Ingeniero de seguridad</td><td>ISP, switches de core</td><td>C: Alta | I: Alta | D: Alta</td></tr>
+                <tr><td>ACT-INT-13</td><td>Sistemas de respaldo y recuperación (Backup)</td><td>Gerente de TI / CPD + nube</td><td>Respaldo y DRP</td><td>Administrador de backup</td><td>Almacenamiento, red, software</td><td>C: Alta | I: Alta | D: Alta</td></tr>
+                <tr><td>ACT-INT-14</td><td>Conmutadores (Switches) y puntos de acceso Wi-Fi</td><td>Gerente de TI / Racks y áreas comunes</td><td>Conectividad LAN/WLAN</td><td>Ingeniero de redes</td><td>Fibra óptica, cableado, PoE</td><td>C: Media | I: Alta | D: Alta</td></tr>
+                <tr><td>ACT-INT-15</td><td>Software antivirus y EDR (Endpoint Detection and Response)</td><td>Gerente de Seguridad TI / Todos los endpoints</td><td>Protección de endpoints</td><td>Analista de ciberseguridad</td><td>Consola central, servidor act.</td><td>C: Media | I: Alta | D: Media</td></tr>
+                <tr><td>ACT-INT-16</td><td>Certificados digitales y llaves criptográficas</td><td>Gerente de Seguridad TI / HSM / Repositorio seguro</td><td>Cifrado y autenticación</td><td>Criptógrafo</td><td>Servidores, PKI, HSM</td><td>C: Alta | I: Alta | D: Media</td></tr>
+                <tr><td>ACT-INT-17</td><td>Consolas de gestión de parches y actualizaciones</td><td>Gerente de TI / Servidor de administración</td><td>Actualización de software</td><td>Ingeniero de sistemas</td><td>Repositorio WSUS/SCCM, red</td><td>C: Media | I: Media | D: Media</td></tr>
+                <tr><td>ACT-INT-18</td><td>Sistemas de almacenamiento masivo (SAN/NAS)</td><td>Gerente de TI/CPD</td><td>Almacenamiento compartido</td><td>Administrador de almacenamiento</td><td>Fibre Channel, switches, HDD/SSD</td><td>C: Alta | I: Alta | D: Alta</td></tr>
+                <tr><td>ACT-INT-19</td><td>Repositorios de scripts y código fuente</td><td>Gerente de Desarrollo / Git/Servidor interno</td><td>Automatización y desarrollo</td><td>Líder de desarrollo</td><td>Servidores, control de versiones</td><td>C: Alta | I: Alta | D: Media</td></tr>
+                <tr><td>ACT-INT-20</td><td>Plan de Continuidad del Negocio y Recuperación de Desastres (BCP/DRP)</td><td>Gerente de Riesgos / Portal de gobierno</td><td>Respuesta a emergencias</td><td>Comité de crisis</td><td>Almacenamiento ext., comunicaciones</td><td>C: Alta | I: Alta | D: Alta</td></tr>
+            </table>
+
+            <h3 style="margin-top: 40px;">Activos Externos</h3>
+            <table>
+                <tr>
+                    <th>Código</th>
+                    <th>Activo de Información (Nombre Original)</th>
+                    <th>Propietario / Ubicación</th>
+                    <th>Proceso Asociado</th>
+                    <th>Responsable Operativo</th>
+                    <th>Dependencia Tecnológica</th>
+                    <th>Clasificación CID</th>
+                </tr>
+                <tr><td>ACT-EXT-01</td><td>Servicios de Nube (SaaS/PaaS)</td><td>Gerente de TI / Nube (Azure / AWS)</td><td>Productividad y colaboración</td><td>Arquitecto de nube</td><td>Internet, API, SSO</td><td>C: Alta | I: Alta | D: Media</td></tr>
+                <tr><td>ACT-EXT-02</td><td>Enlaces de Internet (ISPs)</td><td>Gerente de TI/ Infraestructura del ISP</td><td>Conectividad WAN</td><td>Ingeniero de redes</td><td>Routers, fibra óptica, módems</td><td>C: Media | I: Alta | D: Alta</td></tr>
+                <tr><td>ACT-EXT-03</td><td>Proveedores de Hosting Web</td><td>Gerente de Marketing / Datacenter del proveedor</td><td>Presencia digital</td><td>Webmaster</td><td>DNS, CDN, servidores web</td><td>C: Media | I: Media | D: Media</td></tr>
+                <tr><td>ACT-EXT-04</td><td>Enlaces de Comunicación Dedicados</td><td>Gerente de TI / Red MPLS/ fibra dedicada</td><td>Comunicación inter-sedes</td><td>Ingeniero de redes</td><td>Routers, switches, VLAN</td><td>C: Media | I: Alta | D: Alta</td></tr>
+                <tr><td>ACT-EXT-05</td><td>Plataformas de Mensajería y Videoconferencia</td><td>Gerente de Comunicaciones / Nube del proveedor</td><td>Comunicación remota</td><td>Admin. de colaboración</td><td>Internet, micrófonos, cámaras</td><td>C: Media | I: Media | D: Media</td></tr>
+                <tr><td>ACT-EXT-06</td><td>APIs de Servicios Financieros</td><td>Gerente de Finanzas / Servidores del banco / SAT</td><td>Facturación y pagos</td><td>Tesorero</td><td>Internet, certificados, tokens</td><td>C: Alta | I: Alta | D: Alta</td></tr>
+                <tr><td>ACT-EXT-07</td><td>Servicios de Soporte Técnico de Fabricantes</td><td>Gerente de TI / Centro de soporte del fabricante</td><td>Mantenimiento de hardware</td><td>Administrador de activos</td><td>Contrato de soporte, acceso remoto</td><td>C: Media | I: Media | D: Media</td></tr>
+                <tr><td>ACT-EXT-08</td><td>Nube de Respaldo (Cloud Backup)</td><td>Gerente de TI / Nube (proveedor de backup)</td><td>Respaldo y DRP</td><td>Administrador de backup</td><td>Internet, API, ancho de banda</td><td>C: Alta | I: Alta | D: Alta</td></tr>
+                <tr><td>ACT-EXT-09</td><td>Herramientas de Diseño y Prototipado en la Nube</td><td>Gerente de Marketing / Nube del proveedor</td><td>Diseño gráfico y UX</td><td>Diseñador senior</td><td>Internet, navegador, GPU remota</td><td>C: Media | I: Media | D: Media</td></tr>
+                <tr><td>ACT-EXT-10</td><td>Proveedores de Ciberinteligencia</td><td>Gerente de Seguridad TI / Plataforma del proveedor</td><td>Monitoreo de amenazas</td><td>Analista de ciberseguridad</td><td>Internet, API, SIEM</td><td>C: Media | I: Alta | D: Media</td></tr>
+                <tr><td>ACT-EXT-11</td><td>Gestores de Dominios (DNS)</td><td>Gerente de TI / Plataforma DNS</td><td>Resolución de nombres</td><td>Ingeniero de redes</td><td>Internet, registros DNS, SSL</td><td>C: Media | I: Alta | D: Alta</td></tr>
+                <tr><td>ACT-EXT-12</td><td>Bases de Datos de Normativas Externas</td><td>Gerente de Calidad / Portales gubernamentales</td><td>Cumplimiento normativo</td><td>Auditor de calidad</td><td>Internet, navegador, credenciales</td><td>C: Media | I: Media | D: Media</td></tr>
+                <tr><td>ACT-EXT-13</td><td>Plataformas de Reclutamiento y Selección</td><td>Gerente de RRHH / Nube del proveedor</td><td>Reclutamiento y selección</td><td>Reclutador</td><td>Internet, correo electrónico</td><td>C: Media | I: Media | D: Media</td></tr>
+                <tr><td>ACT-EXT-14</td><td>Sistemas de Monitoreo de Logística (GPS)</td><td>Gerente de Logística / Nube del proveedor GPS</td><td>Distribución y entregas</td><td>Coordinador de logística</td><td>Internet, GPS, red celular</td><td>C: Media | I: Media | D: Alta</td></tr>
+                <tr><td>ACT-EXT-15</td><td>Servicios de Auditoría de Ciberseguridad Externos</td><td>Gerente de Seguridad TI / Oficinas de la consultora</td><td>Auditoría y cumplimiento</td><td>Auditor externo / Hacker</td><td>Acceso remoto, NDA, pentesting</td><td>C: Alta | I: Alta | D: Media</td></tr>
+                <tr><td>ACT-EXT-16</td><td>Nodos de Distribución de Contenido (CDN)</td><td>Gerente de TI / Red global CDN</td><td>Entrega de contenido</td><td>Ingeniero de redes</td><td>DNS, servidores web, caché</td><td>C: Media | I: Media | D: Alta</td></tr>
+                <tr><td>ACT-EXT-17</td><td>Sistemas de Verificación de Identidad de Terceros</td><td>Gerente de Seguridad TI / Nube del proveedor MFA</td><td>Control de acceso</td><td>Administrador de identidades</td><td>Internet, App MFA, SSO</td><td>C: Alta | I: Alta | D: Alta</td></tr>
+                <tr><td>ACT-EXT-18</td><td>Plataformas de Capacitación Externa (E-learning)</td><td>Gerente de RRHH / Nube del proveedor</td><td>Capacitación continua</td><td>Coordinador de capacitación</td><td>Internet, LMS, navegador</td><td>C: Media | I: Media | D: Media</td></tr>
+                <tr><td>ACT-EXT-19</td><td>Infraestructura de Centros de Datos de Terceros</td><td>Gerente de TI / Datacenter del proveedor</td><td>Alojamiento de servidores</td><td>Arq. de infraestructura</td><td>Enlace, UPS, HVAC, seguridad física</td><td>C: Alta | I: Alta | D: Alta</td></tr>
+                <tr><td>ACT-EXT-20</td><td>Canales de Redes Sociales Corporativas</td><td>Gerente de Marketing / Plataformas sociales</td><td>Marketing y comunicación</td><td>Community manager</td><td>Internet, credenciales, gestor R.S.</td><td>C: Media | I: Media | D: Media</td></tr>
+            </table>
+        </section>
+
+        <!-- SECCIÓN 5 -->
+        <section class="tarjeta">
+            <h2>SECCIÓN 5 - Liderazgo</h2>
+            
+            <h3>Política General de la Organización</h3>
+            <h4>Objetivo</h4>
+            <p>Establecer el marco de referencia para la protección de los activos de información de Viakon, garantizando la Confidencialidad (que solo los autorizados accedan), Integridad (que la información no sea alterada) y Disponibilidad (que esté lista cuando se necesite). Se busca mitigar riesgos ante amenazas internas y externas, asegurar el cumplimiento legal (como la Ley de Protección de Datos) y consolidar la seguridad como un valor cultural en la organización para el cumplimiento de sus objetivos estratégicos.</p>
+
+            <h4>Alcance de Aplicabilidad</h4>
+            <p>Esta política es de cumplimiento obligatorio para todo el personal interno, prestadores de servicios, proveedores y socios comerciales. El alcance técnico comprende la totalidad del ecosistema de información: desde la infraestructura física (servidores, oficinas) hasta los activos lógicos (bases de datos, software, nube).</p>
+
+            <h4>Compromiso de la Dirección</h4>
+            <p>La Alta Dirección asume la responsabilidad de liderar el SGSI mediante:</p>
+            <ul>
+                <li>La provisión incondicional de los recursos financieros y el capital humano especializado necesarios para la operación y mejora continua del sistema.</li>
+                <li>La revisión ejecutiva periódica del SGSI para asegurar su alineación dinámica con la Matriz de Riesgos y los objetivos estratégicos corporativos.</li>
+                <li>La promoción y exigencia de una cultura de "Cero Confianza" (Zero Trust) y "Privilegios Mínimos" en todas las capas de la organización.</li>
+            </ul>
+
+            <h3>Políticas Funcionales</h3>
+            <h4>Internos</h4>
+            
+            <h4>Base de Datos</h4>
+            <ul>
+                <li><strong>Estándar:</strong> Es estrictamente obligatorio implementar cifrado a nivel de columna (TDE) para datos PII (Identidad Personal) y requerir Autenticación Multifactor (MFA) para todo acceso con roles de sysadmin o db_owner.</li>
+                <li><strong>Directriz:</strong> Se recomienda la habilitación del Enmascaramiento Dinámico de Datos (DDM) en entornos de pre-producción para evitar la exposición de datos reales durante pruebas de desarrollo.</li>
+                <li><strong>Procedimiento:</strong> El escalamiento temporal de privilegios se ejecutará mediante la creación de un ticket en el sistema ITSM, el cual requerirá autorización digital previa del Dueño de la Información (Data Owner) antes de que el administrador de TI otorgue el acceso de escritura.</li>
+                <li><strong>Línea base:</strong> Configuración de respaldos incrementales automatizados cada 4 horas y rotación criptográfica de las claves de servicio cada 90 días naturales.</li>
+            </ul>
+
+            <h4>ERP Corporativo - SAP/Oracle</h4>
+            <ul>
+                <li><strong>Estándar:</strong> El acceso remoto o externo al ERP corporativo queda estrictamente restringido y solo es permitido a través de túneles VPN IPsec combinados con MFA.</li>
+                <li><strong>Directriz:</strong> Se aconseja ejecutar un análisis trimestral mediante módulos GRC (Governance, Risk, and Compliance) para detectar conflictos de Segregación de Funciones (SoD) en el departamento de Finanzas.</li>
+                <li><strong>Procedimiento:</strong> Todo alta de usuario en el ERP requerirá el llenado del formulario JML (Joiner, Mover, Leaver) con firma autógrafa o digital del Gerente de Área y validación final por el Oficial de Seguridad (CISO).</li>
+                <li><strong>Línea base:</strong> Cierre forzado de sesiones TCP/UDP inactivas tras 15 minutos y políticas de contraseñas de al menos 12 caracteres.</li>
+            </ul>
+
+            <h4>Software de Monitoreo de Red</h4>
+            <ul>
+                <li><strong>Estándar:</strong> Es obligatorio restringir el acceso a las consolas del NOC mediante lista blanca de IPs corporativas y Autenticación Multifactor (MFA).</li>
+                <li><strong>Directriz:</strong> Ejecutar auditorías trimestrales sobre los cambios en los umbrales de alerta y baselines de comportamiento de red.</li>
+                <li><strong>Procedimiento:</strong> Para cualquier modificación en la topología, se debe registrar un ticket de Cambio (RFC) en la plataforma ITSM antes de actualizar el mapa de red.</li>
+                <li><strong>Línea base:</strong> Retención inmutable de logs syslog/NetFlow por un mínimo de 6 meses y rotación de claves de administración cada 90 días.</li>
+            </ul>
+
+            <h4>Registros de Usuarios y Credenciales</h4>
+            <ul>
+                <li><strong>Estándar:</strong> Las contraseñas de dominio deben poseer una entropía alta, con una longitud mínima de 12 caracteres, forzando complejidad alfanumérica y bloqueo contra ataques de diccionario.</li>
+                <li><strong>Directriz:</strong> Se recomienda encarecidamente la adopción de gestores de contraseñas corporativos centralizados (Password Managers) para evitar el almacenamiento inseguro de credenciales.</li>
+                <li><strong>Procedimiento:</strong> El reseteo de contraseñas por parte de la Mesa de Ayuda debe seguir un protocolo Zero Trust, validando la identidad del usuario mediante preguntas de desafío (Challenge/Response).</li>
+                <li><strong>Línea base:</strong> Cambio obligatorio de contraseñas cada 90 días y retención de historial de las últimas 5 contraseñas para evitar su reutilización.</li>
+            </ul>
+
+            <h4>Impresoras Empresariales</h4>
+            <ul>
+                <li><strong>Estándar:</strong> Toda impresión de documentos debe requerir autenticación física del usuario frente al multifuncional mediante PIN o tarjeta RFID (Secure Print).</li>
+                <li><strong>Directriz:</strong> Se promueve la política de "Cero Papel"; se recomienda imprimir solo lo estrictamente necesario para minimizar la superficie de fuga física de información.</li>
+                <li><strong>Procedimiento:</strong> Para la baja o reubicación de impresoras, soporte técnico deberá ejecutar la "Guía de Sanitización", que detalla el borrado manual de la memoria caché y NVRAM.</li>
+                <li><strong>Línea base:</strong> Monitoreo centralizado del volumen de impresión por centro de costos y limpieza automática de la cola de impresión cada 12 horas.</li>
+            </ul>
+
+            <h4>Equipos de Cómputo - Laptops</h4>
+            <ul>
+                <li><strong>Estándar:</strong> El cifrado de disco completo (FDE) respaldado por hardware (chip TPM 2.0) debe estar habilitado de forma obligatoria en todos los equipos portátiles.</li>
+                <li><strong>Directriz:</strong> Se insta a los Energizadores a no conectar los equipos a redes Wi-Fi públicas abiertas; en caso extremo, solo debe hacerse con el túnel VPN Always-On activo.</li>
+                <li><strong>Procedimiento:</strong> Ante robo o extravío, el usuario debe reportarlo a la Mesa de Ayuda en menos de 2 horas para activar el protocolo de bloqueo de cuenta y borrado remoto (Wipe).</li>
+                <li><strong>Línea base:</strong> Instalación obligatoria del agente de seguridad (EDR/Antivirus) y configuración de actualizaciones automáticas de parches del sistema operativo.</li>
+            </ul>
+
+            <h4>Herramientas de Administración Remota</h4>
+            <ul>
+                <li><strong>Estándar:</strong> El uso de protocolos de administración (RDP, SSH) queda estrictamente prohibido desde redes públicas; solo se permite a través de una conexión VPN segura o Bastion Host.</li>
+                <li><strong>Directriz:</strong> Se recomienda que las sesiones de soporte técnico remoto a los usuarios finales (Help Desk) sean de tipo interactivas, requiriendo autorización explícita en pantalla.</li>
+                <li><strong>Procedimiento:</strong> Para otorgar acceso remoto a un proveedor, se deberá habilitar la conexión temporal en el panel de control técnico, deshabilitándose automáticamente al terminar la ventana de soporte.</li>
+                <li><strong>Línea base:</strong> Cierre forzado de puertos de administración y desconexión automática de la sesión remota tras 10 minutos de inactividad de periféricos.</li>
+            </ul>
+
+            <h4>Servidores Físicos y Virtuales</h4>
+            <ul>
+                <li><strong>Estándar:</strong> El acceso al hardware en el Data Center debe estar ineludiblemente restringido mediante control de acceso dual (biometría y llave/tarjeta física).</li>
+                <li><strong>Directriz:</strong> Se aconseja que la infraestructura virtual esté microsegmentada, aislando los servidores por tipo de servicio (ej. Bases de datos separadas de Aplicaciones) en VLANs independientes.</li>
+                <li><strong>Procedimiento:</strong> Para la protección de datos, TI ejecutará la guía de respaldos semanales completos (Bare-Metal), validando la consistencia de la imagen resultante.</li>
+                <li><strong>Línea base:</strong> Aplicación estricta de la plantilla de bastionado de seguridad (OS Hardening) basada en controles CIS antes de liberar cualquier servidor a producción.</li>
+            </ul>
+
+            <h4>Intranet</h4>
+            <ul>
+                <li><strong>Estándar:</strong> Todo el tráfico hacia la Intranet corporativa debe transitar obligatoriamente bajo el protocolo criptográfico HTTPS (TLS 1.2 o superior).</li>
+                <li><strong>Directriz:</strong> Se exhorta a los dueños de contenido de cada departamento a revisar y actualizar la vigencia de sus publicaciones el primer día hábil de cada mes.</li>
+                <li><strong>Procedimiento:</strong> Para subir un nuevo documento, el autor debe asignarle una categoría en el gestor de contenido (CMS), definiendo su nivel de clasificación para el repositorio.</li>
+                <li><strong>Línea base:</strong> Denegación de acceso por defecto (Deny-All) a cualquier solicitud web proveniente de usuarios o direcciones IP externas a la red corporativa.</li>
+            </ul>
+
+            <h4>Documentación y Procesos</h4>
+            <ul>
+                <li><strong>Estándar:</strong> Todos los documentos corporativos críticos deben integrar una marca de agua y etiqueta de metadatos (DLP) indicando explícitamente su nivel de confidencialidad.</li>
+                <li><strong>Directriz:</strong> Se recomienda la digitalización inmediata de archivos físicos (Legacy) para mitigar el riesgo de deterioro, pérdida o acceso no autorizado en archiveros.</li>
+                <li><strong>Procedimiento:</strong> Para solicitar la desclasificación o destrucción de un documento sensible, se pedirá autorización al Oficial de Cumplimiento, procediendo a su borrado lógico o trituración física (Nivel P-4).</li>
+                <li><strong>Línea base:</strong> Registro inicial y obligatorio de todos los activos de información en el inventario oficial, asignando a un responsable directo (Dueño del Activo).</li>
+            </ul>
+
+            <h3>Activos Externos</h3>
+            
+            <h4>Servicios de Nube (SaaS/PaaS)</h4>
+            <ul>
+                <li><strong>Estándar:</strong> El acceso a cualquier plataforma en la nube debe efectuarse mediante federación de identidades (SSO), Autenticación Multifactor (MFA) y cifrado en tránsito (TLS).</li>
+                <li><strong>Directriz:</strong> Se recomienda evaluar anualmente que los proveedores Cloud mantengan vigentes sus certificaciones internacionales de seguridad (ISO 27001, SOC 2 Nivel II).</li>
+                <li><strong>Procedimiento:</strong> El proceso de alta y baja de usuarios debe ejecutarse mediante un flujo formal de autorización desde la Mesa de Servicio del área de TI.</li>
+                <li><strong>Línea base:</strong> Revisión trimestral obligatoria de cuentas inactivas y revocación de permisos y accesos huérfanos en las consolas administrativas.</li>
+            </ul>
+
+            <h4>Enlaces de Internet (ISPs)</h4>
+            <ul>
+                <li><strong>Estándar:</strong> La totalidad del tráfico de entrada y salida debe ser canalizado y filtrado por Firewalls corporativos de Nueva Generación con Inspección Profunda de Paquetes (DPI).</li>
+                <li><strong>Directriz:</strong> Para asegurar la alta disponibilidad de las operaciones, se recomienda implementar una arquitectura SD-WAN con redundancia de proveedores ISP (Failover).</li>
+                <li><strong>Procedimiento:</strong> Ante latencia crítica o caída del enlace primario, el NOC ejecutará el protocolo de escalamiento técnico directo con el centro de soporte del proveedor.</li>
+                <li><strong>Línea base:</strong> Monitoreo telemétrico 24/7 del ancho de banda y establecimiento de SLAs operativos de disponibilidad superiores al 99.9%.</li>
+            </ul>
+
+            <h4>Proveedores de Hosting Web</h4>
+            <ul>
+                <li><strong>Estándar:</strong> Los servidores expuestos a Internet público deben contar obligatoriamente con certificados de seguridad SSL/TLS válidos y renovados antes de su expiración.</li>
+                <li><strong>Directriz:</strong> Para mitigar ataques de inyección, se recomienda la implementación de un Firewall de Aplicaciones Web (WAF) en modo de prevención estricta.</li>
+                <li><strong>Procedimiento:</strong> El equipo de infraestructura ejecutará la ventana de mantenimiento mensual para la actualización de parches y revisión de vulnerabilidades en el código.</li>
+                <li><strong>Línea base:</strong> Ejecución de un escaneo automatizado de seguridad perimetral al menos una vez al mes (Vulnerability Scan).</li>
+            </ul>
+
+            <h4>Plataformas de Mensajería y Videoconferencia</h4>
+            <ul>
+                <li><strong>Estándar:</strong> Para discusiones de negocios es obligatorio el uso de cuentas corporativas integradas al dominio y protegidas por MFA.</li>
+                <li><strong>Directriz:</strong> Se prohíbe la generación de enlaces de reunión públicos sin contraseña; siempre debe evitarse compartir accesos sin un control riguroso.</li>
+                <li><strong>Procedimiento:</strong> Al agendar reuniones estratégicas, el organizador debe configurar obligatoriamente la "Sala de Espera" (Lobby) y autorizar manualmente a los participantes.</li>
+                <li><strong>Línea base:</strong> Restricción a nivel de Tenant para impedir accesos o grabación de sesiones por parte de usuarios con dominios no autorizados.</li>
+            </ul>
+
+            <h4>APIs de Servicios Financieros</h4>
+            <ul>
+                <li><strong>Estándar:</strong> La comunicación transaccional bancaria debe emplear tokens seguros de corta duración y autenticación estricta basada en OAuth 2.0 y mTLS.</li>
+                <li><strong>Directriz:</strong> Se recomienda aplicar reglas de lista blanca (IP Whitelisting) para limitar exhaustivamente las IPs externas que pueden consumir la API.</li>
+                <li><strong>Procedimiento:</strong> El equipo de Arquitectura de TI procederá a la rotación periódica de credenciales criptográficas (Secrets) y al monitoreo continuo del consumo transaccional.</li>
+                <li><strong>Línea base:</strong> Registro y almacenamiento inmutable (WORM) de logs transaccionales financieros por un periodo de retención mínimo legal de 1 año.</li>
+            </ul>
+
+            <h4>Servicios de Soporte Técnico de Fabricantes</h4>
+            <ul>
+                <li><strong>Estándar:</strong> El acceso a la red corporativa por parte de proveedores se efectuará exclusivamente mediante una VPN corporativa estrictamente controlada y segmentada.</li>
+                <li><strong>Directriz:</strong> Es obligatoria la práctica de supervisión sincrónica ("Shadowing") durante las sesiones remotas por parte de un ingeniero interno.</li>
+                <li><strong>Procedimiento:</strong> El proveedor externo debe realizar una solicitud formal y obtener autorización previa mediante un ticket antes de que se habilite el soporte externo.</li>
+                <li><strong>Línea base:</strong> Grabación centralizada de la sesión de soporte técnico y registro del historial de actividades y comandos realizados.</li>
+            </ul>
+
+            <h4>Nube de Respaldo (Cloud Backup)</h4>
+            <ul>
+                <li><strong>Estándar:</strong> Los volúmenes de respaldo deben ser cifrados bajo llave administrada por el cliente (E2EE) tanto en tránsito hacia la nube como en reposo.</li>
+                <li><strong>Directriz:</strong> Para asegurar la resiliencia contra Ransomware, se recomienda aplicar el principio 3-2-1 de backups (incluyendo una copia fuera de sitio aislada).</li>
+                <li><strong>Procedimiento:</strong> El área de infraestructura documentará y ejecutará pruebas periódicas de restauración de máquinas virtuales para certificar los Tiempos de Recuperación (RTO).</li>
+                <li><strong>Línea base:</strong> Ejecución de políticas de respaldo automático diario y validación automática semanal de la integridad del bloque de datos.</li>
+            </ul>
+
+            <h4>Gestores de Dominios (DNS)</h4>
+            <ul>
+                <li><strong>Estándar:</strong> Es obligatoria la implementación de extensiones de seguridad (DNSSEC) para garantizar la autenticidad e integridad en la resolución de la marca en internet.</li>
+                <li><strong>Directriz:</strong> Se recomienda restringir el panel de administración del registrador, asegurándolo con Autenticación Multifactor (MFA) por hardware.</li>
+                <li><strong>Procedimiento:</strong> Toda modificación en los registros DNS requiere una Solicitud de Cambio (RFC) mediante aprobación formal para evitar secuestros de dominio.</li>
+                <li><strong>Línea base:</strong> Ejecución de una auditoría trimestral para depurar registros DNS huérfanos y prevenir la toma de subdominios (Subdomain Takeover).</li>
+            </ul>
+
+            <h4>Plataformas de Reclutamiento y Selección</h4>
+            <ul>
+                <li><strong>Estándar:</strong> El tratamiento de datos de candidatos debe cumplir estrictamente con los lineamientos de privacidad dictados por la legislación vigente (LFPDPPP).</li>
+                <li><strong>Directriz:</strong> Se instruye a minimizar la recolección de datos sensibles; no solicitar información médica o biométrica en las primeras fases del reclutamiento.</li>
+                <li><strong>Procedimiento:</strong> Para el manejo de datos de candidatos no seleccionados, se ejecutará la eliminación segura de expedientes digitales al terminar el periodo de gracia.</li>
+                <li><strong>Línea base:</strong> Establecimiento de un ciclo de vida de los datos, configurando una retención máxima de información de 12 meses.</li>
+            </ul>
+
+            <h4>Canales de Redes Sociales Corporativas</h4>
+            <ul>
+                <li><strong>Estándar:</strong> El acceso a los perfiles institucionales debe estar restringido mediante el uso de cuentas corporativas oficiales aseguradas con MFA.</li>
+                <li><strong>Directriz:</strong> Se recomienda el uso de gestores centralizados (ej. Hootsuite) para evitar compartir contraseñas nativas entre el equipo de redes sociales.</li>
+                <li><strong>Procedimiento:</strong> La publicación de contenido oficial debe seguir un flujo de revisión y aprobación digital visado por la Gerencia Comercial o Relaciones Públicas.</li>
+                <li><strong>Línea base:</strong> Cambio obligatorio de credenciales y rotación de tokens de API cada 90 días o ante la baja de cualquier integrante del área.</li>
+            </ul>
+
+            <h3>Matriz RACI</h3>
+            <p>Para asegurar el cumplimiento de las políticas previamente descritas, se define la siguiente matriz de asignación de roles.</p>
+            <ul>
+                <li><strong>R (Responsable):</strong> Quienes ejecutan operativamente la tarea o configuran el control.</li>
+                <li><strong>A (Aprobador):</strong> Quienes rinden cuentas, autorizan y tiene la responsabilidad final.</li>
+                <li><strong>C (Consultado):</strong> Quienes asesoran o validan la acción de forma previa.</li>
+                <li><strong>I (Informado):</strong> Quienes son notificados formalmente sobre los resultados.</li>
+            </ul>
+
+            <table>
+                <tr>
+                    <th>Actividad/Proceso</th>
+                    <th>Director de TI (CIO)</th>
+                    <th>Oficial de Seguridad (CISO)</th>
+                    <th>Administrador de Sistemas</th>
+                    <th>Usuario Final/Empleado</th>
+                    <th>Proveedor Externo</th>
+                </tr>
+                <tr><td colspan="6" style="background: rgba(56, 189, 248, 0.2); font-weight: bold; text-align: center;">Activos Internos</td></tr>
+                <tr><td>Gestión de Bases de Datos</td><td>A</td><td>C</td><td>R</td><td></td><td></td></tr>
+                <tr><td>Mantenimiento de ERP</td><td>A</td><td></td><td>R</td><td>C</td><td>C</td></tr>
+                <tr><td>Monitoreo de Red</td><td></td><td>A</td><td>R</td><td></td><td>C</td></tr>
+                <tr><td>Cambio de Contraseñas</td><td></td><td>A</td><td>C</td><td>R</td><td></td></tr>
+                <tr><td>Impresión Segura</td><td></td><td>C</td><td>A</td><td>R</td><td></td></tr>
+                <tr><td>Cifrado de Laptops</td><td>A</td><td>C</td><td>R</td><td></td><td></td></tr>
+                <tr><td>Administración Remota</td><td>A</td><td></td><td>R</td><td>C</td><td></td></tr>
+                <tr><td>Respaldo de Servidores</td><td>A</td><td></td><td>R</td><td></td><td>C</td></tr>
+                <tr><td>Publicación en Intranet</td><td>I</td><td></td><td>A</td><td>R</td><td></td></tr>
+                <tr><td>Clasificación de Documentos</td><td></td><td>A</td><td></td><td>R</td><td></td></tr>
+                
+                <tr><td colspan="6" style="background: rgba(56, 189, 248, 0.2); font-weight: bold; text-align: center;">Activos Externos</td></tr>
+                <tr><td>Servicios de Nube SaaS/PaaS</td><td>A</td><td>C</td><td>R</td><td></td><td>C</td></tr>
+                <tr><td>Enlaces de Internet ISPs</td><td>A</td><td></td><td>R</td><td></td><td>C</td></tr>
+                <tr><td>Proveedores de Hosting Web</td><td>A</td><td>C</td><td>R</td><td></td><td>C</td></tr>
+                <tr><td>Plataformas de Mensajería y Videoconferencia</td><td>A</td><td></td><td>R</td><td>C</td><td></td></tr>
+                <tr><td>APIs de Servicios Financieros</td><td>A</td><td>C</td><td>R</td><td></td><td>C</td></tr>
+                <tr><td>Servicios de Soporte Técnico de Fabricantes</td><td>I</td><td>A</td><td>R</td><td></td><td>R</td></tr>
+                <tr><td>Nube de Respaldo (Cloud Backup)</td><td>A</td><td>C</td><td>R</td><td></td><td>C</td></tr>
+                <tr><td>Gestores de Dominios DNS</td><td>A</td><td>C</td><td>R</td><td></td><td></td></tr>
+                <tr><td>Plataformas de Reclutamiento y Selección</td><td></td><td>C</td><td>R</td><td></td><td></td></tr>
+                <tr><td>Canales de Redes Sociales Corporativas</td><td>I</td><td>C</td><td>R</td><td>R</td><td>C</td></tr>
+            </table>
+        </section>
+
+        <!-- SECCIÓN 6 -->
+        <section class="tarjeta">
+            <h2>SECCIÓN 6 - Planificación</h2>
+            
+            <h3>Activos seleccionados - análisis de amenaza y vulnerabilidad.</h3>
+            <table>
+                <tr>
+                    <th>Activo Afectado y Política Relacionada</th>
+                    <th>Amenaza</th>
+                    <th>Vulnerabilidad</th>
+                    <th>Consecuencia</th>
+                </tr>
+                <tr>
+                    <td>1. Base de Datos (Política: Base de Datos)</td>
+                    <td>Exfiltración o alteración maliciosa de información estructurada crítica.</td>
+                    <td>Ausencia de algoritmos criptográficos a nivel de columna y falta de MFA.</td>
+                    <td>Pérdida de confidencialidad de datos maestros y registros contables.</td>
+                </tr>
+                <tr>
+                    <td>2. ERP SAP/Oracle (Política: ERP Corporativo)</td>
+                    <td>Manipulación no autorizada de transacciones contables o fiscales.</td>
+                    <td>Falta de revisión periódica en la segregación de funciones (SOD).</td>
+                    <td>Fraude financiero interno, errores de timbrado de CFDI y multas.</td>
+                </tr>
+                <tr>
+                    <td>3. Monitoreo de Red (Política: Monitoreo de Red)</td>
+                    <td>Alteración maliciosa de umbrales de alerta o visibilidad de tráfico.</td>
+                    <td>Accesos administrativos expuestos sin restricción IP ni MFA forzado.</td>
+                    <td>Ceguera operativa de TI ante ciberataques incidentes o caídas de red.</td>
+                </tr>
+                <tr>
+                    <td>4. Credenciales (Política: Registros de Usuarios)</td>
+                    <td>Secuestro de sesión, phishing o fuerza bruta.</td>
+                    <td>Uso de contraseñas de baja entropía y falta de almacenes centralizados.</td>
+                    <td>Compromiso de identidades legítimas y libre movimiento lateral en la red.</td>
+                </tr>
+                <tr>
+                    <td>5. Impresoras (Política: Impresoras)</td>
+                    <td>Fuga o intercepción de documentación en formato físico clasificado.</td>
+                    <td>Impresión directa automatizada sin validación y almacenamiento en caché local.</td>
+                    <td>Acceso no autorizado de terceros a datos corporativos residuales.</td>
+                </tr>
+                <tr>
+                    <td>6. Laptops (Política: Equipos de Cómputo)</td>
+                    <td>Compromiso lógico o físico de endpoints por robo, pérdida o malware.</td>
+                    <td>Discos locales expuestos sin cifrar y uso de redes públicas sin túnel.</td>
+                    <td>Fuga masiva de propiedad intelectual y acceso ilegítimo al perímetro.</td>
+                </tr>
+                <tr>
+                    <td>7. Administración Remota (Política: Herramientas Remotas)</td>
+                    <td>Establecimiento de conexiones externas maliciosas (Backdoors).</td>
+                    <td>Consolas activas sin túnel seguro e inactividad de sesión prolongada.</td>
+                    <td>Toma de control técnico total de servidores y computadoras por atacantes.</td>
+                </tr>
+                <tr>
+                    <td>8. Servidores (Política: Servidores Físicos/Virtuales)</td>
+                    <td>Compromiso sistémico de la infraestructura central y ransomware.</td>
+                    <td>Omisión de bastionado operativo y segmentación de red laxa.</td>
+                    <td>Interrupción total de los servicios operativos de manufactura y ERP.</td>
+                </tr>
+                <tr>
+                    <td>9. Intranet (Política: Intranet)</td>
+                    <td>Intercepción de tráfico confidencial interno corporativo.</td>
+                    <td>Uso de protocolos HTTP no cifrados y accesos externos permitidos.</td>
+                    <td>Filtración hacia el internet de directrices estratégicas o manuales privados.</td>
+                </tr>
+                <tr>
+                    <td>10. Documentación (Política: Documentación y Procesos)</td>
+                    <td>Alteración, filtración o pérdida del know-how y propiedad intelectual.</td>
+                    <td>Falta de marcas de agua dinámicas, digitalización o inventarios oficiales.</td>
+                    <td>Pérdida de continuidad operativa e incumplimientos graves de calidad ISO.</td>
+                </tr>
+                <tr>
+                    <td>11. Servicios Nube (Política: Servicios SaaS/PaaS)</td>
+                    <td>Robo de cuentas en la nube o fugas de datos en plataformas de terceros.</td>
+                    <td>Autenticación basada en factores únicos y falta de auditorías al proveedor.</td>
+                    <td>Compromiso de comunicaciones corporativas y herramientas del sector eléctrico.</td>
+                </tr>
+                <tr>
+                    <td>12. Enlaces ISP (Política: Enlaces de Internet)</td>
+                    <td>Ataques volumétricos de Denegación de Servicio (DDoS) o cortes de línea.</td>
+                    <td>Carencia de firewalls perimetrales avanzados y enlaces redundantes.</td>
+                    <td>Aislamiento digital de la empresa, pérdida de conectividad con clientes y paros.</td>
+                </tr>
+                <tr>
+                    <td>13. Hosting Web (Política: Proveedores Hosting)</td>
+                    <td>Modificación fraudulenta de la web pública o explotación de fallos OWASP.</td>
+                    <td>Servidores sin Web Application Firewall (WAF) y omisión de parches.</td>
+                    <td>Daño a la reputación digital pública e interceptación de datos de clientes.</td>
+                </tr>
+                <tr>
+                    <td>14. Videoconferencias (Política: Plataformas de Mensajería)</td>
+                    <td>Intercepción o intrusión de terceros no autorizados en reuniones.</td>
+                    <td>Compartición de URLs públicas sin contraseña ni control de accesos.</td>
+                    <td>Fuga de información altamente confidencial sobre estrategias o personal.</td>
+                </tr>
+                <tr>
+                    <td>15. APIs Financieras (Política: APIs Financieras)</td>
+                    <td>Robo de tokens lógicos o consumo fraudulento de servicios financieros.</td>
+                    <td>Autenticación básica desactualizada y falta de restricciones por IP.</td>
+                    <td>Alteración en conciliaciones, afectaciones contables y facturación falsa.</td>
+                </tr>
+                <tr>
+                    <td>16. Soporte Técnico (Política: Soporte de Fabricantes)</td>
+                    <td>Uso indebido o malicioso de privilegios delegados a terceros externos.</td>
+                    <td>Accesos remotos sin supervisión sincrónica ni bitácoras formalizadas.</td>
+                    <td>Modificaciones operativas no autorizadas o implantación de brechas en planta.</td>
+                </tr>
+                <tr>
+                    <td>17. Cloud Backup (Política: Nube de Respaldo)</td>
+                    <td>Pérdida, secuestro corrupción de los respaldos de información remotos.</td>
+                    <td>Datos en tránsito sin cifrar y ausencia de pruebas periódicas de recuperación.</td>
+                    <td>Imposibilidad de restaurar la operación del negocio ante incidentes catastróficos.</td>
+                </tr>
+                <tr>
+                    <td>18. DNS (Política: Gestores de Dominios)</td>
+                    <td>Secuestro de dominios o suplantación de identidad digital.</td>
+                    <td>Ausencia de extensiones DNSSEC y falta de MFA en el panel registrador.</td>
+                    <td>Redirección maliciosa de clientes y empleados hacia entornos fraudulentos.</td>
+                </tr>
+                <tr>
+                    <td>19. Reclutamiento (Política: Plataformas de Reclutamiento)</td>
+                    <td>Exposición, robo o filtración accidental de datos personales de aspirantes.</td>
+                    <td>Recolección excesiva de Datos Personales de Identidad Personal (PII) y retención laxa.</td>
+                    <td>Sanciones legales, multas millonarias por el INAI e incumplimiento de la LFPDPPP.</td>
+                </tr>
+                <tr>
+                    <td>20. Redes Sociales (Política: Canales Redes Sociales)</td>
+                    <td>Uso fraudulento, hackeo de cuentas corporativas oficiales o desinformación.</td>
+                    <td>Credenciales compartidas de forma directa y falta de gestión centralizada.</td>
+                    <td>Daño reputacional severo a la marca corporativa de Viakon ante el mercado.</td>
+                </tr>
+            </table>
+
+            <h3>Escala de Probabilidad e Impacto</h3>
+            <table style="width: 50%;">
+                <tr><th>Índice</th><th>Valor</th></tr>
+                <tr><td>MUY BAJO (INSIGNIFICANTE)</td><td>1</td></tr>
+                <tr><td>BAJO (MENOR)</td><td>2</td></tr>
+                <tr><td>MODERADO (SIGNIFICATIVO)</td><td>3</td></tr>
+                <tr><td>PROBABLE (MAYOR)</td><td>4</td></tr>
+                <tr><td>CASI SEGURO (SEVERO)</td><td>5</td></tr>
+            </table>
+
+            <h3>Escala y criterios de interpretación y niveles de riesgo.</h3>
+            <p>La estrategia de administración está directamente afectada por el rango del riesgo de cada activo, lo que implica contar con una estrategia correspondiente al nivel del Riesgo.</p>
+            <table>
+                <tr>
+                    <th>Rango de Riesgo</th>
+                    <th>Nivel de Riesgo</th>
+                    <th>Estrategia de Administración</th>
+                </tr>
+                <tr><td>1 a 4</td><td>Bajo</td><td>Aceptar: Monitorear periódicamente sin inversión de recursos adicionales.</td></tr>
+                <tr><td>5 a 9</td><td>Medio</td><td>Mitigar / Transferir: Aplicar controles operativos estándar o seguros.</td></tr>
+                <tr><td>10 a 14</td><td>Alto</td><td>Mitigar: Implementar controles técnicos prioritarios en el corto plazo.</td></tr>
+                <tr><td>15 a 19</td><td>Muy Alto</td><td>Mitigar / Evitar: Intervención inmediata; rediseño de procesos o infraestructura.</td></tr>
+                <tr><td>20 a 25</td><td>Extremo</td><td>Eliminar / Mitigar Crítico: Detener o modificar la actividad de riesgo de inmediato; aplicar controles de seguridad avanzados de forma obligatoria.</td></tr>
+            </table>
+
+            <h3>Cálculo de Riesgo.</h3>
+            <div class="escenario-box">
+                <strong>Fórmula:</strong> Riesgo (R) = Probabilidad (P) * Impacto (I)
+            </div>
+            
+            <table>
+                <tr>
+                    <th>Activo Afectado y Política Relacionada</th>
+                    <th>P</th>
+                    <th>I</th>
+                    <th>R</th>
+                    <th>Nivel de Riesgo</th>
+                    <th>Estrategia de Administración</th>
+                </tr>
+                <tr><td>1. Base de Datos (Política Base de Datos)</td><td>4</td><td>5</td><td>20</td><td>Extremo</td><td>Eliminar / Mitigar</td></tr>
+                <tr><td>2. ERP SAP/Oracle (Política ERP Corporativo)</td><td>3</td><td>5</td><td>15</td><td>Muy Alto</td><td>Mitigar</td></tr>
+                <tr><td>3. Monitoreo de Red (Política Monitoreo de Red)</td><td>3</td><td>4</td><td>12</td><td>Alto</td><td>Mitigar</td></tr>
+                <tr><td>4. Credenciales (Política Registros de Usuarios)</td><td>5</td><td>5</td><td>25</td><td>Extremo</td><td>Eliminar / Mitigar</td></tr>
+                <tr><td>5. Impresoras (Política Impresoras)</td><td>3</td><td>3</td><td>9</td><td>Medio</td><td>Mitigar</td></tr>
+                <tr><td>6. Laptops (Política Equipos de Cómputo)</td><td>4</td><td>4</td><td>16</td><td>Muy Alto</td><td>Mitigar</td></tr>
+                <tr><td>7. Admón. Remota (Política Herramientas Remotas)</td><td>4</td><td>5</td><td>20</td><td>Extremo</td><td>Eliminar / Mitigar</td></tr>
+                <tr><td>8. Servidores (Política Servidores Físicos/Virtuales)</td><td>3</td><td>5</td><td>15</td><td>Muy Alto</td><td>Mitigar</td></tr>
+                <tr><td>9. Intranet (Política Intranet)</td><td>3</td><td>4</td><td>12</td><td>Alto</td><td>Mitigar</td></tr>
+                <tr><td>10. Documentación (Política Documentación y Procesos)</td><td>3</td><td>4</td><td>12</td><td>Alto</td><td>Mitigar</td></tr>
+                <tr><td>11. Servicios Nube (Política Servicios SaaS/PaaS)</td><td>4</td><td>5</td><td>20</td><td>Extremo</td><td>Eliminar / Mitigar</td></tr>
+                <tr><td>12. Enlaces ISP (Política Enlaces de Internet)</td><td>3</td><td>4</td><td>12</td><td>Alto</td><td>Mitigar / Transferir</td></tr>
+                <tr><td>13. Hosting Web (Política Proveedores Hosting)</td><td>4</td><td>5</td><td>20</td><td>Extremo</td><td>Mitigar</td></tr>
+                <tr><td>14. Videoconferencias (Política Plataformas de Mensajería)</td><td>2</td><td>3</td><td>6</td><td>Medio</td><td>Mitigar</td></tr>
+                <tr><td>15. APIs Financieras (Política APIs Financieras)</td><td>2</td><td>5</td><td>10</td><td>Alto</td><td>Eliminar / Mitigar</td></tr>
+                <tr><td>16. Soporte Técnico (Política Soporte de Fabricantes)</td><td>3</td><td>4</td><td>12</td><td>Alto</td><td>Mitigar</td></tr>
+                <tr><td>17. Cloud Backup (Política Nube de Respaldo)</td><td>3</td><td>5</td><td>15</td><td>Muy Alto</td><td>Mitigar</td></tr>
+                <tr><td>18. DNS (Política Gestores de Dominios)</td><td>4</td><td>5</td><td>20</td><td>Extremo</td><td>Eliminar / Mitigar</td></tr>
+                <tr><td>19. Reclutamiento (Política Plataformas de Reclutamiento)</td><td>3</td><td>4</td><td>12</td><td>Alto</td><td>Mitigar</td></tr>
+                <tr><td>20. Redes Sociales (Política Canales Redes Sociales)</td><td>2</td><td>4</td><td>8</td><td>Medio</td><td>Mitigar</td></tr>
+            </table>
+
+            <h3>Matriz de Riesgo.</h3>
+            <table style="text-align: center;">
+                <tr>
+                    <th>05- SEVERO</th>
+                    <td style="background-color: #fef08a; color: black;">05</td>
+                    <td style="background-color: #fef08a; color: black;">10. APIs Financieras</td>
+                    <td style="background-color: #fca5a5; color: black;">15. ERP, Servidores, Cloud Backup</td>
+                    <td style="background-color: #f87171; color: black;">20. Base de datos, Administración remota, Servicios en la nube, Hosting web, DNS</td>
+                    <td style="background-color: #ef4444; color: white; font-weight: bold;">25. Credenciales</td>
+                </tr>
+                <tr>
+                    <th>04- MAYOR</th>
+                    <td style="background-color: #bbf7d0; color: black;">04</td>
+                    <td style="background-color: #fef08a; color: black;">08. Redes Sociales</td>
+                    <td style="background-color: #fca5a5; color: black;">12. Red, Intranet, Documentación/procesos, Enlaces ISP, Soporte, Reclutamiento</td>
+                    <td style="background-color: #fca5a5; color: black;">16. Equipos de Cómputo</td>
+                    <td style="background-color: #f87171; color: black;">20</td>
+                </tr>
+                <tr>
+                    <th>03- SIGNIFICATIVO</th>
+                    <td style="background-color: #bbf7d0; color: black;">03</td>
+                    <td style="background-color: #fef08a; color: black;">06. Videoconferencias</td>
+                    <td style="background-color: #fef08a; color: black;">09. Impresoras</td>
+                    <td style="background-color: #fca5a5; color: black;">12</td>
+                    <td style="background-color: #fca5a5; color: black;">15</td>
+                </tr>
+                <tr>
+                    <th>02- MENOR</th>
+                    <td style="background-color: #bbf7d0; color: black;">02</td>
+                    <td style="background-color: #bbf7d0; color: black;">04</td>
+                    <td style="background-color: #fef08a; color: black;">06</td>
+                    <td style="background-color: #fef08a; color: black;">08</td>
+                    <td style="background-color: #fef08a; color: black;">10</td>
+                </tr>
+                <tr>
+                    <th>01- INSIGNIFICANTE</th>
+                    <td style="background-color: #bbf7d0; color: black;">01</td>
+                    <td style="background-color: #bbf7d0; color: black;">02</td>
+                    <td style="background-color: #bbf7d0; color: black;">03</td>
+                    <td style="background-color: #bbf7d0; color: black;">04</td>
+                    <td style="background-color: #fef08a; color: black;">05</td>
+                </tr>
+                <tr>
+                    <th></th>
+                    <th>01</th>
+                    <th>02</th>
+                    <th>03</th>
+                    <th>04</th>
+                    <th>05</th>
+                </tr>
+            </table>
+
+            <h3>Mecanismos de Control.</h3>
+            <table>
+                <tr>
+                    <th>Activo Afectado y Política Relacionada</th>
+                    <th>Explicación del Mecanismo de Control y Clasificación</th>
+                </tr>
+                <tr><td>1. Base de Datos (Política Base de Datos)</td><td>Cifrado AES-256 en columnas sensibles y MFA administrativo (Preventivo); Monitoreo de consultas anómalas en SIEM (Detectivo); respaldos cada 4 horas (Correctivo).</td></tr>
+                <tr><td>2. ERP SAP/Oracle (Política ERP Corporativo)</td><td>Autenticación robusta de doble factor y segregación de perfiles (Preventivo); flujos de aprobación gerencial (Preventivo); cierre automático de sesión por inactividad (Preventivo).</td></tr>
+                <tr><td>3. Monitoreo de Red (Política Monitoreo de Red)</td><td>Whitelisting de IPs administrativas y MFA obligado (Preventivo); bitácoras y registros de cambios en la topología (Detectivo); retención inmutable de logs syslog por 6 meses (Detectivo).</td></tr>
+                <tr><td>4. Credenciales (Política Registros de Usuarios)</td><td>Longitud mínima de 12 caracteres y cambio obligatorio cada 90 días (Preventivo); despliegue de gestor de contraseñas corporativo (Preventivo); validación de identidad en reseteos (Correctivo).</td></tr>
+                <tr><td>5. Impresoras (Política Impresoras)</td><td>Retención de trabajos de impresión mediante liberación por tarjeta RFID o PIN (Preventivo); concientización de impresión selectiva (Preventivo); purga manual/automatizada de la memoria caché (Correctivo).</td></tr>
+                <tr><td>6. Laptops (Política Equipos de Cómputo)</td><td>Cifrado Full Disk (FDE) vía TPM 2.0 y uso obligado de túnel VPN corporativo (Preventivo); agentes antivirus/EDR en endpoints (Preventivo/Detectivo); ejecución remota de protocolo de borrado técnico Kill Pill (Correctivo).</td></tr>
+                <tr><td>7. Admón. Remota (Política Herramientas Remotas)</td><td>Conexión remota permitida únicamente bajo canal cifrado VPN corporativo (Preventivo); desconexión forzada tras 10 minutos de inactividad (Preventivo); supervisión obligatoria en pantalla por el usuario final (Detectivo).</td></tr>
+                <tr><td>8. Servidores (Política Servidores Físicos/Virtuales)</td><td>Restricción física mediante biometría y aplicación de guías de bastionado CIS (Preventivo); aislamiento lógico de servicios críticos mediante VLANs (Preventivo); ejecución de copias semanales completas (Correctivo).</td></tr>
+                <tr><td>9. Intranet (Política Intranet)</td><td>Cifrado forzado en tránsito mediante protocolo HTTPS bajo HSTS y bloqueo externo por defecto (Preventivo); validación mensual de vigencia por dueños de proceso (Detectivo); control transaccional e historial en CMS (Detectivo).</td></tr>
+                <tr><td>10. Documentación (Política Documentación y Procesos)</td><td>Registro mandatorio en inventario maestro oficial y etiquetado con marcas de agua de confidencialidad (Preventivo); digitalización de archivos físicos (Preventivo); flujo formal de desclasificación y destrucción segura (Correctivo).</td></tr>
+                <tr><td>11. Servicios Nube (Política Servicios SaaS/PaaS)</td><td>Federación de identidad (SSO), cifrado TLS y MFA obligatorio (Preventivo); procesos institucionales de altas/bajas gobernados por TI (Preventivo); evaluación de informes de cumplimiento SOC 2/ISO 27001 (Detectivo); revisión trimestral de accesos (Detectivo).</td></tr>
+                <tr><td>12. Enlaces ISP (Política Enlaces de Internet)</td><td>Inspección profunda de paquetes (DPI) vía firewalls perimetrales y redundancia física con ruteo dinámico BGP (Preventivo); monitoreo 24/7 de ancho de banda (Detectivo); contratos SLA Anti-DDoS y protocolos de escalamiento ante caídas (Correctivo).</td></tr>
+                <tr><td>13. Hosting Web (Política Proveedores Hosting)</td><td>Certificados SSL/TLS vigentes e implementación activa de un firewall de aplicación WAF (Preventivo); actualización periódica de parches y plugins (Preventivo); escaneo automatizado mensual de vulnerabilidades (Detectivo).</td></tr>
+                <tr><td>14. Videoconferencias (Política Plataformas de Mensajería)</td><td>Uso obligatorio de cuentas institucionales federadas con MFA y geobloqueos (Preventivo); inhabilitación por completo de enlaces públicos anónimos (Preventivo); configuración de reuniones con sala de espera y validación de participantes (Detectivo).</td></tr>
+                <tr><td>15. APIs Financieras (Política APIs Financieras)</td><td>Autenticación robusta basada en OAuth 2.0 / Mutual TLS y rotación de llaves (Preventivo); whitelisting estricto de IPs consumidoras a nivel Gateway (Preventivo); logs centralizados e inmutables bajo política WORM por 1 año (Detectivo).</td></tr>
+                <tr><td>16. Soporte Técnico (Política Soporte de Fabricantes)</td><td>Accesos únicamente por VPNs SSL limitadas a través de Bastion Hosts y aprobación formal previa (Preventivo); supervisión obligatoria en tiempo real (Shadowing) (Detectivo); grabación integral en video e historial inmutable de comandos (Detectivo).</td></tr>
+                <tr><td>17. Cloud Backup (Política Nube de Respaldo)</td><td>Cifrado de extremo a extremo (E2EE) y almacenamiento inmutable con separación lógica (Air-gap) (Preventivo); estrategia de respaldo automático diario basada en el principio 3-2-1 (Preventivo); simulacros formales de DRP y validación técnica de integridad (Correctivo).</td></tr>
+                <tr><td>18. DNS (Política Gestores de Dominios)</td><td>Implementación estricta de extensiones de seguridad DNSSEC y panel blindado con MFA (Preventivo); control y autorización previa para cambios de infraestructura (Preventivo); auditoría trimestral de depuración de registros (Detectivo).</td></tr>
+                <tr><td>19. Reclutamiento (Política Plataformas de Reclutamiento)</td><td>Integración obligatoria de avisos de privacidad y minimización estricta en la recolección de datos sensibles (Preventivo); ejecución mensual automatizada de purga para datos huérfanos (Correctivo); retención máxima establecida e inquebrantable de 12 meses (Correctivo).</td></tr>
+                <tr><td>20. Redes Sociales (Política Canales Redes Sociales)</td><td>Acceso exclusivo vía roles RBAC asociados a identidades con MFA (Preventivo); integración única obligatoria en plataforma unificada de Marketing (Preventivo); rotación técnica de credenciales cada 90 días (Preventivo); flujos formales de revisión y aprobación previa de contenidos (Detectivo).</td></tr>
+            </table>
+        </section>
+
+        <!-- SECCIÓN 7 -->
+        <section class="tarjeta">
+            <h2>SECCIÓN 7 - Soporte</h2>
+            
+            <h3>Justificación Ejecutiva: ¿Qué estamos trabajando y por qué es necesario?</h3>
+            <p><strong>Comunicado a la Dirección de Viakon (Grupo Xignux)</strong></p>
+            
+            <h4>¿Qué estamos trabajando?</h4>
+            <p>En esta fase del proyecto estamos implementando la Cláusula 7 (Soporte) del estándar ISO/IEC 27001. Esto significa que estamos dotando al Sistema de Gestión de Seguridad de la Información (SGSI) de los recursos humanos, tecnológicos y de conocimiento necesarios para que funcione correctamente en el piso de manufactura y en las áreas administrativas.</p>
+            
+            <h4>¿Por qué es necesario?</h4>
+            <p>La tecnología por sí sola no detiene los incidentes. El factor humano sigue siendo el eslabón más vulnerable en la cadena de seguridad. Es indispensable asegurar que nuestros "Energizadores" (operarios, técnicos y administrativos) comprendan su rol en la protección de los activos de Viakon.</p>
+            <p>Sin un soporte adecuado (recursos, competencia y concientización), los controles técnicos implementados en servidores y bases de datos pueden ser evadidos mediante ingeniería social o malas prácticas operativas (ej. contraseñas compartidas o sesiones abiertas en planta).</p>
+            
+            <h4>Beneficios para el Negocio (ROI de Seguridad):</h4>
+            <ol>
+                <li><strong>Reducción de Riesgos Operativos:</strong> Disminución en la probabilidad de paros de línea por infecciones de malware o accesos no autorizados en terminales compartidas.</li>
+                <li><strong>Eficiencia Normativa:</strong> Asegura que la información documentada (manuales y procedimientos) esté controlada y siempre disponible para auditorías de calidad (ISO 9001/14001).</li>
+                <li><strong>Cultura de Prevención:</strong> Transforma a los Energizadores en la primera línea de defensa de la empresa, protegiendo la confidencialidad de nuestras fórmulas, datos financieros y registros de personal.</li>
+            </ol>
+            <img src="./archivos/img_pr03_1.png">
+            <h3>Minuta De Reunión Corporativa</h3>
+            <div class="escenario-box">
+                <strong>Empresa:</strong> Viakon<br>
+                <strong>Departamento:</strong> Dirección de Administración y TI<br>
+                <strong>Sistema:</strong> Sistema de Gestión de Seguridad de la Información (SGSI)
+            </div>
+
+            <table>
+                <tr><th>Detalle de la sesión</th><th>Información</th></tr>
+                <tr><td>Asunto</td><td>Definición Operativa - Cláusula 7: Soporte (Recursos, Competencia y Concientización)</td></tr>
+                <tr><td>Fecha</td><td>6 de mayo de 2026</td></tr>
+                <tr><td>Sede</td><td>DCN Tower / Sala de Juntas Principal (Modalidad Híbrida)</td></tr>
+                <tr><td>Horario</td><td>Inicio: 10:00 hrs. | Término: 11:00 hrs.</td></tr>
+            </table>
+
+            <h4>1. Objetivo de la Sesión</h4>
+            <p>Establecer y documentar las directrices de la Cláusula 7 (Soporte) del SGSI, garantizando la asignación de recursos tecnológicos, y estructurando los programas de competencia, concientización y control de información documentada dirigidos específicamente a los operarios, técnicos de mantenimiento y personal de planta.</p>
+
+            <h4>2. Participantes (Comité de Implementación SGSI)</h4>
+            <table>
+                <tr><th>Nombre</th><th>Rol Asignado en el Proyecto</th><th>Asistencia</th></tr>
+                <tr><td>Montelongo Martínez Laura Ivon</td><td>Líder de Proyecto / Oficial de Seguridad (CISO)</td><td>✔</td></tr>
+                <tr><td>Benites Rangel Cesar Yahir</td><td>Especialista en Infraestructura TI</td><td>✔</td></tr>
+                <tr><td>Cortes Beltrán Carol Elizabeth</td><td>Coordinadora de Cumplimiento Normativo</td><td>✔</td></tr>
+                <tr><td>Guerra Ramírez América Fabiola</td><td>Analista de Gestión de Riesgos</td><td>✔</td></tr>
+                <tr><td>Larios Guerra Gustavo Michael</td><td>Administrador de Sistemas y Redes</td><td>✔</td></tr>
+                <tr><td>Puente Luna Bruno Axel</td><td>Arquitecto de Servicios en la Nube</td><td>✔</td></tr>
+                <tr><td>Rodríguez Moreno Cristian Alejandro</td><td>Analista de Ciberseguridad</td><td>✔</td></tr>
+            </table>
+
+            <h4>3. Invitados clave (Área Operativa y Técnica)</h4>
+            <table>
+                <tr><th>Rol Representativo</th><th>Área</th><th>Asistencia</th></tr>
+                <tr><td>Gerente de Producción (Invitado)</td><td>Manufactura y Operaciones</td><td>✔</td></tr>
+                <tr><td>Coordinador de Mantenimiento (Invitado)</td><td>Operarios y Técnicos de Piso</td><td>✔</td></tr>
+            </table>
+
+            <h4>4. Temas Tratados y Acuerdos Formales</h4>
+            <p><strong>Punto 1: Asignación de Recursos y Entorno Técnico (7.1)</strong></p>
+            <ul>
+                <li><strong>Discusión:</strong> El Comité evaluó las vulnerabilidades físicas en las HMI (Human-Machine Interface), escáneres de inventario y terminales compartidas en el piso de producción.</li>
+                <li><strong>Acuerdo:</strong> Aprobación de despliegue de políticas GPO (Group Policy Object) para forzar el bloqueo automático de sesiones tras 5 minutos de inactividad. Se restringe administrativamente el montaje de dispositivos USB masivos en todos los equipos de manufactura.</li>
+            </ul>
+
+            <p><strong>Punto 2: Competencia, Concientización y Comunicación Técnica (7.2, 7.3 y 7.4)</strong></p>
+            <ul>
+                <li><strong>Discusión:</strong> Necesidad de erradicar prácticas de riesgo como contraseñas en post-its o el préstamo de credenciales en los cambios de turno.</li>
+                <li><strong>Acuerdo:</strong> Implementación inmediata del "Programa de Concientización Técnica de Piso". Se utilizarán "Charlas de Seguridad" (Safety Talks) de 5 minutos antes de iniciar operaciones, utilizando infografías de alto impacto visual.</li>
+            </ul>
+
+            <p><strong>Punto 3: Información Documentada para Operarios (7.5)</strong></p>
+            <ul>
+                <li><strong>Discusión:</strong> Disponibilidad de manuales sin comprometer el control de versiones ni la fuga de información.</li>
+                <li><strong>Acuerdo:</strong> Migración hacia un repositorio centralizado. Las copias impresas en planta llevarán marca de agua dinámica, clasificación de confidencialidad e identificador de versión controlado por el equipo de TI.</li>
+            </ul>
+
+            <h4>5. Plan de Acción y Responsabilidades</h4>
+            <table>
+                <tr><th>Tarea / Compromiso</th><th>Responsables</th><th>Estatus</th></tr>
+                <tr><td>Diseñar cápsulas de concientización visual (infografías) para los tableros de las líneas de producción.</td><td>Cortes Beltrán C. E.<br>Guerra Ramírez A. F.</td><td>En proceso</td></tr>
+                <tr><td>Imprimir, clasificar y distribuir manuales técnicos seguros en las estaciones operativas (HMI).</td><td>Benites Rangel C. Y.<br>Larios Guerra G. M.<br>Puente Luna B. A.</td><td>Pendiente</td></tr>
+                <tr><td>Auditar y configurar el bloqueo automático de sesiones en las terminales compartidas por operarios.</td><td>Montelongo Martínez L. I.<br>Rodríguez Moreno C. A.</td><td>Pendiente</td></tr>
+                <tr><td>Validar con Operaciones los horarios para las "Charlas de Seguridad" en los cambios de turno.</td><td>Montelongo Martínez L. I.</td><td>Pendiente</td></tr>
+            </table>
+
+            <h4>6. Próxima Reunión de Seguimiento</h4>
+            <ul>
+                <li><strong>Fecha programada:</strong> viernes, 22 de mayo de 2026.</li>
+                <li><strong>Objetivo:</strong> Revisar el material didáctico diseñado para los operarios técnicos y validar el despliegue del bloqueo de sesiones en terminales compartidas.</li>
+            </ul>
+
+            <h4>7. Cierre y Aprobación</h4>
+            <p>Se dan por leídos y aprobados los lineamientos normativos de la Cláusula 7 para su integración oficial en el manual maestro del SGSI de Viakon.</p>
+
+            <p><strong>Firmas de Conformidad del Comité:</strong></p>
+            <div class="firmas-grid">
+                <div class="firma-item">
+                    <img src="./archivos/img_firma_1.png" alt="Firma">
+                    <p><strong>Montelongo Martínez Laura Ivon</strong><br>Líder de Proyecto / CISO</p>
+                </div>
+                <div class="firma-item">
+                    <img src="./archivos/img_firma_2.png" alt="Firma">
+                    <p><strong>Benites Rangel Cesar Yahir</strong><br>Especialista en Infraestructura TI</p>
+                </div>
+                <div class="firma-item">
+                    <img src="./archivos/img_firma_3.png" alt="Firma">
+                    <p><strong>Cortés Beltrán Carol Elizabeth</strong><br>Coordinadora de Cumplimiento Normativo</p>
+                </div>
+                <div class="firma-item">
+                    <img src="./archivos/img_firma_4.png" alt="Firma">
+                    <p><strong>Guerra Ramírez América Fabiola</strong><br>Analista de Gestión de Riesgos</p>
+                </div>
+                <div class="firma-item">
+                    <img src="./archivos/img_firma_5.png" alt="Firma">
+                    <p><strong>Larios Guerra Gustavo Michael</strong><br>Administrador de Sistemas y Redes</p>
+                </div>
+                <div class="firma-item">
+                    <img src="./archivos/img_firma_6.png" alt="Firma">
+                    <p><strong>Puente Luna Bruno Axel</strong><br>Arquitecto de Servicios en la Nube</p>
+                </div>
+                <div class="firma-item">
+                    <img src="./archivos/img_firma_7.png" alt="Firma">
+                    <p><strong>Rodríguez Moreno Cristian Alejandro</strong><br>Analista de Ciberseguridad</p>
+                </div>
+            </div>
+
+            <!-- PRESENTACIÓN CANVA -->
+            <h2 style="margin-top:40px;">Presentación Canva</h2>
+            <div style="position:relative; width:100%; height:0; padding-top:56.25%; margin-top:20px; overflow:hidden; border-radius:18px; box-shadow:0px 8px 20px rgba(0,0,0,0.20);">
+                <iframe loading="lazy" src="https://www.canva.com/design/DAHI8daKxF0/hDQLCAxXKVa9RXOZK8RULw/view?embed" allowfullscreen allow="fullscreen" style="position:absolute; width:100%; height:100%; top:0; left:0; border:none;"></iframe>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 8 -->
+        <section class="tarjeta">
+            <h2>SECCIÓN 8 - Operación</h2>
+            <h3>Política seleccionada: Servidores Físicos y Virtuales</h3>
+            
+            <h4>1. Plan (Planear)</h4>
+            <p>En esta fase se establecen los objetivos, riesgos, controles y recursos necesarios para garantizar la seguridad de los servidores físicos y virtuales dentro de la organización.</p>
+            
+            <p><strong>Objetivos</strong></p>
+            <ul>
+                <li>Proteger el acceso físico y lógico a los servidores críticos.</li>
+                <li>Implementar segmentación de red mediante VLANs para aislar servicios sensibles.</li>
+                <li>Garantizar la disponibilidad e integridad de la información mediante respaldos confiables.</li>
+                <li>Aplicar configuraciones seguras (hardening) en sistemas operativos Windows y Linux.</li>
+                <li>Reducir vulnerabilidades y riesgos asociados a accesos no autorizados y fallos operativos.</li>
+            </ul>
+
+            <p><strong>Riesgos identificados</strong></p>
+            <ul>
+                <li>Acceso físico no autorizado al centro de datos.</li>
+                <li>Pérdida de información por fallos de hardware o errores humanos.</li>
+                <li>Propagación lateral de ataques debido a una segmentación deficiente.</li>
+                <li>Explotación de vulnerabilidades por configuraciones inseguras.</li>
+                <li>Interrupción de servicios críticos por fallas de seguridad.</li>
+            </ul>
+
+            <p><strong>Actividades planificadas</strong></p>
+            <ul>
+                <li>Instalar controles biométricos, cámaras de vigilancia y cerraduras electrónicas en el área de servidores.</li>
+                <li>Definir VLANs según el tipo de servicio para mejorar el aislamiento de red: Base de datos, Aplicaciones, Servicios web, Administración y monitoreo.</li>
+                <li>Implementar un calendario automatizado de respaldos semanales y pruebas de restauración.</li>
+                <li>Aplicar políticas de hardening en servidores Windows y Linux.</li>
+                <li>Configurar firewalls, antivirus y sistemas de detección de intrusos.</li>
+                <li>Establecer monitoreo continuo de eventos y registros de seguridad.</li>
+                <li>Definir responsables de monitoreo, mantenimiento y respuesta a incidentes.</li>
+            </ul>
+
+            <p><strong>Configuraciones de hardening</strong></p>
+            <ul>
+                <li>Deshabilitación de puertos y servicios innecesarios.</li>
+                <li>Restricción de accesos remotos no autorizados.</li>
+                <li>Configuración segura de contraseñas y políticas de autenticación.</li>
+                <li>Actualización y parchado periódico de sistemas operativos.</li>
+                <li>Configuración de firewall local.</li>
+                <li>Activación de registros y auditorías de seguridad.</li>
+                <li>Implementación de antivirus y herramientas EDR.</li>
+            </ul>
+
+            <p><strong>Recursos necesarios</strong></p>
+            <ul>
+                <li>Software de respaldo y recuperación.</li>
+                <li>Herramientas de virtualización.</li>
+                <li>Equipos biométricos y sistemas de videovigilancia.</li>
+                <li>Firewalls y herramientas de monitoreo.</li>
+                <li>Personal de TI y seguridad informática capacitado.</li>
+                <li>Documentación de procedimientos y políticas de seguridad.</li>
+            </ul>
+
+            <p><strong>Indicadores y métricas</strong></p>
+            <table>
+                <tr><th>Indicador</th><th>Meta</th></tr>
+                <tr><td>Respaldos exitosos</td><td>≥ 98%</td></tr>
+                <tr><td>Accesos físicos no autorizados</td><td>0</td></tr>
+                <tr><td>Cumplimiento de hardening</td><td>100%</td></tr>
+                <tr><td>Tiempo de recuperación ante fallos (RTO)</td><td>< 2 horas</td></tr>
+                <tr><td>Disponibilidad de servidores</td><td>99.9%</td></tr>
+                <tr><td>Vulnerabilidades críticas detectadas</td><td>0</td></tr>
+            </table>
+
+            <p><strong>Normativas y buenas prácticas relacionadas</strong></p>
+            <ul>
+                <li>ISO 27001</li>
+                <li>NIST Cybersecurity Framework</li>
+                <li>CIS Benchmarks</li>
+                <li>Políticas internas de seguridad de la organización</li>
+            </ul>
+
+            <h4>2. Do (Hacer)</h4>
+            <p>En esta fase se implementan las medidas y controles definidos durante la planificación.</p>
+            <p><strong>Acciones realizadas</strong></p>
+            <ul>
+                <li>Se instalaron lectores biométricos, cámaras de vigilancia y controles de acceso físico.</li>
+                <li>Se configuraron VLANs para separar y proteger los servicios críticos.</li>
+                <li>Se implementó una estrategia de respaldos completos semanales con validación automática de integridad.</li>
+                <li>Se realizaron pruebas periódicas de restauración de información.</li>
+                <li>Se deshabilitaron servicios y puertos innecesarios en los servidores.</li>
+                <li>Se aplicaron actualizaciones de seguridad y configuraciones seguras en Windows y Linux.</li>
+                <li>Se configuraron firewalls y sistemas de monitoreo de eventos.</li>
+                <li>Se habilitó el registro centralizado de logs y alertas de seguridad.</li>
+            </ul>
+            <p><strong>Evidencias</strong></p>
+            <ul>
+                <li>Bitácoras de acceso físico.</li>
+                <li>Reportes de respaldos exitosos.</li>
+                <li>Resultados de pruebas de restauración.</li>
+                <li>Documentación de VLANs implementadas.</li>
+                <li>Checklist de hardening aplicado.</li>
+                <li>Reportes de monitoreo y eventos de seguridad.</li>
+                <li>Evidencias de actualización y parchado de servidores.</li>
+            </ul>
+
+            <h4>3. Check (Verificar)</h4>
+            <p>En esta etapa se evalúa la efectividad de los controles implementados y el cumplimiento de los objetivos de seguridad establecidos.</p>
+            <p><strong>Actividades de verificación</strong></p>
+            <ul>
+                <li>Auditoría de accesos físicos al centro de datos.</li>
+                <li>Validación de restauración de respaldos.</li>
+                <li>Escaneo de vulnerabilidades en servidores físicos y virtuales.</li>
+                <li>Revisión de segmentación de red y reglas de firewall.</li>
+                <li>Evaluación del cumplimiento de hardening.</li>
+                <li>Monitoreo de logs y eventos de seguridad.</li>
+                <li>Comparación de resultados obtenidos contra los indicadores definidos.</li>
+            </ul>
+            <p><strong>Resultados esperados</strong></p>
+            <ul>
+                <li>Reducción de accesos no autorizados.</li>
+                <li>Respaldos funcionales y recuperables.</li>
+                <li>Disminución de vulnerabilidades críticas.</li>
+                <li>Mejor aislamiento entre servicios.</li>
+                <li>Mayor disponibilidad de los servidores.</li>
+                <li>Detección temprana de incidentes de seguridad.</li>
+            </ul>
+            <p><strong>Métricas de evaluación</strong></p>
+            <table>
+                <tr><th>Métrica</th><th>Resultado esperado</th></tr>
+                <tr><td>Respaldos exitosos</td><td>100%</td></tr>
+                <tr><td>Accesos físicos no autorizados</td><td>0</td></tr>
+                <tr><td>Vulnerabilidades críticas</td><td>Reducción significativa</td></tr>
+                <tr><td>Cumplimiento de hardening</td><td>100%</td></tr>
+                <tr><td>Disponibilidad de servicios</td><td>≥ 99.9%</td></tr>
+            </table>
+
+            <h4>4. Act (Actuar)</h4>
+            <p>Con base en los resultados obtenidos durante la verificación, se implementan acciones correctivas y mejoras continuas para fortalecer la seguridad de los servidores.</p>
+            <p><strong>Acciones de mejora</strong></p>
+            <ul>
+                <li>Actualizar periódicamente las políticas de seguridad.</li>
+                <li>Mejorar los mecanismos de autenticación física y lógica.</li>
+                <li>Automatizar monitoreo, alertas y generación de reportes.</li>
+                <li>Implementar revisiones mensuales de hardening.</li>
+                <li>Corregir configuraciones inseguras detectadas en auditorías.</li>
+                <li>Optimizar procedimientos de respaldo y recuperación.</li>
+                <li>Ajustar reglas de segmentación y firewall según nuevas amenazas.</li>
+                <li>Realizar simulacros de recuperación ante desastres.</li>
+                <li>Capacitar continuamente al personal en buenas prácticas de seguridad informática.</li>
+            </ul>
+            <p><strong>Mejora continua</strong></p>
+            <p>La aplicación del ciclo PDCA permite fortalecer continuamente la seguridad de los servidores físicos y virtuales, optimizando la disponibilidad, integridad y confidencialidad de la información. Asimismo, contribuye a reducir riesgos relacionados con accesos no autorizados, pérdida de datos, vulnerabilidades críticas y fallas operativas, garantizando una gestión alineada con estándares y buenas prácticas de seguridad de la información.</p>
+        </section>
+
+        <!-- SECCIÓN 9 -->
+        <section class="tarjeta">
+            <h2>SECCIÓN 9 - Evaluación del desempeño</h2>
+            
+            <h3>Objetivo de la Auditoría</h3>
+            <p>Evaluar la eficacia del Sistema de Gestión de Seguridad de la Información (SGSI) implementado en Viakon, verificando la conformidad de los controles técnicos y administrativos con los requisitos de la norma ISO/IEC 27001:2022 y las políticas internas.</p>
+
+            <div class="escenario-box">
+                <h4 style="color: #38bdf8; margin-top: 0;">Formato de Entrevista de Auditoría</h4>
+                <p>Este instrumento evidencia la interacción real con los dueños de procesos para validar los controles técnicos.</p>
+                <ul style="list-style: none; padding-left: 0; margin-bottom: 0;">
+                    <li><strong>Fecha:</strong> 6 de mayo de 2026</li>
+                    <li><strong>Auditor Líder:</strong> Laura Ivon Montelongo Martínez</li>
+                    <li><strong>Auditado:</strong> Administrador de Base de Datos (DBA)</li>
+                    <li><strong>Objetivo:</strong> Verificar la retención de logs y exportación de alertas al SIEM corporativo.</li>
+                </ul>
+            </div>
+
+            <h4>Transcripción de Evidencia:</h4>
+            <div class="alerta-amarilla">
+                <p><strong>Auditor:</strong> "De acuerdo con la política BD-01, todas las consultas a tablas con información financiera deben ser auditadas. ¿Puede mostrarme en la consola de Splunk los registros de actividad del último mes correspondientes a los usuarios sysadmin?"</p>
+                <p><strong>Auditado:</strong> "Actualmente, Splunk solo está ingiriendo logs perimetrales del firewall y del Active Directory. Los logs transaccionales del motor SQL se guardan de forma local en el servidor de base de datos debido a un problema de licenciamiento en la cuota de ingesta de datos."</p>
+                <p><strong>Auditor:</strong> "¿Cuánto tiempo de retención tienen esos logs locales y quién tiene acceso a ellos?"</p>
+                <p><strong>Auditado:</strong> "Se sobrescriben cada 7 días por falta de espacio en disco. Como DBA, yo tengo acceso directo a la carpeta contenedora."</p>
+            </div>
+            <p><strong>Conclusión de la Entrevista:</strong> Se confirma la vulnerabilidad. No hay segregación de funciones en la auditoría de logs (el DBA audita sus propios accesos) y no se cumple la retención mínima de 6 meses exigida por la norma.</p>
+
+            <h3 style="margin-top: 40px; font-size: 1.6em;">I. GESTIÓN DE ACTIVOS INTERNOS</h3>
+            
+            <h4>1. Cédula de Auditoría: Base de Datos</h4>
+            <p><strong>Objetivo de Control:</strong> Garantizar la Confidencialidad e Integridad de la información crítica mediante algoritmos criptográficos y control de acceso privilegiado.</p>
+            <table>
+                <tr><th>ID</th><th>Control</th><th>Parámetro de Auditoría (Estándar Técnico)</th><th>Método de Comprobación y Evidencia Objetiva</th><th>Resultado</th><th>Riesgo</th></tr>
+                <tr><td>BD-01</td><td>Cifrado TDE y enmascaramiento dinámico de datos (DDM) en columnas críticas.</td><td>Verificación de cifrado</td><td>Extracción de configuración del motor SQL. Tablas financieras cifradas bajo estándar AES-256.</td><td>CUMPLE</td><td>Bajo</td></tr>
+                <tr><td>BD-02</td><td>Autenticación multifactor (MFA) obligatoria para roles sysadmin y db_owner.</td><td>Revisión de políticas</td><td>Análisis de logs de acceso administrativo cruzados con plataforma de identidad corporativa.</td><td>CUMPLE</td><td>Bajo</td></tr>
+                <tr><td>BD-03</td><td>Trazabilidad de consultas y exfiltración de datos mediante SIEM.</td><td>Revisión de logs</td><td>Auditoría de dashboards en Splunk; no se encontraron registros de búsquedas SPL para el último mes.</td><td>NO CUMPLE</td><td>Alto</td></tr>
+                <tr><td>BD-04</td><td>Flujo de autorización para escalamiento de privilegios (Just-In-Time Access).</td><td>Validación de tickets</td><td>Tickets de gestión de accesos (IAM) cotejados con matriz de dueños de información.</td><td>CUMPLE</td><td>Bajo</td></tr>
+                <tr><td>BD-05</td><td>Resiliencia de datos: Backups incrementales cada 4h y rotación criptográfica.</td><td>Revisión de repositorios</td><td>Repositorio de llaves (Key Vault) auditable y consola de almacenamiento inmutable.</td><td>CUMPLE</td><td>Bajo</td></tr>
+            </table>
+            <div class="alerta-amarilla"><strong>Dictamen Final:</strong> CUMPLIMIENTO PARCIAL. Se requiere integrar los logs de auditoría de BD al sistema SIEM de inmediato para garantizar la trazabilidad de consultas anómalas.</div>
+
+            <h4>2. Cédula de Auditoría: ERP Corporativo (SAP/Oracle)</h4>
+            <p><strong>Objetivo de Control:</strong> Mitigar riesgos de fraude interno y asegurar la inalterabilidad de los registros contables y fiscales.</p>
+            <table>
+                <tr><th>ID</th><th>Control</th><th>Parámetro de Auditoría (Estándar Técnico)</th><th>Método de Comprobación y Evidencia Objetiva</th><th>Resultado</th><th>Riesgo</th></tr>
+                <tr><td>ERP-01</td><td>MFA y políticas de acceso condicional habilitadas en el inicio de sesión.</td><td>Revisión de configuración</td><td>Prueba de inicio de sesión desde segmento de red no confiable (fuera de VPN).</td><td>CUMPLE</td><td>Bajo</td></tr>
+                <tr><td>ERP-02</td><td>Segregación de Funciones (SoD) en roles de finanzas.</td><td>Análisis de conflictos</td><td>Reporte generado desde el módulo GRC del ERP.</td><td>CUMPLE</td><td>Bajo</td></tr>
+                <tr><td>ERP-03</td><td>Aprobación gerencial trazable para alta y modificación de perfiles.</td><td>Validación de aprobaciones</td><td>Muestreo estadístico de 10 altas; el 100% cuenta con firma digital autorizada.</td><td>CUMPLE</td><td>Bajo</td></tr>
+                <tr><td>ERP-04</td><td>Finalización forzada de sesiones TCP/UDP por inactividad.</td><td>Revisión de inactividad</td><td>Parámetros del servidor de aplicaciones validan el cierre exacto a los 15 minutos.</td><td>CUMPLE</td><td>Bajo</td></tr>
+                <tr><td>ERP-05</td><td>Ciclo de vida de contraseñas alineado a políticas de complejidad corporativa.</td><td>Revisión de contraseñas</td><td>Revisión de parámetros de seguridad globales en la instancia del sistema.</td><td>CUMPLE</td><td>Bajo</td></tr>
+            </table>
+            <div class="alerta-verde"><strong>Dictamen Final:</strong> CUMPLE. Los controles del entorno financiero operan dentro de los márgenes de riesgo aceptable.</div>
+
+            <h4>3. Cédula de Auditoría: Software de Monitoreo de Red</h4>
+            <p><strong>Objetivo de Control:</strong> Mantener la integridad de los sistemas de alerta temprana y prevenir la ceguera operativa.</p>
+            <table>
+                <tr><th>ID</th><th>Control</th><th>Parámetro de Auditoría</th><th>Método de Comprobación y Evidencia Objetiva</th><th>Resultado</th><th>Riesgo</th></tr>
+                <tr><td>RED-01</td><td>Control de acceso basado en red (NAC) y Listas de Control de Acceso (ACLs).</td><td>Revisión de firewalls perimetrales.</td><td>Whitelisting de IPs.</td><td>CUMPLE</td><td>Bajo</td></tr>
+                <tr><td>RED-02</td><td>MFA forzado para perfiles con capacidad de alterar configuraciones del NOC.</td><td>Verificación de políticas IdP.</td><td>Verificación de políticas del proveedor de identidad (IdP) para el grupo de red.</td><td>CUMPLE</td><td>Bajo</td></tr>
+                <tr><td>RED-03</td><td>Auditoría de umbrales de baselines y comportamiento anómalo.</td><td>Revisión de actas</td><td>Faltan firmas de revisión del último trimestre en las actas de operaciones de red.</td><td>CUMPLE PARCIAL</td><td>Medio</td></tr>
+                <tr><td>RED-04</td><td>Cumplimiento del marco ITIL para registro de cambios en topología.</td><td>Cruce de bitácoras</td><td>Cruce de la bitácora del sistema de monitoreo vs. plataforma de Change Management.</td><td>CUMPLE</td><td>Bajo</td></tr>
+                <tr><td>RED-05</td><td>Retención inmutable de logs de syslog/NetFlow por mínimo 6 meses.</td><td>Confirmación de cuotas</td><td>Confirmación de cuotas de almacenamiento y políticas de archivado en el SIEM.</td><td>CUMPLE</td><td>Bajo</td></tr>
+            </table>
+            <div class="alerta-amarilla"><strong>Dictamen Final:</strong> CUMPLIMIENTO PARCIAL. Se emite observación para normalizar la periodicidad de las auditorías de umbrales.</div>
+
+            <h4>4. Cédula de Auditoría: Registros de Usuarios y Credenciales</h4>
+            <p><strong>Objetivo de Control:</strong> Establecer un perímetro de identidad sólido contra ataques de fuerza bruta y movimiento lateral.</p>
+            <table>
+                <tr><th>ID</th><th>Control</th><th>Método de Comprobación y Evidencia Objetiva</th><th>Resultado</th><th>Riesgo</th></tr>
+                <tr><td>USR-01</td><td>Directivas de contraseñas: entropía, longitud mínima (12) y bloqueo de diccionario.</td><td>Auditoría de configuración de Default Domain Policy en Active Directory.</td><td>CUMPLE</td><td>Bajo</td></tr>
+                <tr><td>USR-02</td><td>Implementación de bóvedas de contraseñas empresariales (PAM/Password Manager).</td><td>Métricas de telemetría de la herramienta indicando uso activo por el 90% de usuarios.</td><td>CUMPLE</td><td>Bajo</td></tr>
+                <tr><td>USR-03</td><td>Protocolo Zero Trust para recuperación y reseteo de identidades.</td><td>Auditoría de llamadas grabadas en Help Desk validando preguntas de desafío.</td><td>CUMPLE</td><td>Bajo</td></tr>
+                <tr><td>USR-04</td><td>Rotación forzada de secretos criptográficos a nivel usuario.</td><td>Extracción de reporte de expiración de contraseñas de la base de datos LDAP.</td><td>CUMPLE</td><td>Bajo</td></tr>
+            </table>
+            <div class="alerta-verde"><strong>Dictamen Final:</strong> CUMPLE. Arquitectura de identidad sólida y escalable.</div>
+
+            <h4>5. Cédula de Auditoría: Impresoras Empresariales</h4>
+            <p><strong>Objetivo de Control:</strong> Prevenir la fuga de información clasificada en formato físico y asegurar auditoría de trabajos.</p>
+            <table>
+                <tr><th>ID</th><th>Control</th><th>Método de Comprobación y Evidencia Objetiva</th><th>Resultado</th><th>Riesgo</th></tr>
+                <tr><td>IMP-01</td><td>Retención de trabajos de impresión (Secure Print) mediante autenticación RFID/PIN.</td><td>Prueba de penetración física y revisión de cola de impresión segura.</td><td>CUMPLE</td><td>Bajo</td></tr>
+                <tr><td>IMP-02</td><td>Monitoreo centralizado del uso de activos de impresión corporativos.</td><td>Dashboard del servidor de impresión validando volúmenes por centro de costos.</td><td>CUMPLE</td><td>Bajo</td></tr>
+                <tr><td>IMP-03</td><td>Sanitización lógica de medios de almacenamiento volátiles (Caché/NVRAM).</td><td>No existe un procedimiento estándar documentado ni logs de borrado en bitácoras de TI.</td><td>NO CUMPLE</td><td>Alto</td></tr>
+            </table>
+            <div class="alerta-roja"><strong>Dictamen Final:</strong> CUMPLIMIENTO PARCIAL. Urge documentar y aplicar el procedimiento de purga de memoria en los multifuncionales para evitar recuperación de datos.</div>
+
+            <h4>6. Cédula de Auditoría: Equipos de Cómputo - Laptops</h4>
+            <p><strong>Objetivo de Control:</strong> Asegurar los endpoints corporativos contra compromiso físico e infecciones de malware.</p>
+            <table>
+                <tr><th>ID</th><th>Control</th><th>Método de Comprobación y Evidencia Objetiva</th><th>Resultado</th><th>Riesgo</th></tr>
+                <tr><td>LAP-01</td><td>Cifrado Full Disk Encryption (FDE) respaldado por chip TPM 2.0.</td><td>Consola de Endpoint Management confirma estatus 100% dispositivos encriptados.</td><td>CUMPLE</td><td>Bajo</td></tr>
+                <tr><td>LAP-02</td><td>Restricción de red a nivel de host para conexiones Wi-Fi abiertas.</td><td>Directivas locales restringen tráfico no corporativo salvo que el túnel VPN esté activo.</td><td>CUMPLE</td><td>Bajo</td></tr>
+                <tr><td>LAP-03</td><td>Protocolo de respuesta a incidentes por pérdida de activos (Remote Wipe).</td><td>Simulación de incidente "Kill Pill"; borrado remoto exitoso en equipo de prueba.</td><td>CUMPLE</td><td>Bajo</td></tr>
+                <tr><td>LAP-04</td><td>Agentes de seguridad de nueva generación (EDR) y gestión de comportamiento anómalo.</td><td>Estatus de cumplimiento de parches de SO y firmas de vulnerabilidades.</td><td>CUMPLE</td><td>Bajo</td></tr>
+            </table>
+            <div class="alerta-verde"><strong>Dictamen Final:</strong> CUMPLE. Defensas de capa de endpoint operando al máximo rendimiento.</div>
+
+            <h4>7. Cédula de Auditoría: Herramientas de Administración Remota</h4>
+            <p><strong>Objetivo de Control:</strong> Eliminar backdoors de soporte y restringir el control de activos a canales seguros.</p>
+            <table>
+                <tr><th>ID</th><th>Control</th><th>Método de Comprobación y Evidencia Objetiva</th><th>Resultado</th><th>Riesgo</th></tr>
+                <tr><td>REM-01</td><td>Segmentación de red y uso obligatorio de túneles VPN IPsec/SSL.</td><td>Inspección de reglas de firewall; tráfico RDP (TCP 3389) bloqueado desde WAN.</td><td>CUMPLE</td><td>Bajo</td></tr>
+                <tr><td>REM-02</td><td>Interacción obligatoria y consentimiento del usuario final (Interactive Logon).</td><td>Sesiones remotas probadas explícitamente requieren autorización en pantalla.</td><td>CUMPLE</td><td>Bajo</td></tr>
+                <tr><td>REM-03</td><td>Aprovisionamiento y desaprovisionamiento de permisos de soporte remoto.</td><td>Auditoría de grupos administrativos delegados en consola de TI.</td><td>CUMPLE</td><td>Bajo</td></tr>
+                <tr><td>REM-04</td><td>Control de sesiones inactivas para prevención de secuestro de sesión.</td><td>Configuración GPO aplicada forzando cierre tras 10 minutos de inactividad de mouse/teclado.</td><td>CUMPLE</td><td>Bajo</td></tr>
+            </table>
+            <div class="alerta-verde"><strong>Dictamen Final:</strong> CUMPLE. Superficie de ataque interno mitigada eficazmente.</div>
+
+            <h4>8. Cédula de Auditoría: Servidores Físicos y Virtuales</h4>
+            <p><strong>Objetivo de Control:</strong> Mantener la resiliencia operativa y protección profunda del Centro de Datos.</p>
+            <table>
+                <tr><th>ID</th><th>Control</th><th>Método de Comprobación y Evidencia Objetiva</th><th>Resultado</th><th>Riesgo</th></tr>
+                <tr><td>SRV-01</td><td>Controles físicos de acceso perimetral en Data Center (Biometría 2FA).</td><td>Revisión de logs del sistema CCTV y control de acceso físico de la planta.</td><td>CUMPLE</td><td>Bajo</td></tr>
+                <tr><td>SRV-02</td><td>Microsegmentación de infraestructura virtual a nivel hipervisor.</td><td>Auditoría de arquitectura vSwitch y reglas inter-VLAN.</td><td>CUMPLE</td><td>Bajo</td></tr>
+                <tr><td>SRV-03</td><td>Procedimientos operativos de contingencia y Backup Bare-Metal.</td><td>Reportes de ventanas de mantenimiento y actas de consistencia de imágenes.</td><td>CUMPLE</td><td>Bajo</td></tr>
+                <tr><td>SRV-04</td><td>Conformidad con estándares de bastionado del Center for Internet Security (CIS).</td><td>Escaneo de vulnerabilidades validando desactivación de servicios y puertos inseguros.</td><td>CUMPLE</td><td>Bajo</td></tr>
+            </table>
+            <div class="alerta-verde"><strong>Dictamen Final:</strong> CUMPLE. Centro de datos alineado a los requerimientos normativos ISO.</div>
+
+            <h4>9. Cédula de Auditoría: Intranet</h4>
+            <p><strong>Objetivo de Control:</strong> Asegurar la transmisión y disponibilidad de los lineamientos estratégicos de los "Energizadores".</p>
+            <table>
+                <tr><th>ID</th><th>Control</th><th>Método de Comprobación y Evidencia Objetiva</th><th>Resultado</th><th>Riesgo</th></tr>
+                <tr><td>INT-01</td><td>Cifrado en tránsito forzado (HSTS) utilizando protocolos modernos (TLS 1.2/1.3).</td><td>Análisis del servidor web y confirmación de redirecciones 301 estrictas.</td><td>CUMPLE</td><td>Bajo</td></tr>
+                <tr><td>INT-02</td><td>Ciclo de vida de la información y validación de dueños de procesos.</td><td>Faltan actas formales de desclasificación y actualización en el departamento comercial.</td><td>CUMPLE PARCIAL</td><td>Medio</td></tr>
+                <tr><td>INT-03</td><td>Control de versiones y trazabilidad de cambios y aprobadores.</td><td>Sistema CMS de Intranet evidencia el historial de publicación documental.</td><td>CUMPLE</td><td>Bajo</td></tr>
+                <tr><td>INT-04</td><td>Restricción de acceso lógico y geofencing a IPs corporativas.</td><td>Intentos de conexión externa resultan en respuesta 403 Forbidden.</td><td>CUMPLE</td><td>Bajo</td></tr>
+            </table>
+            <div class="alerta-amarilla"><strong>Dictamen Final:</strong> CUMPLIMIENTO PARCIAL. Se requiere definir un flujo automatizado para la revisión de caducidad del contenido de Intranet.</div>
+
+            <h4>10. Cédula de Auditoría: Documentación y Procesos</h4>
+            <p><strong>Objetivo de Control:</strong> Implementar clasificación estructural (Data Classification) y prevención de fuga de datos (DLP).</p>
+            <table>
+                <tr><th>ID</th><th>Control</th><th>Método de Comprobación y Evidencia Objetiva</th><th>Resultado</th><th>Riesgo</th></tr>
+                <tr><td>DOC-01</td><td>Etiquetado visual y lógico de sensibilidad en activos de información (AIP/DLP).</td><td>Muestreo de contratos y manuales. Existen documentos financieros sin marcas de agua ni etiquetas.</td><td>NO CUMPLE</td><td>Alto</td></tr>
+                <tr><td>DOC-02</td><td>Mitigación de riesgos físicos mediante digitalización segura de archivos.</td><td>Proceso de escaneo de histórico validado en sitio con el equipo de control documental.</td><td>CUMPLE</td><td>Bajo</td></tr>
+                <tr><td>DOC-03</td><td>Procedimiento de sanitización y destrucción de medios físicos/digitales.</td><td>Certificados de destrucción de disco duro y trituración de papel nivel P-4 disponibles.</td><td>CUMPLE</td><td>Bajo</td></tr>
+                <tr><td>DOC-04</td><td>Inventario de activos alineado a la cláusula 8 de ISO 27001.</td><td>Registro maestro actualizado con propietarios, ubicación y nivel de criticidad.</td><td>CUMPLE</td><td>Bajo</td></tr>
+            </table>
+            <div class="alerta-roja"><strong>Dictamen Final:</strong> CUMPLIMIENTO PARCIAL. Se requiere levantar No Conformidad Menor para regularizar el etiquetado de documentos heredados (Legacy).</div>
+
+            <h3 style="margin-top: 40px; font-size: 1.6em;">II. GESTIÓN DE ACTIVOS EXTERNOS</h3>
+            
+            <h4>11. Cédula de Auditoría: Servicios de Nube (SaaS/PaaS)</h4>
+            <p><strong>Objetivo de Control:</strong> Gestionar los riesgos de cadena de suministro y evaluar la postura de seguridad de terceros.</p>
+            <table>
+                <tr><th>ID</th><th>Control</th><th>Método de Comprobación y Evidencia Objetiva</th><th>Resultado</th><th>Riesgo</th></tr>
+                <tr><td>NUB-01</td><td>Control de identidad federada (SSO) combinado con MFA.</td><td>Auditoría de integración SAML/OAuth en el panel de administración Cloud.</td><td>CUMPLE</td><td>Bajo</td></tr>
+                <tr><td>NUB-02</td><td>Evaluación del cumplimiento normativo del proveedor (Vendor Risk Management).</td><td>Informes SOC 2 Nivel II e ISO 27017 archivados y vigentes para proveedores críticos.</td><td>CUMPLE</td><td>Bajo</td></tr>
+                <tr><td>NUB-03</td><td>Flujos de aprovisionamiento (Provisioning) gobernados por TI.</td><td>Procesos JML (Joiner, Mover, Leaver) demostrados en consolas SaaS.</td><td>CUMPLE</td><td>Bajo</td></tr>
+                <tr><td>NUB-04</td><td>Revocación periódica y auditoría de privilegios huérfanos (Over-privileged accounts).</td><td>Minutas de comité trimestral de revisión de accesos presentadas sin discrepancias.</td><td>CUMPLE</td><td>Bajo</td></tr>
+            </table>
+            <div class="alerta-verde"><strong>Dictamen Final:</strong> CUMPLE. El entorno SaaS opera bajo una gobernanza de identidad estricta.</div>
+
+            <h4>12. Cédula de Auditoría: Enlaces de Internet (ISPs)</h4>
+            <p><strong>Objetivo de Control:</strong> Asegurar alta resiliencia y filtrado avanzado de tráfico de salida e ingreso.</p>
+            <table>
+                <tr><th>ID</th><th>Control</th><th>Método de Comprobación y Evidencia Objetiva</th><th>Resultado</th><th>Riesgo</th></tr>
+                <tr><td>ISP-01</td><td>Inspección Profunda de Paquetes (DPI) y descifrado SSL en el borde.</td><td>Análisis de reglas del Next-Generation Firewall (NGFW) corporativo.</td><td>CUMPLE</td><td>Bajo</td></tr>
+                <tr><td>ISP-02</td><td>Ruteo dinámico (BGP) y Arquitectura de alta disponibilidad (HA) de red de área amplia (SD-WAN).</td><td>Configuraciones de failover verificados operativamente.</td><td>CUMPLE</td><td>Bajo</td></tr>
+                <tr><td>ISP-03</td><td>SLAs de mitigación de ataques volumétricos (Anti-DDoS).</td><td>Contratos y anexos de nivel de servicio con proveedores ISP tier 1 validados.</td><td>CUMPLE</td><td>Bajo</td></tr>
+                <tr><td>ISP-04</td><td>Observabilidad 24/7 y telemetría de desempeño de ancho de banda.</td><td>Dashboard SNMP/WMI demostrando latencia y disponibilidad por encima del 99.9%.</td><td>CUMPLE</td><td>Bajo</td></tr>
+            </table>
+            <div class="alerta-verde"><strong>Dictamen Final:</strong> CUMPLE. Continuidad de servicios de telecomunicaciones robusta.</div>
+
+            <h4>13. Cédula de Auditoría: Proveedores de Hosting Web</h4>
+            <p><strong>Objetivo de Control:</strong> Minimizar la superficie de ataque pública y proteger la reputación digital.</p>
+            <table>
+                <tr><th>ID</th><th>Control</th><th>Método de Comprobación y Evidencia Objetiva</th><th>Resultado</th><th>Riesgo</th></tr>
+                <tr><td>WEB-01</td><td>Gestión de infraestructura de llave pública (PKI) para servicios web.</td><td>Análisis de certificados de producción. Ningún certificado expira en los próximos 30 días.</td><td>CUMPLE</td><td>Bajo</td></tr>
+                <tr><td>WEB-02</td><td>Despliegue de Web Application Firewall (WAF) en modo prevención.</td><td>Logs evidencian mitigación activa de inyecciones SQL y ataques Cross-Site Scripting.</td><td>CUMPLE</td><td>Bajo</td></tr>
+                <tr><td>WEB-03</td><td>Gestión de parches en CMS, plugins y sistemas subyacentes.</td><td>Documentación de ventana de mantenimiento mensual; 0 parches críticos faltantes.</td><td>CUMPLE</td><td>Bajo</td></tr>
+                <tr><td>WEB-04</td><td>Pruebas de seguridad en aplicaciones dinámicas (DAST).</td><td>Reporte automatizado de escaneo mensual de vulnerabilidades sin riesgos altos.</td><td>CUMPLE</td><td>Bajo</td></tr>
+            </table>
+            <div class="alerta-verde"><strong>Dictamen Final:</strong> CUMPLE. Infraestructura web pública protegida y en cumplimiento con marcos de seguridad OWASP.</div>
+
+            <h4>14. Cédula de Auditoría: Plataformas de Mensajería y Videoconferencia</h4>
+            <p><strong>Objetivo de Control:</strong> Prevenir la interceptación de reuniones estratégicas y la fuga de datos por canales de comunicación no estructurados.</p>
+            <table>
+                <tr><th>ID</th><th>Control</th><th>Método de Comprobación y Evidencia Objetiva</th><th>Resultado</th><th>Riesgo</th></tr>
+                <tr><td>VID-01</td><td>Autenticación corporativa estricta e integración SSO.</td><td>Directivas globales de la plataforma limitan el uso exclusivo a identidades sincronizadas.</td><td>CUMPLE</td><td>Bajo</td></tr>
+                <tr><td>VID-02</td><td>Bloqueo de exposición de información vía enlaces anónimos.</td><td>Configuración maestra del Tenant inhabilita la generación de URL públicas sin autenticación.</td><td>CUMPLE</td><td>Bajo</td></tr>
+                <tr><td>VID-03</td><td>Controles de ingreso y salas de espera (Lobby) obligatorios.</td><td>Revisión de sesiones en vivo comprobando que participantes externos no evaden la sala de espera.</td><td>CUMPLE</td><td>Bajo</td></tr>
+                <tr><td>VID-04</td><td>Federación restringida y listas de confianza (Trusted Domains).</td><td>Interacciones directas B2B limitadas exclusivamente a dominios configurados por TI.</td><td>CUMPLE</td><td>Bajo</td></tr>
+            </table>
+            <div class="alerta-verde"><strong>Dictamen Final:</strong> CUMPLE. Canales de comunicación asegurados contra espionaje y exfiltración de datos.</div>
+
+            <h4>15. Cédula de Auditoría: APIs de Servicios Financieros</h4>
+            <p><strong>Objetivo de Control:</strong> Garantizar la autenticidad e inalterabilidad del tráfico B2B para operaciones contables y bancarias.</p>
+            <table>
+                <tr><th>ID</th><th>Control</th><th>Método de Comprobación y Evidencia Objetiva</th><th>Resultado</th><th>Riesgo</th></tr>
+                <tr><td>API-01</td><td>Autenticación robusta (OAuth 2.0/Mutual TLS) para servicios REST/SOAP.</td><td>Revisión de código e integración documentada en el API Gateway.</td><td>CUMPLE</td><td>Bajo</td></tr>
+                <tr><td>API-02</td><td>Restricción de consumo a nivel de red (IP Whitelisting).</td><td>Configuración del Firewall de Aplicaciones bloquea peticiones de orígenes no declarados.</td><td>CUMPLE</td><td>Bajo</td></tr>
+                <tr><td>API-03</td><td>Gestión de ciclo de vida y rotación criptográfica de tokens (Secrets Management).</td><td>Evidencia de expiración automática de JWT y rotación de llaves del servicio.</td><td>CUMPLE</td><td>Bajo</td></tr>
+                <tr><td>API-04</td><td>Retención inmutable de telemetría transaccional para auditoría forense.</td><td>Logs centralizados asegurados bajo política Write-Once-Read-Many (WORM) por 365 días.</td><td>CUMPLE</td><td>Bajo</td></tr>
+            </table>
+            <div class="alerta-verde"><strong>Dictamen Final:</strong> CUMPLE. Interfaces financieras altamente aseguradas.</div>
+
+            <h4>16. Cédula de Auditoría: Soporte Técnico de Fabricantes</h4>
+            <p><strong>Objetivo de Control:</strong> Controlar estrictamente el acceso de proveedores a la red industrial y administrativa.</p>
+            <table>
+                <tr><th>ID</th><th>Control</th><th>Método de Comprobación y Evidencia Objetiva</th><th>Resultado</th><th>Riesgo</th></tr>
+                <tr><td>FAB-01</td><td>Acceso remoto externalizado mediante Bastion Hosts o VPNs limitadas.</td><td>Vendors acceden exclusivamente vía portal SSL VPN con perfil de red restringido a su activo.</td><td>CUMPLE</td><td>Bajo</td></tr>
+                <tr><td>FAB-02</td><td>Supervisión sincrónica de proveedores (Shadowing).</td><td>Falta evidencia documental del supervisor interno de Viakon en el 20% de las intervenciones del mes.</td><td>CUMPLE PARCIAL</td><td>Medio</td></tr>
+                <tr><td>FAB-03</td><td>Aprobación formal basada en ventana de mantenimiento autorizada.</td><td>Tickets del sistema ITSM validados con aprobación del responsable técnico del área.</td><td>CUMPLE</td><td>Bajo</td></tr>
+                <tr><td>FAB-04</td><td>Trazabilidad en video e historial de comandos de sesiones de terceros.</td><td>Grabaciones de sesión almacenadas centralmente por el software de acceso seguro.</td><td>CUMPLE</td><td>Bajo</td></tr>
+            </table>
+            <div class="alerta-amarilla"><strong>Dictamen Final:</strong> CUMPLIMIENTO PARCIAL. Requerida campaña de concientización a líderes técnicos sobre el llenado estricto de bitácoras de supervisión.</div>
+
+            <h4>17. Cédula de Auditoría: Nube de Respaldo (Cloud Backup)</h4>
+            <p><strong>Objetivo de Control:</strong> Asegurar la resiliencia operativa contra incidentes catastróficos, como ataques de Ransomware.</p>
+            <table>
+                <tr><th>ID</th><th>Control</th><th>Método de Comprobación y Evidencia Objetiva</th><th>Resultado</th><th>Riesgo</th></tr>
+                <tr><td>BCK-01</td><td>Cifrado E2EE (End-to-End Encryption) previo al tránsito hacia Cloud.</td><td>Configuración del Agente de Respaldo demostrando llaves administradas por el cliente.</td><td>CUMPLE</td><td>Bajo</td></tr>
+                <tr><td>BCK-02</td><td>Conformidad con topología de respaldo 3-2-1 y separación lógica (Air-gap).</td><td>Arquitectura de almacenamiento inmutable validada en repositorios cloud externos.</td><td>CUMPLE</td><td>Bajo</td></tr>
+                <tr><td>BCK-03</td><td>Simulacros de Recuperación de Desastres (DRP) y cumplimiento de RTO/RPO.</td><td>Reporte ejecutivo del último simulacro; objetivos de tiempo y punto de recuperación logrados.</td><td>CUMPLE</td><td>Bajo</td></tr>
+                <tr><td>BCK-04</td><td>Verificación de integridad automatizada de bloques de respaldo (SureBackup).</td><td>Notificaciones del sistema confirmando arranque exitoso de máquinas virtuales desde el respaldo.</td><td>CUMPLE</td><td>Bajo</td></tr>
+            </table>
+            <div class="alerta-verde"><strong>Dictamen Final:</strong> CUMPLE. Capacidad de recuperación garantizada ante desastres.</div>
+
+            <h4>18. Cédula de Auditoría: Gestores de Dominios (DNS)</h4>
+            <p><strong>Objetivo de Control:</strong> Proteger la identidad de la marca en internet previniendo ataques de suplantación de identidad (Spoofing) y secuestro.</p>
+            <table>
+                <tr><th>ID</th><th>Control</th><th>Método de Comprobación y Evidencia Objetiva</th><th>Resultado</th><th>Riesgo</th></tr>
+                <tr><td>DNS-01</td><td>Implementación de extensiones de seguridad (DNSSEC).</td><td>Verificación pública demostrando firmas criptográficas de la zona correctas.</td><td>CUMPLE</td><td>Bajo</td></tr>
+                <tr><td>DNS-02</td><td>Protección contra secuestro de dominio (Domain Hijacking).</td><td>Consola del registrador auditada; cuenta de administrador maestra blindada con MFA.</td><td>CUMPLE</td><td>Bajo</td></tr>
+                <tr><td>DNS-03</td><td>Control de cambios formales para registros de infraestructura (MX/TXT/A).</td><td>Plataforma ITSM evidencia folios de autorización previos a modificaciones en producción.</td><td>CUMPLE</td><td>Bajo</td></tr>
+                <tr><td>DNS-04</td><td>Sanitización y limpieza de registros huérfanos propensos a Subdomain Takeover.</td><td>Bitácora trimestral de depuración de registros firmada por el arquitecto de TI.</td><td>CUMPLE</td><td>Bajo</td></tr>
+            </table>
+            <div class="alerta-verde"><strong>Dictamen Final:</strong> CUMPLE. Controles técnicos del dominio implementados según mejores prácticas.</div>
+
+            <h4>19. Cédula de Auditoría: Plataformas de Reclutamiento y Selección</h4>
+            <p><strong>Objetivo de Control:</strong> Garantizar el cumplimiento legal y privacidad de datos sensibles asociados a procesos de capital humano.</p>
+            <table>
+                <tr><th>ID</th><th>Control</th><th>Método de Comprobación y Evidencia Objetiva</th><th>Resultado</th><th>Riesgo</th></tr>
+                <tr><td>REC-01</td><td>Minimización en la recolección de Información de Identidad Personal (PII).</td><td>Cumplimiento del Aviso de privacidad corporativo actualizado y aceptado en los portales de talento. Formularios auditados; no solicitan datos médicos o biométricos en fases no requeridas.</td><td>CUMPLE</td><td>Bajo</td></tr>
+                <tr><td>REC-02</td><td>Eliminación segura (Data Sanitization) de candidatos no viables.</td><td>Revisión del Job programado en base de datos ejecutando purgas automáticas mensuales.</td><td>CUMPLE</td><td>Bajo</td></tr>
+                <tr><td>REC-03</td><td>Política de retención de datos limitada a 12 meses.</td><td>Consultas en base de datos confirman inexistencia de registros huérfanos anteriores a un año.</td><td>CUMPLE</td><td>Bajo</td></tr>
+            </table>
+            <div class="alerta-verde"><strong>Dictamen Final:</strong> CUMPLE. Gestión de datos personales de candidatos altamente controlada y legalmente conforme.</div>
+
+            <h4>20. Cédula de Auditoría: Canales de Redes Sociales Corporativas</h4>
+            <p><strong>Objetivo de Control:</strong> Mitigar riesgos reputacionales previniendo el compromiso de canales de comunicación públicos oficiales.</p>
+            <table>
+                <tr><th>ID</th><th>Control</th><th>Método de Comprobación y Evidencia Objetiva</th><th>Resultado</th><th>Riesgo</th></tr>
+                <tr><td>SOC-01</td><td>Acceso basado en roles (RBAC) y MFA en canales corporativos nativos.</td><td>Controles de seguridad de las plataformas (ej. Meta Business Manager) validados.</td><td>CUMPLE</td><td>Bajo</td></tr>
+                <tr><td>SOC-02</td><td>Consolidación de publicación mediante herramientas de gestión centralizada.</td><td>Integración y uso exclusivo de plataforma unificada para todo el equipo de Marketing.</td><td>CUMPLE</td><td>Bajo</td></tr>
+                <tr><td>SOC-03</td><td>Control y auditoría de flujo de publicación de contenidos.</td><td>Revisión de logs en plataforma demostrando el ciclo "Creación -> Revisión -> Aprobación".</td><td>CUMPLE</td><td>Bajo</td></tr>
+                <tr><td>SOC-04</td><td>Rotación periódica de credenciales compartidas o tokens de API de marketing.</td><td>Evidencia del gestor de contraseñas de TI validando la rotación en los últimos 90 días.</td><td>CUMPLE</td><td>Bajo</td></tr>
+            </table>
+            <div class="alerta-verde"><strong>Dictamen Final:</strong> CUMPLE. Canales digitales oficiales operando bajo políticas estrictas de ciberseguridad.</div>
+
+            <h3>Clasificación de Hallazgos del SGSI</h3>
+            <p>Derivado de la evaluación de las 20 cédulas de auditoría, se categorizan las desviaciones encontradas:</p>
+            
+            <h4>No Conformidades Mayores (Riesgo Crítico/Alto):</h4>
+            <div class="alerta-roja">
+                <strong>(NC-M-01) BD-03:</strong> Ausencia de trazabilidad y retención inmutable de logs en las bases de datos transaccionales, dejando un punto ciego ante exfiltración de información.
+            </div>
+
+            <h4>No Conformidades Menores (Riesgo Medio):</h4>
+            <ul>
+                <li><strong>(NC-m-01) DOC-01:</strong> Documentación financiera e histórica ("Legacy") circulando sin marcas de agua ni etiquetas de clasificación (DLP), violando la política de control documental.</li>
+                <li><strong>(NC-m-02) IMP-03:</strong> Falta de un procedimiento técnico de purga de memoria en multifuncionales, exponiendo datos residuales.</li>
+            </ul>
+
+            <h4>Observaciones (Riesgo Bajo, pero requieren atención):</h4>
+            <ul>
+                <li><strong>(OBS-01) FAB-02:</strong> Relajamiento en el llenado de bitácoras de "Shadowing" al supervisar a proveedores externos durante soporte remoto.</li>
+                <li><strong>(OBS-02) RED-03:</strong> Retraso administrativo en la firma de actas de revisión de umbrales del software de monitoreo de red.</li>
+            </ul>
+
+            <h4>Oportunidades de Mejora (Mejores prácticas recomendadas):</h4>
+            <ul>
+                <li><strong>(OM-01) INT-02:</strong> Implementar un script automatizado en la Intranet corporativa que notifique a los dueños de contenido 15 días antes de que sus documentos expiren, eliminando la dependencia de revisión manual.</li>
+            </ul>
+
+            <h3>Conclusión General</h3>
+            <p>Tras la revisión documental, entrevistas a dueños de procesos y simulación de pruebas técnicas, el SGSI de Viakon presenta un estado general de cumplimiento del 85%. El entorno demuestra una arquitectura de identidad sólida (Zero Trust) y resiliencia en la capa perimetral. Sin embargo, existen brechas en la retención de logs críticos (Base de datos y Endpoints físicos) que requieren atención inmediata.</p>
+            <div class="alerta-verde" style="font-size: 1.2em; text-align: center;">
+                <strong>Dictamen Final: CUMPLE.</strong><br>Canales digitales oficiales operando bajo políticas estrictas de ciberseguridad.
+            </div>
+        </section>
+
+        <!-- SECCIÓN 10 -->
+        <section class="tarjeta">
+            <h2>SECCIÓN 10 - Mejora</h2>
+            
+            <h3>Registro de No Conformidad Mayor (Incidente de Seguridad)</h3>
+            <div class="escenario-box">
+                <strong>ID de Incidente:</strong> INC-2026-054<br>
+                <strong>Fecha y Hora de Detección:</strong> Miércoles 13 de mayo, 23:45 hrs.<br>
+                <strong>Afectación principal:</strong> Confidencialidad y Disponibilidad.
+            </div>
+
+            <h3>Resumen Ejecutivo para la Alta Dirección</h3>
+            <h4>¿Qué ocurrió?</h4>
+            <p>Se materializó una intrusión no autorizada en el núcleo de nuestra red corporativa de Viakon. Un actor de amenazas logró infiltrarse en nuestros sistemas, tomar control de herramientas de administración y extraer información de nuestras bases de datos antes de intentar sabotear la infraestructura interna mediante el despliegue de cargas destructivas.</p>
+            
+            <h4>¿Cómo ocurrió?</h4>
+            <p>El atacante evadió nuestro perímetro de seguridad a través del factor humano. A pesar de contar con herramientas de Autenticación Multifactor (MFA), el intruso utilizó técnicas avanzadas de suplantación de identidad para "secuestrar" la sesión activa de un Energizador legítimo. Una vez dentro de la red, el atacante aprovechó que esta cuenta poseía privilegios excesivos (una falla en la segregación de funciones del ERP) para moverse lateralmente sin detonar las alarmas iniciales, escalando su acceso hasta nuestros servidores centrales.</p>
+
+            <h4>Activos Críticos Afectados</h4>
+            <ol>
+                <li><strong>Infraestructura Operativa:</strong> Terminales críticas de control en la planta de manufactura (inutilizadas temporalmente por corrupción de software).</li>
+                <li><strong>Sistemas Estratégicos:</strong> Servidores centrales y bases de datos del ERP Corporativo (SAP/Oracle).</li>
+                <li><strong>Activos de Información:</strong> Exposición y exfiltración de registros financieros, operativos y datos personales (maestros de activos y expedientes de Energizadores).</li>
+            </ol>
+
+            <h4>Cuantificación del Impacto (Business Impact)</h4>
+            <p>El impacto de este incidente trascendió el departamento de TI, afectando múltiples dimensiones del negocio:</p>
+            <ul>
+                <li><strong>Impacto Operativo (Disponibilidad):</strong> Interrupción de 4 horas y 15 minutos en las terminales de manufactura. Esto generó un retraso directo en la cadena de suministro y en las métricas de producción del turno correspondiente.</li>
+                <li><strong>Impacto Legal y Normativo (Confidencialidad):</strong> La exposición de datos de nuestros Energizadores detona un riesgo de cumplimiento legal frente a la Ley Federal de Protección de Datos Personales en Posesión de los Particulares (LFPDPPP). Esto nos obliga a ejecutar protocolos de notificación ante el INAI para mitigar posibles multas millonarias.</li>
+                <li><strong>Impacto Financiero:</strong> Costos operativos no planificados derivados de las horas-hombre invertidas por el equipo de respuesta a incidentes (CSIRT), la recuperación de respaldos y el análisis forense especializado.</li>
+                <li><strong>Impacto Reputacional y de Calidad:</strong> Afortunadamente, la contención en el minuto 14 (MTTD) evitó que el ataque llegara a los sistemas de clientes externos o proveedores, protegiendo nuestra reputación de marca y asegurando que las certificaciones ISO-9001 e ISO-14001 no se vean comprometidas de cara al mercado.</li>
+            </ul>
+
+            <h4>Análisis de Causa Raíz (RCA) e Incumplimiento de Políticas</h4>
+            <p>La investigación forense determinó que el incidente se materializó debido a vulneraciones específicas a las normativas de nuestro SGSI:</p>
+            <ol>
+                <li><strong>Herramientas de Administración Remota:</strong> Se violó el Estándar que exige el uso estricto de conexiones VPN seguras.</li>
+                <li><strong>ERP Corporativo / Registros de Usuarios:</strong> Deficiencia en la Directriz de "Revisión semestral de la segregación de funciones". La cuenta comprometida poseía privilegios excesivos (ausencia del Principio de Menor Privilegio).</li>
+                <li><strong>Base de Datos:</strong> Inobservancia del Estándar que requiere "implementar cifrado a nivel de columna para datos sensibles", lo que permitió la sustracción de información en texto plano.</li>
+                <li><strong>Servidores Físicos y Virtuales:</strong> Omisión en la aplicación estricta de la Línea base de seguridad del sistema operativo (Hardening), lo que facilitó el despliegue de cargas corruptivas en la infraestructura.</li>
+            </ol>
+
+            <h4>Contexto Técnico (Inteligencia de Amenazas):</h4>
+            <p>El evento fue trazado a través de la Cyber Kill Chain y el Modelo Diamante de Análisis de Intrusiones. Se determinó que el uso de técnicas de Session Hijacking (Secuestro de Sesión) permitió al atacante saltar el perímetro. La investigación en el SIEM corporativo facilitó aislar las IPs maliciosas y revocar los accesos en tiempo real.</p>
+
+            <h4>Plan de Acción Correctiva (CAP) y Contención</h4>
+            <p>Para garantizar la Disponibilidad e Integridad de las operaciones, el Equipo de Respuesta a Incidentes (CSIRT) ejecutó las siguientes acciones:</p>
+            <ul>
+                <li><strong>Contención Inmediata:</strong> Aislamiento de la VLAN de la planta de manufactura comprometida y revocación de todos los tokens de sesión activos desde el panel de control técnico.</li>
+                <li><strong>Erradicación y Recuperación:</strong> Para mitigar la corrupción de servidores, se invocó la Línea base de Base de Datos (respaldos incrementales de 4 horas) y el procedimiento de recuperación de Servidores Físicos/Virtuales, logrando restaurar la operatividad del ERP en el Tiempo Objetivo de Recuperación (RTO) definido.</li>
+            </ul>
+
+            <h4>Mejora Continua y Prevención (Actualización del SGSI)</h4>
+            <p>En estricto apego al principio de Mejora Continua del estándar ISO 27001 (Cláusula 10), la Dirección de TI y Administración autoriza los siguientes ajustes operativos y estratégicos para evitar la recurrencia:</p>
+            <ol>
+                <li><strong>Ajuste de Política - Refuerzo de Identidad (Zero Trust):</strong> El MFA tradicional se actualizará. Ahora se exigirá una validación del estado del dispositivo (Device Posture) antes de otorgar acceso remoto a cualquier red de Viakon.</li>
+                <li><strong>Controles Técnicos - Hardening y Segmentación:</strong> Se eleva la Directriz de Servidores a Estándar: "Todos los servidores virtuales críticos de manufactura y ERP deben estar obligatoriamente segmentados por VLANs restrictivas", limitando el movimiento lateral.</li>
+                <li><strong>Mejora de Procesos y Monitoreo:</strong> La auditoría de registros de bases de datos pasará de ser una revisión "mensual" a un monitoreo automatizado en tiempo real. Además, se reestructurarán de inmediato los flujos de aprobación en el ERP para garantizar privilegios mínimos.</li>
+                <li><strong>Capacitación y Concientización:</strong> Se desplegará una campaña interna obligatoria orientada a todos los "Energizadores" para prevenir el robo de credenciales, enfocándose en la identificación de ingeniería social y el manejo seguro de sesiones (Material de campaña adjunto en el Anexo de Prevención).</li>
+            </ol>
+
+            <h4>Indicadores de Rendimiento del Incidente (KPIs)</h4>
+            <table>
+                <tr><th>Indicador</th><th>Resultado</th><th>Evaluación</th></tr>
+                <tr>
+                    <td><strong>MTTD (Tiempo Medio de Detección)</strong></td>
+                    <td>14 minutos</td>
+                    <td style="color: #22c55e; font-weight: bold;">Resultado Positivo. El SOC demostró alta eficacia gracias a las alertas de anomalías en el tráfico de red.</td>
+                </tr>
+                <tr>
+                    <td><strong>MTTR (Tiempo Medio de Respuesta)</strong></td>
+                    <td>4 horas y 15 minutos</td>
+                    <td style="color: #f59e0b; font-weight: bold;">Área de Oportunidad. Superó los umbrales de tolerancia. Como medida correctiva, se integrarán playbooks de respuesta automatizada (SOAR) con el objetivo de reducir este tiempo en un 60% para futuros eventos.</td>
+                </tr>
+            </table>
+
+            <div class="img-container">
+                <img src="./archivos/img_pr03_flyer.png" alt="Flyer de Campaña de Ciberseguridad" style="max-width: 800px; display: block; margin: 0 auto;">
+                <div class="img-caption">Campaña Oficial de Prevención y Ciberseguridad Viakon</div>
+            </div>
+
+        </section>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Cristian Alejandro Rodríguez Moreno | Equipo 3 | Proyecto SGSI Viakon</p>
+        <p>Núcleo Optativo V: Seguridad Informática | Universidad Politécnica de San Luis Potosí</p>
+    </footer>
+
+</body>
+</html>

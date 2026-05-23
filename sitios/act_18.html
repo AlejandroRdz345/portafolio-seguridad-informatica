@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad - Análisis de intrusiones con el modelo diamante</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        body {
+            background-color: #0f172a;
+            color: #e2e8f0;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            background-color: #1e293b;
+            border-bottom: 1px solid #334155;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .logo {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: #38bdf8;
+        }
+        .nav-buttons {
+            display: flex;
+            gap: 15px;
+        }
+        .btn {
+            text-decoration: none;
+            padding: 8px 18px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: 0.3s;
+        }
+        .btn-back {
+            color: #cbd5e1;
+            border: 1px solid #334155;
+        }
+        .btn-back:hover {
+            background-color: #334155;
+        }
+        .btn-download {
+            background-color: #38bdf8;
+            color: #0f172a;
+        }
+        .btn-download:hover {
+            background-color: #7dd3fc;
+        }
+
+        header.hero {
+            text-align: center;
+            padding: 80px 20px;
+            background: linear-gradient(to bottom, #1e293b, #0f172a);
+        }
+        .hero h1 {
+            font-size: 2.2rem;
+            margin: 15px 0;
+            color: #38bdf8;
+        }
+        .hero p {
+            color: #94a3b8;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .hero-details {
+            margin-top: 20px;
+            font-size: 1rem;
+            color: #e2e8f0;
+        }
+
+        .contenedor {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+
+        .tarjeta {
+            background-color: #1e293b;
+            padding: 40px;
+            border-radius: 15px;
+            margin-bottom: 40px;
+            border: 1px solid #334155;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
+            overflow-x: auto;
+        }
+        
+        .tarjeta h2 {
+            margin-bottom: 25px;
+            font-size: 1.6rem;
+            color: #38bdf8;
+            border-bottom: 2px solid #334155;
+            padding-bottom: 15px;
+        }
+
+        .tarjeta h3 {
+            color: #7dd3fc;
+            font-size: 1.2rem;
+            margin-top: 25px;
+            margin-bottom: 10px;
+            border-left: 3px solid #38bdf8;
+            padding-left: 10px;
+        }
+
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        ul {
+            margin-bottom: 20px;
+            padding-left: 25px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        /* Estilos para tablas */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 0.9rem;
+            background-color: #0f172a;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        th, td {
+            border: 1px solid #334155;
+            padding: 15px;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background-color: #334155;
+            color: #38bdf8;
+            font-weight: 600;
+        }
+        tr:nth-child(even) {
+            background-color: rgba(30, 41, 59, 0.5);
+        }
+
+        /* Escenario Box */
+        .escenario-box {
+            background: rgba(15, 23, 42, 0.6);
+            border-left: 4px solid #f59e0b;
+            padding: 15px;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        /* Enlaces Referencias */
+        a.ref-link {
+            color: #38bdf8;
+            text-decoration: none;
+            word-break: break-all;
+        }
+        a.ref-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Espacio para dibujos */
+        .dibujos-container {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            margin-top: 30px;
+            align-items: center;
+        }
+        .dibujo-wrapper {
+            width: 100%;
+            max-width: 600px;
+            text-align: center;
+        }
+        .dibujo-wrapper h4 {
+            color: #e2e8f0;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+        .dibujo-wrapper img {
+            width: 100%;
+            border-radius: 8px;
+            border: 1px dashed #38bdf8;
+            background-color: white; /* Por si los diagramas tienen fondo transparente */
+        }
+
+        /* Grid para los autores */
+        .equipo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .equipo-item {
+            background: rgba(15, 23, 42, 0.5);
+            padding: 10px 15px;
+            border-radius: 6px;
+            border-left: 3px solid #38bdf8;
+            font-size: 0.9rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 50px;
+            color: #64748b;
+            font-size: 0.9rem;
+            border-top: 1px solid #1e293b;
+            background-color: #0f172a;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">Modelo Diamante</div>
+        <div class="nav-buttons">
+            <a href="../index.html" class="btn btn-back">← Regresar</a>
+            <!-- Ajusta el nombre de tu archivo PDF aquí si es necesario -->
+            <a href="archivos/act18-Equipo3.pdf" download class="btn btn-download">Descargar PDF</a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <p>UNIVERSIDAD POLITÉCNICA DE SAN LUIS POTOSÍ</p>
+        <h1>Análisis de intrusiones con el modelo diamante</h1>
+        <div class="hero-details">
+            <p><strong>Curso:</strong> Núcleo Optativo V: Seguridad Informática</p>
+            <p style="color: #38bdf8; font-weight: bold; margin-top: 15px;">Rodríguez Moreno Cristian Alejandro | Matrícula: 181641</p>
+            <p style="font-size: 0.9rem; color: #94a3b8; margin-top: 5px;">Docente: Mtro. Servando López Contreras | Grupo: T46A</p>
+        </div>
+    </header>
+
+    <div class="contenedor">
+        
+        <!-- Tarjeta de Equipo -->
+        <section class="tarjeta"> 
+            <h2>Integrantes del Equipo</h2> 
+            <div class="equipo-grid">
+                <div class="equipo-item">Benites Rangel Cesar Yahir - 179091</div>
+                <div class="equipo-item">Cortes Beltran Carol Elizabeth - 177203</div>
+                <div class="equipo-item">Guerra Ramírez América Fabiola - 179888</div>
+                <div class="equipo-item">Larios Guerra Gustavo Michael - 178318</div>
+                <div class="equipo-item">Montelongo Martínez Laura Ivon - 177291</div>
+                <div class="equipo-item">Puente Luna Bruno Axel - 177876</div>
+                <div class="equipo-item" style="border-left-color: #22c55e;">Rodríguez Moreno Cristian Alejandro - 181641</div>
+            </div>
+        </section>
+
+        <!-- Parte 01 -->
+        <section class="tarjeta">
+            <h2>Parte 01: Comprensión del modelo</h2>
+            <p>El Modelo del Diamante para el análisis de intrusiones es un marco formal que describe cada incidente de intrusión cibernética a través de cuatro elementos interconectados (el adversario, la capacidad, la infraestructura y la víctima) dispuestos en forma de diamante para permitir un análisis estructurado de la inteligencia sobre amenazas basado en las relaciones.</p>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Elemento</th>
+                        <th>Descripción</th>
+                        <th>Ejemplo Práctico</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Adversario</strong></td>
+                        <td>El actor o grupo malicioso responsable de la intrusión. Puede tratarse desde un grupo APT concreto hasta un actor desconocido identificado únicamente por sus patrones de comportamiento.</td>
+                        <td>Un grupo de cibercrimen con motivaciones financieras o un estado-nación buscando espionaje.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Capacidad</strong></td>
+                        <td>Describe las herramientas, técnicas y procedimientos (TTP) utilizados por el adversario para ejecutar el evento.</td>
+                        <td>Uso de un malware tipo Ransomware, scripts en PowerShell o un exploit de día cero (0-day).</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Infraestructura</strong></td>
+                        <td>Son los recursos lógicos y físicos que el adversario utiliza para entregar la capacidad y comunicarse.</td>
+                        <td>Servidores de Comando y Control (C2), dominios maliciosos registrados o direcciones IP de una botnet.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Víctima</strong></td>
+                        <td>El objetivo del ataque. Puede ser una organización, un usuario específico, una dirección IP o un activo crítico (base de datos).</td>
+                        <td>El servidor de bases de datos de una institución financiera o el endpoint de un empleado administrativo.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Parte 02 -->
+        <section class="tarjeta">
+            <h2>Parte 02: Análisis de evento (modelo diamante)</h2>
+            
+            <div class="escenario-box">
+                <p><strong>Escenario:</strong> Una organización detecta comportamiento anómalo en un equipo. El análisis revela:</p>
+                <ol style="margin-left: 20px; margin-top: 10px;">
+                    <li>La víctima detecta malware.</li>
+                    <li>El malware contiene dominios de Comando y Control (C2).</li>
+                    <li>Los dominios resuelven a direcciones IP externas.</li>
+                    <li>Logs muestran múltiples hosts conectándose a esas IP.</li>
+                    <li>WHOIS/IP revela posible origen del atacante.</li>
+                </ol>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Meta característica</th>
+                        <th>Descripción del evento</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Marca de tiempo</strong></td>
+                        <td>Fecha y hora exacta registrada en los logs de red y del antivirus (necesaria para la línea del tiempo).</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Fase</strong></td>
+                        <td>Command and Control (C2) y Actions on Objectives. El malware ya está instalado y busca instrucciones externas.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Resultado</strong></td>
+                        <td>Éxito parcial/total. El malware se ejecutó y logró contactar a la infraestructura del adversario; existe riesgo de exfiltración.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Dirección</strong></td>
+                        <td>El tráfico fluye desde la red interna (víctima) hacia las IPs externas (infraestructura).</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Metodología</strong></td>
+                        <td>Beaconing. Comunicación persistente y periódica entre el host infectado y el C2 para recibir comandos.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Recursos</strong></td>
+                        <td>Capacidad del malware para resolver nombres de dominio (DNS) y establecer túneles de comunicación cifrada.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Preguntas</h3>
+            
+            <p><strong>1. ¿Quién es el adversario en este escenario?</strong><br>
+            Aunque la identidad real suele ser difícil de atribuir, el adversario se define por el actor o grupo de amenazas identificado mediante la geolocalización de las IPs y los datos de registro de los dominios (WHOIS). Técnicamente, se describe como el Threat Actor con la infraestructura de C2 activa.</p>
+
+            <p><strong>2. ¿Cuál es la capacidad utilizada?</strong><br>
+            La capacidad es el malware persistente detectado en los endpoints. Esta incluye funciones de evasión y, específicamente, la capacidad de comunicación mediante balizas (beaconing) para contactar con los dominios de Comando y Control (C2).</p>
+
+            <p><strong>3. ¿Qué tipo de infraestructura se emplea?</strong><br>
+            Se emplea una Infraestructura de Comando y Control (C2) de nivel 2. Esta consiste en nombres de dominio maliciosos y direcciones IP externas que actúan como puntos de recepción de datos y envío de instrucciones.</p>
+
+            <p><strong>4. ¿Quién es la víctima primaria?</strong><br>
+            La víctima primaria es el host inicial donde se detectó el malware. Sin embargo, en el modelo diamante, la organización completa es considerada la víctima de nivel superior, mientras que los activos específicos (servidores/equipos) son las víctimas de nivel técnico.</p>
+
+            <p><strong>5. ¿Existe evidencia de movimiento lateral?</strong><br>
+            Sí. El hecho de que los logs muestren "múltiples hosts" conectándose a las mismas IPs de C2 sugiere que el malware se ha propagado internamente (movimiento lateral) o que se realizó un despliegue masivo tras comprometer un controlador de dominio o mediante herramientas de administración.</p>
+        </section>
+
+        <!-- Parte 03 -->
+        <section class="tarjeta">
+            <h2>Parte 03. Relación con la Kill Chain</h2>
+            
+            <h3>Fases</h3>
+            <p><strong>Fase 1: Reconocimiento (Reconnaissance)</strong><br>
+            En esta etapa, el atacante recopila información sobre el objetivo. Esto puede incluir la identificación de empleados, sistemas vulnerables, y cualquier otra información que pueda ser útil para el ataque.</p>
+
+            <p><strong>Fase 2: Armamento (Weaponization)</strong><br>
+            El atacante utiliza la información recopilada durante la fase de reconocimiento para desarrollar o adaptar un arma cibernética que explotará las vulnerabilidades específicas del objetivo.</p>
+
+            <p><strong>Fase 3: Entrega (Delivery)</strong><br>
+            En esta fase, el malware se transmite al objetivo. Los vectores de entrega comunes incluyen:</p>
+            <ul>
+                <li><strong>Correos electrónicos de phishing.</strong> Correos electrónicos engañosos que incitan al usuario a hacer clic en un enlace malicioso o descargar un archivo infectado.</li>
+                <li><strong>Dispositivos USB.</strong> Dispositivos USB infectados que se propagan al conectarse a los sistemas.</li>
+                <li><strong>Sitios web comprometidos.</strong> Sitios web legítimos que han sido hackeados para distribuir malware.</li>
+            </ul>
+
+            <p><strong>Fase 4: Explotación (Exploitation)</strong><br>
+            Una vez que el malware se ha entregado con éxito, la fase de explotación se centra en activar el código malicioso.</p>
+
+            <p><strong>Fase 5: Instalación (Installation)</strong><br>
+            Tras la explotación exitosa, la fase de instalación se centra en establecer una presencia persistente en el sistema comprometido. El objetivo es asegurar el acceso continuo, incluso si el sistema se reinicia o el usuario cierra sesión.</p>
+
+            <p><strong>Fase 6: Comando y Control (Command and Control)</strong><br>
+            Una vez que el atacante ha establecido una presencia persistente, la fase de Comando y Control (C&C) se centra en establecer y mantener una comunicación con el sistema comprometido.</p>
+
+            <p><strong>Fase 7: Acciones sobre el Objetivo (Actions on Objectives)</strong><br>
+            En la fase final, el atacante lleva a cabo los objetivos del ataque, que pueden incluir:</p>
+            <ul>
+                <li><strong>Robo de datos.</strong> Extracción de información confidencial, como datos financieros, propiedad intelectual o información personal.</li>
+                <li><strong>Sabotaje.</strong> Dañar o destruir sistemas o datos.</li>
+                <li><strong>Espionaje.</strong> Obtener información secreta o confidencial.</li>
+            </ul>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Evento</th>
+                        <th>Fase Kill Chain</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Detección de malware</strong></td>
+                        <td>Entrega (Delivery): El atacante transmite el vector de ataque al objetivo (correo malicioso).</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Envío de phishing</strong></td>
+                        <td>Explotación / Instalación: El código malicioso se activa aprovechando una vulnerabilidad o acción del usuario.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Conexión a C2</strong></td>
+                        <td>Comando y Control: El sistema comprometido abre un canal de comunicación con el atacante.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Ejecución del malware</strong></td>
+                        <td>Post-Intrusión: No es una fase del atacante, sino el punto de interrupción (Break the Chain) por parte de la defensa.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Parte 04 -->
+        <section class="tarjeta">
+            <h2>Parte 04. Hilos de actividad</h2>
+            
+            <div class="escenario-box">
+                <p>Con base en el siguiente escenario tipo APT:</p>
+                <ul style="margin-top: 10px; margin-bottom: 0;">
+                    <li>Phishing dirigido a administrador.</li>
+                    <li>Ejecución de malware.</li>
+                    <li>Conexión a C2.</li>
+                    <li>Uso del host comprometido como proxy.</li>
+                    <li>Ataque a segunda víctima.</li>
+                </ul>
+            </div>
+
+            <h3>Descripción</h3>
+            
+            <p><strong>• Hilo 1 (Víctima 1).</strong><br>
+            <strong>Descripción:</strong> Un administrador (Víctima 1) recibe un correo de phishing dirigido. Al ejecutar el archivo, se instala un malware que establece una conexión persistente a un servidor C2.<br>
+            <strong>Ejes del Diamante:</strong> Adversario (APT) → Capacidad (Malware) → Infraestructura (C2) → Víctima (Admin).</p>
+
+            <p><strong>• Hilo 2 (Víctima 2).</strong><br>
+            <strong>Descripción:</strong> El atacante utiliza el host del administrador como un Proxy para ocultar su rastro y saltar las protecciones perimetrales. Desde aquí, lanza un ataque hacia la base de datos o el servidor financiero (Víctima 2).<br>
+            <strong>Ejes del Diamante:</strong> El host de la Víctima 1 ahora forma parte de la Infraestructura del atacante para alcanzar a la Víctima 2.</p>
+
+            <p><strong>• Relación entre ambos (pivoting)</strong><br>
+            El Pivoting es la técnica donde el atacante usa un sistema comprometido para atacar otros sistemas en la misma red o en redes diferentes que no eran accesibles directamente desde internet. La relación es de Infraestructura-Víctima: lo que para el primer hilo era la víctima, para el segundo se convierte en infraestructura de ataque.</p>
+
+            <!-- ESPACIO PARA LOS DIBUJOS DE LOS HILOS -->
+            <div class="dibujos-container">
+                <div class="dibujo-wrapper">
+                    <h4>Dibujo del Hilo 1</h4>
+                    <img src="./archivos/img_act18_1.png" alt="Diagrama Hilo 1">
+                </div>
+                
+                <div class="dibujo-wrapper">
+                    <h4>Dibujo del Hilo 2</h4>
+                    <img src="./archivos/img_act18_2.png" alt="Diagrama Hilo 2">
+                </div>
+
+                <div class="dibujo-wrapper">
+                    <h4>Relación entre ambos (Pivoting)</h4>
+                    <img src="./archivos/img_act18_3.png" alt="Diagrama Relación">
+                </div>
+            </div>
+        </section>
+
+        <!-- Referencias -->
+        <section class="tarjeta">
+            <h2>Referencias</h2>
+            <ul>
+                <li>Caltagirone, S., Pendergast, A., & Betz, C. (2013). The Diamond Model of Intrusion Analysis. Center for Cyber Threat Intelligence and Incident Response. <br><a href="http://www.activeresponse.org/wp-content/uploads/2013/07/diamond_model.pdf" class="ref-link" target="_blank">http://www.activeresponse.org/wp-content/uploads/2013/07/diamond_model.pdf</a></li>
+                
+                <li>Cardiet, L. (2026, 6 mayo). The Diamond Model of intrusion analysis: a practitioner's guide to structured threat intelligence. Vectra Al. <br><a href="https://es.vectra.ai/topics/diamond-model-of-intrusion-analysis" class="ref-link" target="_blank">https://es.vectra.ai/topics/diamond-model-of-intrusion-analysis</a></li>
+                
+                <li>El modelo diamante vs MITRE ATT&CK. (s. f.). Segu-Info - Ciberseguridad Desde 2000. <br><a href="https://blog.segu-info.com.ar/2023/11/el-modelo-diamante-vs-mitre-att.html" class="ref-link" target="_blank">https://blog.segu-info.com.ar/2023/11/el-modelo-diamante-vs-mitre-att.html</a></li>
+                
+                <li>Lockheed Martin. (2022). Cyber Kill Chain. Lockheed Martin Corporation. <br><a href="https://www.lockheedmartin.com/en-us/capabilities/cyber/cyber-kill-chain.html" class="ref-link" target="_blank">https://www.lockheedmartin.com/en-us/capabilities/cyber/cyber-kill-chain.html</a></li>
+                
+                <li>MITRE. (2024). ATT&CK Matrix for Enterprise. MITRE Corporation. <br><a href="https://attack.mitre.org/" class="ref-link" target="_blank">https://attack.mitre.org/</a></li>
+                
+                <li>Seguridad, R. R. (2025, 23 mayo). Cyber Kill Chain: Las 7 fases de un ciberataque - Revista Seguridad 360. Revista Seguridad 360. <br><a href="https://revistaseguridad360.com/noticias/ciberseguridad/cyber-kill-chain-las-7-fases-de-un-ciberataque/" class="ref-link" target="_blank">https://revistaseguridad360.com/noticias/ciberseguridad/cyber-kill-chain-las-7-fases-de-un-ciberataque/</a></li>
+            </ul>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Cristian Alejandro Rodriguez Moreno | Seguridad Informática</p>
+        <p>Universidad Politécnica de San Luis Potosí</p>
+    </footer>
+
+</body>
+</html>
+```eof

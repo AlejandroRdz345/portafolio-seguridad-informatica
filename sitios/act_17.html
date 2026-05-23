@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad - Evaluación de vulnerabilidades con CVSS 3.1</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        body {
+            background-color: #0f172a;
+            color: #e2e8f0;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            background-color: #1e293b;
+            border-bottom: 1px solid #334155;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .logo {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: #38bdf8;
+        }
+        .nav-buttons {
+            display: flex;
+            gap: 15px;
+        }
+        .btn {
+            text-decoration: none;
+            padding: 8px 18px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: 0.3s;
+        }
+        .btn-back {
+            color: #cbd5e1;
+            border: 1px solid #334155;
+        }
+        .btn-back:hover {
+            background-color: #334155;
+        }
+        .btn-download {
+            background-color: #38bdf8;
+            color: #0f172a;
+        }
+        .btn-download:hover {
+            background-color: #7dd3fc;
+        }
+
+        header.hero {
+            text-align: center;
+            padding: 80px 20px;
+            background: linear-gradient(to bottom, #1e293b, #0f172a);
+        }
+        .hero h1 {
+            font-size: 2.2rem;
+            margin: 15px 0;
+            color: #38bdf8;
+        }
+        .hero p {
+            color: #94a3b8;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .hero-details {
+            margin-top: 20px;
+            font-size: 1rem;
+            color: #e2e8f0;
+        }
+
+        .contenedor {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+
+        .tarjeta {
+            background-color: #1e293b;
+            padding: 40px;
+            border-radius: 15px;
+            margin-bottom: 40px;
+            border: 1px solid #334155;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
+        }
+        
+        .tarjeta h2 {
+            margin-bottom: 25px;
+            font-size: 1.6rem;
+            color: #38bdf8;
+            border-bottom: 2px solid #334155;
+            padding-bottom: 15px;
+        }
+
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        ul {
+            margin-bottom: 20px;
+            padding-left: 25px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        .img-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-bottom: 30px;
+            align-items: center;
+        }
+        
+        .img-container img {
+            width: 100%;
+            max-width: 900px;
+            border-radius: 8px;
+            border: 1px solid #334155;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        .equipo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .equipo-item {
+            background: rgba(15, 23, 42, 0.5);
+            padding: 10px 15px;
+            border-radius: 6px;
+            border-left: 3px solid #38bdf8;
+            font-size: 0.9rem;
+        }
+
+        .resaltado {
+            color: #7dd3fc;
+            font-weight: 600;
+        }
+
+        footer {
+            text-align: center;
+            padding: 50px;
+            color: #64748b;
+            font-size: 0.9rem;
+            border-top: 1px solid #1e293b;
+            background-color: #0f172a;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">Actividad CVSS</div>
+        <div class="nav-buttons">
+            <a href="../index.html" class="btn btn-back">← Regresar</a>
+            <!-- Ajusta el nombre de tu archivo PDF aquí si es necesario -->
+            <a href="archivos/act17-Equipo3.pdf" download class="btn btn-download">Descargar PDF</a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <p>UNIVERSIDAD POLITÉCNICA DE SAN LUIS POTOSÍ</p>
+        <h1>Evaluación de vulnerabilidades con CVSS 3.1</h1>
+        <div class="hero-details">
+            <p><strong>Curso:</strong> Núcleo Optativo V: Seguridad Informática</p>
+            <p style="color: #38bdf8; font-weight: bold; margin-top: 15px;">Rodríguez Moreno Cristian Alejandro | Matrícula: 181641</p>
+            <p style="font-size: 0.9rem; color: #94a3b8; margin-top: 5px;">Docente: Mtro. Servando López Contreras | Grupo: T46A</p>
+        </div>
+    </header>
+
+    <div class="contenedor">
+        
+        <section class="tarjeta"> 
+            <h2>Integrantes del Equipo</h2> 
+            <div class="equipo-grid">
+                <div class="equipo-item">Benites Rangel Cesar Yahir - 179091</div>
+                <div class="equipo-item">Cortes Beltran Carol Elizabeth - 177203</div>
+                <div class="equipo-item">Guerra Ramírez América Fabiola - 179888</div>
+                <div class="equipo-item">Larios Guerra Gustavo Michael - 178318</div>
+                <div class="equipo-item">Montelongo Martínez Laura Ivon - 177291</div>
+                <div class="equipo-item">Puente Luna Bruno Axel - 177876</div>
+                <div class="equipo-item" style="border-left-color: #22c55e;">Rodríguez Moreno Cristian Alejandro - 181641</div>
+            </div>
+        </section>
+
+        <section class="tarjeta">
+
+            <h3 style="color: #38bdf8; margin-top: 30px; margin-bottom: 15px;">1. Construcción del vector</h3>
+            <p>Con base en el escenario proporcionado:</p>
+            <ul>
+                <li><span class="resaltado">AV:N (Attack Vector: Network)</span> → La vulnerabilidad puede explotarse a través de la red.</li>
+                <li><span class="resaltado">AC:L (Attack Complexity: Low)</span> → La explotación requiere baja complejidad.</li>
+                <li><span class="resaltado">PR:H (Privileges Required: High)</span> → Se necesitan privilegios elevados.</li>
+                <li><span class="resaltado">UI:N (User Interaction: None)</span> → No requiere interacción del usuario.</li>
+                <li><span class="resaltado">S:U (Scope: Unchanged)</span> → No cambia el alcance.</li>
+                <li><span class="resaltado">C:L (Confidentiality: Low)</span> → Impacto bajo en confidencialidad.</li>
+                <li><span class="resaltado">I:L (Integrity: Low)</span> → Impacto bajo en integridad.</li>
+                <li><span class="resaltado">A:L (Availability: Low)</span> → Impacto bajo en disponibilidad.</li>
+            </ul>
+            <h2>Calculadora CVSS y Resultados</h2>
+            
+            <div class="img-container">
+                <img src="./archivos/img_act17_1.png" alt="Calculadora CVSS - Parte 1">
+                <img src="./archivos/img_act17_2.png" alt="Calculadora CVSS - Parte 2">
+                <img src="./archivos/img_act17_3.png" alt="Calculadora CVSS - Parte 3">
+            </div>
+        </section>
+
+        <!-- Tarjeta de Interpretación -->
+        <section class="tarjeta">
+            <h2>2. Interpretación técnica</h2>
+            <p>Aunque esta vulnerabilidad necesita privilegios elevados para poder explotarse, sigue siendo importante debido a que un atacante con acceso administrativo o permisos avanzados podría utilizarla para afectar aún más los sistemas internos de la organización. Este tipo de fallas representa un riesgo especialmente en situaciones donde existen cuentas comprometidas, amenazas internas o procesos previos de escalamiento de privilegios.</p>
+            
+            <p>Quienes podrían aprovecharla serían principalmente usuarios internos malintencionados, administradores comprometidos o atacantes externos que hayan conseguido credenciales privilegiadas mediante técnicas como phishing, filtración de información o ataques de fuerza bruta.</p>
+
+            <p>Aunque el impacto en la confidencialidad, integridad y disponibilidad es bajo, esto únicamente indica que no ocasiona daños críticos ni pérdida total de información; aun así, puede generar accesos parciales a datos, cambios menores en el sistema o interrupciones limitadas del servicio, por lo que continúa siendo una vulnerabilidad que requiere atención y mitigación.</p>
+        </section>
+
+        <!-- Tarjeta de Puntuación -->
+        <section class="tarjeta">
+            <h2>3. Cálculo de puntuación</h2>
+            <p>Usando la calculadora oficial CVSS v3.1:</p>
+            <p>El vector: <br> <code style="background: rgba(15,23,42,0.8); padding: 5px 10px; border-radius: 5px; color: #22c55e; font-size: 1.1rem; display: inline-block; margin: 10px 0;">CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:L/I:L/A:L</code> <br> produce la siguiente puntuación:</p>
+            
+            <ul>
+                <li><strong>A) Puntuación base:</strong> <span class="resaltado">4.7</span></li>
+                <li><strong>B) Categoría de riesgo:</strong> <span class="resaltado" style="color: #f59e0b;">Media</span></li>
+            </ul>
+
+            <p>Porque según CVSS v3.1:</p>
+            <ul style="list-style-type: none; padding-left: 0; display: inline-block; background: rgba(15,23,42,0.5); padding: 15px; border-radius: 8px;">
+                <li><span style="color: #22c55e; font-weight: bold; width: 80px; display: inline-block;">Baja</span> 0.1 - 3.9</li>
+                <li><span style="color: #f59e0b; font-weight: bold; width: 80px; display: inline-block;">Media</span> 4.0 - 6.9</li>
+                <li><span style="color: #ef4444; font-weight: bold; width: 80px; display: inline-block;">Alta</span> 7.0 - 8.9</li>
+                <li><span style="color: #b91c1c; font-weight: bold; width: 80px; display: inline-block;">Crítica</span> 9.0 - 10</li>
+            </ul>
+        </section>
+
+        <!-- Tarjeta de Conclusión -->
+        <section class="tarjeta">
+            <h2>4. Conclusión</h2>
+            <p>La vulnerabilidad analizada alcanzó una puntuación de 4.7 en CVSS v3.1, por lo que se considera de nivel medio. A pesar de que para explotarla se requieren privilegios elevados, sigue representando un riesgo importante, ya que podría ser utilizada por usuarios internos maliciosos o por atacantes que hayan obtenido acceso a cuentas privilegiadas.</p>
+            
+            <p>Asimismo, el hecho de que pueda explotarse remotamente y con baja complejidad técnica aumenta su importancia dentro de la infraestructura de una organización. Aunque las afectaciones en confidencialidad, integridad y disponibilidad son bajas y no implican un daño crítico al sistema, es recomendable implementar controles de seguridad, supervisión de cuentas con altos privilegios y estrategias de mitigación que ayuden a disminuir la probabilidad de explotación.</p>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Cristian Alejandro Rodriguez Moreno | Seguridad Informática</p>
+        <p>Universidad Politécnica de San Luis Potosí</p>
+    </footer>
+
+</body>
+</html>
